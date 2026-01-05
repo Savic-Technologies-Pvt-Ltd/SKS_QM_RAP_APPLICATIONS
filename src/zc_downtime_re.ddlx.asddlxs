@@ -1,0 +1,53 @@
+@Metadata.layer: #CORE
+
+@UI: {
+      headerInfo:
+      {
+         typeName: 'Downtime Reason',
+         typeNamePlural: 'Downtime Reason',
+         title:
+         {
+           type : #STANDARD,
+           label: 'Downtime Reason',
+           value: 'Remarks'
+         }
+      }
+}
+annotate entity ZC_DOWNTIME_RE
+    with 
+{
+
+@UI.facet: [
+  {
+    id      : 'GeneralInfo',
+    label   : 'Downltime Remarks',
+    type    : #IDENTIFICATION_REFERENCE,
+    purpose : #STANDARD,
+    position: 10
+  }
+  ]
+      @UI.lineItem: [{ position: 10 }]
+  @UI.identification: [{ position: 10 }]
+    Workcenter;
+      @UI.lineItem: [{ position: 20 }]
+  @UI.identification: [{ position: 20 }]
+  @EndUserText.label: 'Remarks ID'
+    remarksid;
+      @UI.lineItem: [{ position: 30 }]
+  @UI.identification: [{ position: 30 }]
+    @EndUserText.label: 'Remarks Desc.'
+    Remarksdesc;
+      @UI.lineItem: [{ position: 40 }]
+  @UI.identification: [{ position: 40 }]
+    @EndUserText.label: 'Start Time'    
+      starttime      ;
+            @UI.lineItem: [{ position: 50 }]
+  @UI.identification: [{ position: 50 }]
+    @EndUserText.label: 'End Time'
+  endtime        ;
+        @UI.lineItem: [{ position: 60 }]
+  @UI.identification: [{ position: 60 }]
+      @EndUserText.label: 'Total Mins'
+  totalmin      ;
+
+}

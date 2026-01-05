@@ -1,0 +1,33 @@
+{
+  "formatVersion": "2",
+  "header": {
+    "description": "Feasibility",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "generalInformation": {
+    "appType": "ui5",
+    "catalogId": "SAP_TC_ALV5_DEFAULT"
+  },
+  "ui5AppDetails": {
+    "appId": "zsdfeasibilityrpt"
+  },
+  "navigation": {
+    "targetMappingId": "ZSD_FEASIBILITY_TM",
+    "semanticObject": "ZSD_FEASIBILITY",
+    "action": "manage",
+    "desktop": true,
+    "tablet": true,
+    "phone": true
+  },
+  "tiles": [
+    {
+      "id": "ZSD_FEASIBILITY_AL",
+      "tileType": "static",
+      "isDefault": true,
+      "standard": {
+        "title": "Feasibility Report"
+      }
+    }
+  ]
+}

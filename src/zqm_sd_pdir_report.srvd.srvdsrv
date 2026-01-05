@@ -1,0 +1,7 @@
+@EndUserText.label: 'Service Definition for PDIR Report'
+define service ZQM_SD_PDIR_REPORT {
+  expose ZQM_PR_PDIRHeader;
+  expose ZQM_PR_PDIRItem;
+  expose ZQM_C_PDIR_OPERTION_LIST;
+  expose ZQM__C_PDIR_SPECIFICATION_LIST;
+}

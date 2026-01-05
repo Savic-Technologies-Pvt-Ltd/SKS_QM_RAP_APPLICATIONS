@@ -1,0 +1,5 @@
+@EndUserText.label: 'Machine Plan'
+define service ZQM_MACHINE_PLAN {
+  expose ZC_MACH_PL_HD;
+  expose ZC_MACH_PL_IT;
+}

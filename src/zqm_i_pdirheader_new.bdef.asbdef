@@ -1,0 +1,187 @@
+managed implementation in class zbp_qm_i_pdirheader_new unique;
+strict ( 2 );
+with draft;
+
+define behavior for ZQM_I_PDIRHeader_NEW //alias <alias_name>
+persistent table zqm_t_pdir_hd
+draft table zqm_t_pdir_HDD
+
+etag master LocalLastChangedOn
+lock master total etag ChangedOn
+authorization master ( instance )
+//etag master <field_name>
+{
+   create ( authorization : none );
+  update;
+  delete;
+   field ( features : instance ) inspectionlot, Material, plant, manufacturingorder, Batch, MaterialDescription ,
+  materiallongtxt,CustomerName;
+  field ( numbering : managed, readonly ) Cuuid;
+    field ( mandatory : create )   ManufacturingOrder,Batch; // Batch;
+  determination createinsplot on save { create; }
+ action getpdf result [1] $self;
+  determination updateHeaderDetails on modify{ field manufacturingorder ; }
+field( readonly )Lotcreate ,lotcreatetime,Salesorder,Customer,Partno,Drgno,SksDraw,Rawmaterial;
+    draft action Edit;
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Resume;
+  draft determine action Prepare;
+  association _Item { create; with draft; }
+
+   mapping for zqm_t_pdir_HD
+
+    {
+
+    Cuuid = cuuid;
+
+    ReportedBy = reported_by;
+    ApprovedBy = approved_by;
+  InspectionLot        = inspectionlot;
+
+    CustomerName         = customername;
+    MaterialDescription  = materialdescription;
+
+    ObsLast              = obslast;
+    Obs5Pcs1st           = obs5pcs1st;
+    RejQty               = rejqty;
+    ObsFinal             = obsfinal;
+    RawMaterial          = rawmaterial;
+    MachPcs              = machpcs;
+    SubPrd2Qa            = subprd2qa;
+    SubQa2Prd            = subqa2prd;
+    ChuteCleanOp         = chutecleanop;
+    Qa5PcsStat           = qa5pcsstat;
+    InspObs              = inspobs;
+    ChutPieces           = chutpieces;
+    PokayokeCheck        = pokayokecheck;
+    SnapGauge            = snapgauge;
+    MachineCleanIns      = machinecleanins;
+    LoadVerification     = loadverification;
+    Result1              = result1;
+    Result2              = result2;
+    Result3              = result3;
+    Result4              = result4;
+    Result5              = result5;
+    Result6              = result6;
+    Result7              = result7;
+    Result8              = result8;
+    Result9              = result9;
+    Result10             = result10;
+    Result11             = result11;
+    Result12             = result12;
+    Result13             = result13;
+    Result14             = result14;
+    Result15             = result15;
+    Result16             = result16;
+    NoGo                 = nogo;
+    GaugeNoGo            = gaugenogo;
+    Other                = other;
+    Dial                 = dial;
+    Vcd                  = vcd;
+    Pp                   = pp;
+    Dpmt                 = dpmt;
+    Attachments          = attachments;
+    FileName             = filename;
+    Dmt                  = dmt;
+    MimeType             = mimetype;
+    OperatorName         = operatorname;
+    Shift                = shift;
+    NextOpt              = nextopt;
+    PreviousOpt          = previousopt;
+    OperationText        = operationtext;
+    PartNo               = partno;
+    OperationConfirmation= operationconfirmation;
+    WorkCenterText       = workcentertext;
+    DrgNo                = drgno;
+    SalesOrder           = salesorder;
+    Grade                = grade;
+
+    Manufacturer         = manufacturer;
+    Supplier             = supplier;
+    Inspection           = inspection;
+    InspectionOperation  = inspectionoperation;
+    ManufacturingOrder   = manufacturingorder;
+    BaseUnit             = baseunit;
+    Batch                = batch;
+    InspectionLotObjectText = inspectionlotobjecttext;
+    Material             = material;
+    Plant                = plant;
+    LotQty               = lotqty;
+    Customer             = customer;
+    LotCreate            = lotcreate;
+    StartOfInsp          = startofinsp;
+    EndOfInsp            = endofinsp;
+
+    Remark               = remark;
+    FormType             = formtype;
+    BasedOn              = basedon;
+    Lever                = lever;
+    MaterialLongTxt      = materiallongtxt;
+
+    QtyChkd = qty_chkd;
+    InvNo = inv_no;
+    InvDate = inv_date;
+    InvQty = inv_qty;
+    CustDraw = cust_draw;
+    Qcstatus = qcstatus;
+
+    }
+}
+
+define behavior for ZQM_I_PDIRITEM_NEW //alias <alias_name>
+with unmanaged save
+//persistent table zqm_t_pdir_IT
+
+draft table zqm_t_pdir_ITD
+lock dependent by _HDR
+authorization dependent by _HDR
+//etag master <field_name>
+{
+  update;
+  delete;
+  field ( readonly ) Cuuid, Boooperationinternalid, Inspectionlotitem, Inspectionlot, Boocharacteristicversion, Inspectionplangroup,
+  resulttxt1, resulttxt2, resulttxt3, resulttxt4, resulttxt5, resulttxt6, resulttxt7, resulttxt8, resulttxt9, resulttxt10, resulttxt11, resulttxt12, resulttxt13, resulttxt14, resulttxt15, resulttxt16,
+result1mm,
+result2mm , result3mm ,result4mm , result5mm , result6mm , result7mm ,
+result8mm ,result9mm , result10mm , result11mm , result12mm ,
+result13mm , result14mm ,result15mm ,result16mm ,
+  InspSpecTargetValue,InspSpecUpperLimit,InspSpecLowerLimit,InspectionSpecification,Specification,mmr;
+  association _HDR;
+
+    determination field_readonly on modify
+  { field Result1 , Result2, Result3, Result4, Result5, Result6, Result7, Result8, Result9, Result10, Result11,
+     ResMark2, ResMark3, ResMark4, ResMark5, ResMark6, ResMark7, ResMark8, ResMark9,
+    ResMark10, ResMark11; }
+
+    field ( features : instance ) Result1 , Result2, Result3, Result4, Result5, Result6, Result7, Result8, Result9, Result10, Result11,
+    ResMark1, ResMark2, ResMark3, ResMark4, ResMark5, ResMark6, ResMark7, ResMark8, ResMark9,
+    ResMark10, ResMark11,Remark;
+
+     side effects
+  { field Result1 affects $self;
+    field Result2 affects $self;
+    field Result3 affects $self;
+    field Result4 affects $self;
+    field Result5 affects $self;
+    field Result6 affects $self;
+    field Result7 affects $self;
+    field Result8 affects $self;
+    field Result9 affects $self;
+    field Result10 affects $self;
+    field Result11 affects $self;
+    field Result12 affects $self;
+    field ResMark1 affects $self;
+    field ResMark2 affects $self;
+    field ResMark3 affects $self;
+    field ResMark4 affects $self;
+    field ResMark5 affects $self;
+    field ResMark6 affects $self;
+    field ResMark7 affects $self;
+    field ResMark8 affects $self;
+    field ResMark9 affects $self;
+    field ResMark10 affects $self;
+    field ResMark11 affects $self;
+
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "formatVersion": "2",
+  "header": {
+    "description": "Machine Plan",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "generalInformation": {
+    "appType": "ui5",
+    "catalogId": "SAP_TC_ALV5_DEFAULT"
+  },
+  "ui5AppDetails": {
+    "appId": "zqmmachineplan"
+  },
+  "navigation": {
+    "targetMappingId": "ZQM_MACH_PLAN_TM",
+    "semanticObject": "ZQM_MACH_PLAN",
+    "action": "manage",
+    "desktop": true,
+    "tablet": true,
+    "phone": true
+  },
+  "tiles": [
+    {
+      "id": "ZQM_MACH_PLAN_AL",
+      "tileType": "static",
+      "isDefault": true,
+      "standard": {
+        "title": "Machine Plan"
+      }
+    }
+  ]
+}

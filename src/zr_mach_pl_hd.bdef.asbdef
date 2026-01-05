@@ -1,0 +1,68 @@
+managed implementation in class zbp_r_mach_pl_hd unique;
+strict ( 2 );
+with draft;
+
+define behavior for ZR_MACH_PL_HD //alias <alias_name>
+persistent table zqm_mach_pl_hd
+with additional save
+draft table ZQM_MACH_PL_HD_D
+etag master LocalLastChangedOn
+lock master total etag ChangedOn
+authorization master ( instance )
+//etag master <field_name>
+{
+  create ( authorization : none );
+  update;
+  delete;
+
+   draft action Edit;
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Resume;
+  field ( readonly ) Machineplanno;
+    draft determine action Prepare;
+     factory action getItem [1..*]  ;
+side effects {
+   action getItem affects $self, entity _Item;
+
+}
+    action getpdf result [1] $self;
+    determination createMachinePlan on save { create; }
+
+      determination updateItem on modify{ field workcenterid ; }
+
+field( mandatory : create) workcenterid;
+    field ( numbering : managed, readonly ) Cuuid;
+field(readonly)workcenter;
+  association _Item { create; with draft; }
+
+
+   mapping for ZR_MACH_PL_HD
+
+  {
+  Machineplanno = Machineplanno;
+  attachments = attachments;
+  filename = filename;
+  mimetype = mimetype;
+  CreatedOn = CreatedOn;
+  CreatedBy = CreatedBy;
+  ChangedOn = ChangedOn;
+  ChangedBy = ChangedBy;
+  }
+}
+
+define behavior for ZR_MACH_PL_IT //alias <alias_name>
+persistent table zqm_mach_pl_it
+draft table ZQM_MACH_PL_IT_D
+
+lock dependent by _HDR
+authorization dependent by _HDR
+//etag master <field_name>
+{
+  update;
+  delete;
+  field ( readonly ) Cuuid, Itemno ,workorder, workcenter,workcentername ,catalogcode,customer_name,description,distributionchannel,hardness,rmgrade,sksdrgno,toollayout ;
+  association _HDR{  with draft; }
+        determination updateItem on modify{ field workcenter ; }
+
+}

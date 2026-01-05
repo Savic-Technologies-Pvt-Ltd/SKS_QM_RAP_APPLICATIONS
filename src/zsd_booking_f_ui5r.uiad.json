@@ -1,0 +1,34 @@
+{
+  "formatVersion": "2",
+  "header": {
+    "description": "An SAP Fiori application.",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "generalInformation": {
+    "appType": "ui5",
+    "catalogId": "SAP_TC_UI5_REPO_UIAD",
+    "targetMappingTitle": "Booking Form"
+  },
+  "ui5AppDetails": {
+    "appId": "zsdbookingform"
+  },
+  "navigation": {
+    "targetMappingId": "UI5R_26EC26D705612D5EFEA1B1E021E33814E9D2D6E5_TM",
+    "semanticObject": "ZSD_BOOKING_F",
+    "action": "manage",
+    "desktop": true,
+    "tablet": true,
+    "phone": true
+  },
+  "tiles": [
+    {
+      "id": "UI5R_26EC26D705612D5EFEA1B1E021E33814E9D2D6E5_AL",
+      "tileType": "static",
+      "isDefault": true,
+      "standard": {
+        "title": "Booking Form"
+      }
+    }
+  ]
+}

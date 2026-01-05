@@ -1,0 +1,61 @@
+projection implementation in class ZBP_C_MMGATE_HEAD unique;
+strict ( 2 );
+extensible;
+use draft;
+use side effects;
+define behavior for ZC_MMGATE_HEAD alias ZcMmgateHead
+extensible
+use etag
+{
+  use create;
+  use update;
+  use delete;
+
+  use action Edit;
+  use action Activate;
+  use action Discard;
+  use action Resume;
+  use action Prepare;
+  use action getItem;
+  use action getpdf;
+    use action postGoods;
+
+  use association _item { create; }
+  use association _docHeader { create; }
+
+
+}
+
+
+define behavior for ZC_MMGATE_item //alias <alias_name>
+{
+  use update;
+  //use delete;
+
+  use association _header;
+
+  use association _COIL;
+
+}
+
+
+define behavior for ZC_MMGATE_DOC_HD //alias <alias_name>
+{
+  use update;
+  //use delete;
+
+  use association _header;
+
+
+}
+
+
+define behavior for ZC_MMGATE_COIL alias Coil
+{
+  use update;
+//  use delete;
+
+  use association _ITEM { with draft; }
+  use association _Header { with draft; }
+
+}

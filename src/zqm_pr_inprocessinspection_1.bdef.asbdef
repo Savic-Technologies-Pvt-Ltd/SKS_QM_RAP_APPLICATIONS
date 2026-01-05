@@ -1,0 +1,48 @@
+projection;
+strict ( 2 );
+use draft;
+
+define behavior for ZQM_PR_InprocessInspection_1 alias Header
+{
+  use create;
+  use update;
+  use delete;
+
+  use action Edit;
+  use action Activate;
+  use action Discard;
+  use action Resume;
+  use action Prepare;
+  use action getpdf;
+
+  use association _item_operation { create; with draft; }
+  //  use association _item { with draft; }
+}
+
+define behavior for ZQM_PR_InprocessInspection_2 alias Item_Operation
+{
+  use update;
+  use delete;
+
+  use association _Header { with draft; }
+  use association _item { create; with draft; }
+}
+
+define behavior for ZQM_PR_InprocessInspection_3 alias Item
+{
+  use update;
+  use delete;
+
+  use association _Header { with draft; }
+  use association _item_operation { with draft; }
+//////////  use association _item_calculation { create; with draft; }
+}
+
+////////define behavior for ZQM_PR_InprocessInspection_4 alias Item_Calculation
+////////{
+////////  use update;
+////////  use delete;
+////////
+////////  use association _Header { with draft; }
+////////  use association _item { with draft; }
+////////}

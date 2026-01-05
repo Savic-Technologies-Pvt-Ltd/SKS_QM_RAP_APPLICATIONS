@@ -1,0 +1,49 @@
+@Metadata.layer: #CUSTOMER
+
+@UI: {
+  headerInfo: {
+    typeName       : 'Booking Form',
+    typeNamePlural : 'Booking Form',
+    title          : { type: #STANDARD, label: 'Machine Plan', value: 'Bookingform' },
+    description    : { type: #STANDARD, value: 'Bookingform' }
+  }
+}
+annotate entity ZC_BOOKING_F_HD
+    with 
+{
+    @UI.facet: [
+  {
+    id      : 'GeneralInfo',
+    label   : 'Header',
+    type    : #IDENTIFICATION_REFERENCE,
+    purpose : #STANDARD,
+    position: 10
+  }
+  ,
+    
+     { id           : 'LOT_I1',
+    purpose      : #STANDARD,
+    type         : #LINEITEM_REFERENCE,
+    label        : 'Item',
+    position     :  20 ,
+    targetElement: '_Item'}
+    ]
+    
+              @UI.identification: [  { type: #FOR_ACTION, dataAction: 'getItem', label: 'Get Sale Order'  },
+               { type: #FOR_ACTION, dataAction: 'getpdf', label: 'Get PDF'  }
+              ]
+                              
+               
+    
+Cuuid;
+
+  @UI.identification: [{ position: 20, label: 'Booking Form No' }]
+  @UI.lineItem      : [{ position: 20, label: 'Booking Form No' }]
+  @EndUserText.label: 'Booking Form'
+Bookingform;
+  @UI: { identification: [ { position: 30 }] }
+  @EndUserText.label: 'Form'
+  attachments;
+  
+    
+}

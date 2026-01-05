@@ -1,0 +1,5 @@
+@EndUserText.label: 'Setup Approval'
+define service ZQM_SETUP_APPROVAL {
+  expose ZC_SETUP_APP_HEAD;
+  expose ZC_SETUP_APP_ITEM;
+}

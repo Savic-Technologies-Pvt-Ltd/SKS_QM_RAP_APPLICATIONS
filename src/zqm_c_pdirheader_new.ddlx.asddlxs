@@ -1,0 +1,380 @@
+@Metadata.layer: #CORE
+
+@UI: {
+  headerInfo: {
+    typeName       : 'PDIR',
+    typeNamePlural : 'PDIR',
+    title          : { type: #STANDARD, label: 'PDIR', value: 'Inspectionlot' },
+    description    : { type: #STANDARD, value: 'Inspectionlot' }
+  }
+}
+annotate entity ZQM_C_PDIRHeader_NEW
+    with 
+{
+    //=== Facets ===
+  @UI.facet: [
+  {
+    id      : 'GeneralInfo',
+    label   : 'PDIR',
+    type    : #IDENTIFICATION_REFERENCE,
+    purpose : #STANDARD,
+    position: 10
+  },
+  {
+    id             : 'Lot_IC',
+    label          : 'Instrument Code',
+    type           : #IDENTIFICATION_REFERENCE,
+    purpose        : #STANDARD,
+    targetQualifier: 'Lot_IC',
+    position       : 15
+  },
+    
+     { id           : 'LOT_I1',
+    purpose      : #STANDARD,
+    type         : #LINEITEM_REFERENCE,
+    label        : 'Specification List',
+    position     :  20 ,
+    targetElement: '_Item'},
+    
+     { id           : 'FOOTER',
+    purpose      : #STANDARD,
+    type         : #IDENTIFICATION_REFERENCE,
+    label        : 'Footer',
+        targetQualifier: 'FOOTER',
+    
+    position     :  30}
+  ]
+
+
+  //=== Fields ===
+  @EndUserText.label: 'Inspection Lot'
+  @UI.identification: [{ position: 20, label: 'Inspectionlot'},  { type: #FOR_ACTION, dataAction: 'GetPDF', label: 'Get PDF'  } ]
+  @UI.lineItem      : [{ position: 20, label: 'Inspectionlot' }]
+  Inspectionlot;
+
+  @EndUserText.label: 'Lot Create Date'
+  @UI.identification: [{ position: 30, label: 'Lot Create' }]
+  @UI.lineItem      : [{ position: 30, label: 'Lot Create' }]
+  @UI.selectionField: [{ position: 30 }]
+  Lotcreate;
+    @EndUserText.label: 'Lot Create Time'
+  
+   @UI.identification: [{ position: 35, label: 'Lot Create Time' }]
+  lotcreatetime ;
+
+  /*@EndUserText.label: 'Start of Inspection'
+  @UI.identification: [{ position: 40, label: 'Start of Inspection' }]
+  @UI.lineItem      : [{ position: 40, label: 'Start of Inspection' }]
+  @UI.selectionField: [{ position: 40 }]
+  Startofinsp;
+
+  @EndUserText.label: 'End of Inspection'
+  @UI.identification: [{ position: 50, label: 'End of Inspection' }]
+  @UI.lineItem      : [{ position: 50, label: 'End of Inspection' }]
+  @UI.selectionField: [{ position: 50 }]
+  Endofinsp;
+*/
+  @EndUserText.label: 'Plant'
+  @UI.identification: [{ position: 40 }]
+  @UI.lineItem      : [{ position: 40 }]
+  @UI.selectionField: [{ position: 40 }]
+  @Consumption.valueHelpDefinition: [{ entity :{  element: 'Plant' , name: 'I_PlantStdVH' } }]
+  Plant;
+
+  @EndUserText.label: 'Material'
+  @UI.identification: [{ position: 50 }]
+  @UI.lineItem      : [{ position: 50 }]
+  @UI.selectionField: [{ position: 50 }]
+  @Consumption.valueHelpDefinition: [{ entity :{  element: 'Product' , name: 'I_ProductText' } }]
+  Material;
+  
+   @EndUserText.label: 'Material Description'
+  @UI.identification: [{ position: 60 }]
+  @UI.lineItem      : [{ position: 60 }]
+  Materialdescription;
+  
+    @EndUserText.label: 'Product Long Text'
+  @UI.identification: [{ position: 70 }]
+  @UI.lineItem      : [{ position: 70 }]
+  @UI.multiLineText: true
+  Materiallongtxt;
+  
+
+  @EndUserText.label: 'Customer'
+  @UI.identification: [{ position: 80, label: 'Customer' }]
+  @UI.lineItem      : [{ position: 80, label: 'Customer' }]
+  Customer;
+@EndUserText.label: 'Customer Name'
+  @UI.identification: [{ position: 80, label: 'Customer Name' }]
+  @UI.lineItem      : [{ position: 80, label: 'Customer Name' }]
+  Customername;
+ /* @EndUserText.label: 'Lot Quantity'
+  @UI.identification: [{ position: 90, label: 'Lot Quantity' }]
+  @UI.lineItem      : [{ position: 90, label: 'Lot Quantity' }]
+  Lotqty;*/
+
+  @EndUserText.label: 'Production Order'
+  @UI.identification: [{ position: 100, label: 'Production Order' }]
+  @Consumption.valueHelpDefinition: [{ entity :{  element: 'ManufacturingOrder' , name: 'ZCDS_VH_05' } }]
+  Manufacturingorder;
+/*
+  @EndUserText.label: 'Inspection Lot Object Text'
+  @UI.identification: [{ position: 110, label: 'Inspectionlotobjecttext' }]
+  //  @UI.lineItem      : [{ position: 110, label: 'Inspectionlotobjecttext' }]
+  Inspectionlotobjecttext;
+*/
+  @EndUserText.label: 'Batch'
+  @UI.identification: [{ position: 120 }]
+  //  @UI.lineItem      : [{ position: 120 }]
+  @UI.selectionField: [{ position: 120 }]
+  @Consumption.valueHelpDefinition: [{ entity :{  element: 'Batch' , name: 'I_Batch' } }]
+  Batch;
+
+
+ @EndUserText.label: 'Remark'
+  @UI.identification: [{ position: 500, label: 'Remark' , qualifier: 'FOOTER'}]
+  @UI.multiLineText: true
+  Remark;
+  
+  
+   @EndUserText.label: 'Lever'
+   @UI.identification: [{ position: 340, label: 'Lever', qualifier: 'Lot_IC' }]
+  
+  Lever;
+  
+   @EndUserText.label: 'Based On'
+   @UI.identification: [{ position: 340, label: 'Based On' }]
+  
+  Basedon;
+/*
+  @UI.identification: [{ position: 130 }]
+  //  @UI.lineItem      : [{ position: 130 }]
+  Supplier;
+
+
+  @UI.identification: [{ position: 140 }]
+  //  @UI.lineItem      : [{ position: 140 }]
+  Manufacturer;
+
+  @EndUserText.label: 'Inspection Operation'
+  @UI.identification: [{ position: 150, label: 'Inspection Operation' }]
+  //  @UI.lineItem      : [{ position: 150, label: 'Inspectionoperation' }]
+  Inspectionoperation;
+
+  @EndUserText.label: 'Inspection'
+  @UI.identification: [{ position: 160, label: 'Inspection' }]
+  //  @UI.lineItem      : [{ position: 160, label: 'Inspection' }]
+  Inspection;
+*/
+  @EndUserText.label: 'Sales Order'
+
+  @UI.identification: [{ position: 170 }]
+  //  @UI.lineItem      : [{ position: 170 }]
+  Salesorder;
+  @EndUserText.label: 'SKS Drawing Number'
+
+  @UI.identification: [{ position: 180 }]
+  //  @UI.lineItem      : [{ position: 180 }]
+  Drgno;
+    @EndUserText.label: 'Partno'
+  
+    @UI.identification: [{ position: 210 }]
+  //  @UI.lineItem      : [{ position: 210 }]
+  Partno;
+//    @EndUserText.label: 'RM Specification'
+
+//    @UI: {  lineItem:       [ { position: 40 } ],
+//      identification: [ { position: 40 } ,  { type: #FOR_ACTION, dataAction: 'GetPDF', label: 'Get PDF'  }],
+//      selectionField: [ { position: 40 } ] }
+//  //   @UI.lineItem      : [{ position: 190 }]
+//  RmSpecification;
+/*
+  @UI.identification: [{ position: 200 }]
+  //  @UI.lineItem      : [{ position: 200 }]
+  Grade;
+
+
+
+  @UI.identification: [{ position: 220 }]
+  @Consumption.valueHelpDefinition: [{ entity : { name: 'ZCDS_QM_DD_06' , element: 'text' } }]
+  //  @UI.lineItem      : [{ position: 220 }]
+  Operationtext;
+
+  @EndUserText.label: 'Work Center Text'
+  @UI.identification: [{ position: 230, label: 'Work Center Text' }]
+  @Consumption.valueHelpDefinition: [{ entity:{ name: 'ZCDS_VH_04',element: 'Opeartion' } }]
+  //  @UI.lineItem      : [{ position: 230, label: 'Workcentertext' }]
+  Workcentertext;
+
+  @UI.identification: [{ position: 240 }]
+  //  @UI.lineItem      : [{ position: 240 }]
+  @Consumption.valueHelpDefinition: [{ entity : { name: 'ZCDS_VH_02' , element: 'ProductionOrderOperation' } }]
+  @EndUserText.label: 'Operation No'
+  Operationconfirmation;
+*/
+  @EndUserText.label: 'Shift'
+  @UI.identification: [{ position: 250, label: 'Shift' }]
+  //  @UI.lineItem      : [{ position: 250, label: 'Shift' }]
+  @Consumption.valueHelpDefinition: [{ entity : { name: 'ZCDS_QM_DD_01' , element: 'Value' } }]
+  Shift;
+
+  @EndUserText.label: 'Operator Name'
+  @UI.identification: [{ position: 260, label: 'Operator Name' }]
+  //  @UI.lineItem      : [{ position: 260, label: 'Operatorname' }]
+  Operatorname;
+  
+  
+    @EndUserText.label: 'QTY CHKD'
+  @UI.identification: [{ position: 270, label: 'QTY CHKD' }]
+QtyChkd;
+  
+    @EndUserText.label: ' INV NO'
+  @UI.identification: [{ position: 280, label: ' INV NO/PO NO' }]
+InvNo;
+  
+    @EndUserText.label: 'INV DATE'
+  @UI.identification: [{ position: 290, label: 'INV DATE' }]
+InvDate;
+  
+    @EndUserText.label: 'INV QTY'
+  @UI.identification: [{ position: 300, label: 'INV QTY' }]
+InvQty;
+  
+    @EndUserText.label: 'CUSTOMER DRAWING REV. NO'
+  @UI.identification: [{ position: 310, label: 'CUSTOMER DRAWING REV. NO' }]
+CustDraw;
+  
+    @EndUserText.label: 'SKS DRAWING REV. NO'
+  @UI.identification: [{ position: 320, label: 'SKS DRAWING REV. NO' }]
+SksDraw;
+
+
+    @EndUserText.label: 'Raw Material Grade'
+  @UI.identification: [{ position: 330, label: 'Raw Material Grade' }]
+Rawmaterial;
+
+  
+/*
+  @EndUserText.label: 'Previous Operation'
+  @UI.identification: [{ position: 270, label: 'Previous Operation' }]
+  //  @UI.lineItem      : [{ position: 270, label: 'Previousopt' }]
+  @Consumption.valueHelpDefinition: [{ entity:{ name: 'ZQM_OperationText_VH',element: 'Opeartion' } }]
+  Previousopt;
+
+  @EndUserText.label: 'Next Operation'
+  @UI.identification: [{ position: 280, label: 'Next Operation' }]
+  //  @UI.lineItem      : [{ position: 280, label: 'Nextopt' }]
+  @Consumption.valueHelpDefinition: [{ entity:{ name: 'ZQM_OperationText_VH',element: 'Opeartion' } }]
+  Nextopt;
+*/
+  //  @EndUserText.label: 'Filename'
+  //  @UI.identification: [{ position: 290, label: 'Filename' }]
+  //  //  @UI.lineItem      : [{ position: 290, label: 'Filename' }]
+  //  Filename;
+
+//  @UI: { identification: [ { position: 106 }] }
+//  @EndUserText.label: 'Attachemnt'
+//  Attachments_ul;
+
+  @UI: { identification: [ { position: 400 }] }
+  @EndUserText.label: 'Form'
+  Attachments;
+  
+  @UI: { identification: [ { position: 410 }] }
+  @EndUserText.label: 'Form Type'
+  Formtype;
+  
+//  @UI: { identification: [ { position: 420 }] }
+//  @EndUserText.label: 'PO NO'
+//  po_no;
+//  @UI: { identification: [ { position: 430 }] }
+//  @EndUserText.label: 'Prepared By'
+//  reported_by;
+//  @UI: { identification: [ { position: 440 }] }
+//  @EndUserText.label: 'Approved By'
+//  approved_by;
+// @UI: { identification: [ { position: 450 }] }
+//  @EndUserText.label: 'Visually Checked For'
+//  checked_visually;
+  @EndUserText.label: 'Dmt'
+  @UI.identification: [{ position: 320, label: 'Dmt', qualifier: 'Lot_IC' }]
+  //  @UI.lineItem      : [{ position: 320, label: 'Dmt' }]
+  Dmt;
+
+  @EndUserText.label: 'Vcd'
+  @UI.identification: [{ position: 330, label: 'Vcd', qualifier: 'Lot_IC' }]
+  //  @UI.lineItem      : [{ position: 330, label: 'Vcd' }]
+  Vcd;
+
+  @EndUserText.label: 'Dial'
+  @UI.identification: [{ position: 340, label: 'Dial', qualifier: 'Lot_IC' }]
+  //  @UI.lineItem      : [{ position: 340, label: 'Dial' }]
+  Dial;
+
+  @EndUserText.label: 'Dpmt'
+  @UI.identification: [{ position: 350, label: 'Dpmt', qualifier: 'Lot_IC' }]
+  //  @UI.lineItem      : [{ position: 350, label: 'Dpmt' }]
+  Dpmt;
+
+  @EndUserText.label: 'Pp'
+  @UI.identification: [{ position: 360, label: 'Pp' , qualifier: 'Lot_IC'}]
+  //  @UI.lineItem      : [{ position: 360, label: 'Pp' }]
+  Pp;
+
+  @EndUserText.label: 'Gauge No-Go'
+  @UI.identification: [{ position: 370, label: 'Gaugenogo', qualifier: 'Lot_IC' }]
+  //  @UI.lineItem      : [{ position: 370, label: 'Gaugenogo' }]
+  Gaugenogo;
+
+  @EndUserText.label: 'No-Go'
+  @UI.identification: [{ position: 380, label: 'Nogo', qualifier: 'Lot_IC' }]
+  //  @UI.lineItem      : [{ position: 380, label: 'Nogo' }]
+  Nogo;
+
+  @EndUserText.label: 'Other'
+  @UI.identification: [{ position: 390, label: 'Other', qualifier: 'Lot_IC' }]
+  //  @UI.lineItem      : [{ position: 390, label: 'Other' }]
+  Other;
+  
+    @UI.identification: [{ position: 10, label: 'QA status', qualifier: 'FOOTER' }]
+  @EndUserText.label: 'QA status'
+  //  @UI.lineItem      : [{ position: 390, label: 'Other' }]
+  Qcstatus;
+  
+    @UI.identification: [{ position: 20, label: 'Prepared By', qualifier: 'FOOTER' }]
+    @EndUserText.label: 'Prepared BY'
+  //  @UI.lineItem      : [{ position: 390, label: 'Other' }]
+  ReportedBy;
+  @EndUserText.label: 'Approved By'
+    @UI.identification: [{ position: 30, label: 'Approved By', qualifier: 'FOOTER' }]
+  //  @UI.lineItem      : [{ position: 390, label: 'Other' }]
+  ApprovedBy;
+
+ /*
+  @UI.identification: [{ position: 410 }]
+  //  @UI.lineItem      : [{ position: 410 }]
+  CreatedOn;
+
+  @UI.identification: [{ position: 420 }]
+  //  @UI.lineItem      : [{ position: 420 }]
+  CreatedBy;
+*/
+/*
+  @UI.identification: [{ position: 430 }]
+  //  @UI.lineItem      : [{ position: 430 }]
+  ChangedOn;
+
+  @UI.identification: [{ position: 440 }]
+  //  @UI.lineItem      : [{ position: 440 }]
+  ChangedBy;
+
+  @UI.identification: [{ position: 450 }]
+  //  @UI.lineItem      : [{ position: 450 }]
+  LocalLastChangedOn;
+
+  @UI.identification: [{ position: 460 }]
+  //  @UI.lineItem      : [{ position: 460 }]
+  LocalLastChangedBy;
+*/
+    
+}

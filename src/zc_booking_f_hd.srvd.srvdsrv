@@ -1,0 +1,5 @@
+@EndUserText.label: 'Booking Form Service Definition'
+define service ZC_BOOKING_F_HD {
+  expose ZC_BOOKING_F_HD;
+  expose ZC_BOOKING_F_IT;
+}

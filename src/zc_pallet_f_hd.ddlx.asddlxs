@@ -1,0 +1,45 @@
+@Metadata.layer: #CUSTOMER
+@UI: {
+  headerInfo: {
+    typeName       : 'Palletisation Form',
+    typeNamePlural : 'Palletisation Form',
+    title          : { type: #STANDARD, label: 'Palletisation Form', value: 'Palletform' },
+    description    : { type: #STANDARD, value: 'Palletform' }
+  }
+}
+annotate entity ZC_PALLET_F_HD
+    with 
+{
+
+  @UI.facet: [
+  {
+    id      : 'GeneralInfo',
+    label   : 'Header',
+    type    : #IDENTIFICATION_REFERENCE,
+    purpose : #STANDARD,
+    position: 10
+  }
+  ,
+    
+     { id           : 'LOT_I1',
+    purpose      : #STANDARD,
+    type         : #LINEITEM_REFERENCE,
+    label        : 'Item',
+    position     :  20 ,
+    targetElement: '_Item'}
+    ]
+    
+              @UI.identification: [  { type: #FOR_ACTION, dataAction: 'getItem', label: 'Get Delivery'  }
+              
+              ,
+              { position: 20, label: 'Palletization Form No' }
+              ]
+                     
+                     
+                 @UI.lineItem      : [{ position: 10, label: 'Palletform' }]
+
+    Palletform;
+                   
+
+  
+}

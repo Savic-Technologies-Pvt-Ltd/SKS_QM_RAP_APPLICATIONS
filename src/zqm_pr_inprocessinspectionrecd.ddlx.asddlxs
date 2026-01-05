@@ -1,0 +1,421 @@
+@Metadata.layer: #CORE
+@UI.headerInfo.title.type: #STANDARD
+@UI.headerInfo.title.value: 'Inspectionlot'
+@UI.headerInfo.description.type: #STANDARD
+@UI.headerInfo.description.value: 'Inspectionlot'
+
+annotate view ZQM_PR_InprocessInspectionRecd with
+{
+
+  @UI.facet: [ {
+    label    : 'General Information',
+    id       : 'GeneralInfo',
+    purpose  : #STANDARD,
+    position : 10,
+    type     : #IDENTIFICATION_REFERENCE
+  } ]
+
+  @EndUserText.label: 'Inspection Lot'
+  @UI.identification: [ { position: 20, label: 'Inspection Lot' } ]
+  @UI.lineItem:       [ { position: 20, label: 'Inspection Lot' } ]
+  Inspectionlot;
+
+
+  @UI.identification: [ { position: 30 } ]
+  @UI.lineItem:       [ { position: 30 } ]
+  Operationtext;
+
+  @EndUserText.label: 'Shif Date'
+  @UI.identification: [ { position: 40, label: 'Shif Date' } ]
+  @UI.lineItem:       [ { position: 40, label: 'Shif Date' } ]
+  ShifDate;
+
+  @EndUserText.label: 'Shift Time'
+  @UI.identification: [ { position: 50, label: 'Shift Time' } ]
+  @UI.lineItem:       [ { position: 50, label: 'Shift Time' } ]
+  ShiftTime;
+
+  @EndUserText.label: 'Parameter Name'
+  @UI.identification: [ { position: 60, label: 'ParameterName' } ]
+  @UI.lineItem:       [ { position: 60, label: 'ParameterName' } ]
+  @UI.selectionField: [ { position: 60 } ]
+  ParameterName;
+
+  @EndUserText.label: 'Specification'
+  @UI.identification: [ { position: 70, label: 'Specification' } ]
+  @UI.lineItem:       [ { position: 70, label: 'Specification' } ]
+  Specification;
+
+  @EndUserText.label: 'Min Value'
+  @UI.identification: [ { position: 80, label: 'Min Value' } ]
+  @UI.lineItem:       [ { position: 80, label: 'Min Value' } ]
+  MinValue;
+
+  @EndUserText.label: 'Max Value'
+  @UI.identification: [ { position: 90, label: 'Max Value' } ]
+  @UI.lineItem:       [ { position: 90, label: 'Max Value' } ]
+  MaxValue;
+
+  @EndUserText.label: 'Record Time 1'
+  @UI.identification: [ { position: 100, label: 'Record Time 1' } ]
+  @UI.lineItem:       [ { position: 100, label: 'Record Time 1' } ]
+  RecTime1;
+
+  @EndUserText.label: 'Record Time 2'
+  @UI.identification: [ { position: 110, label: 'Record Time 2' } ]
+  @UI.lineItem:       [ { position: 110, label: 'Record Time 2' } ]
+  RecTime2;
+
+  @EndUserText.label: 'Record Time 3'
+  @UI.identification: [ { position: 120, label: 'Record Time 3' } ]
+  @UI.lineItem:       [ { position: 120, label: 'Record Time 3' } ]
+  @UI.selectionField: [ { position: 120 } ]
+  RecTime3;
+
+  @EndUserText.label: 'Result 1'
+  @UI.identification: [ { position: 130, label: 'Result 1' } ]
+  @UI.lineItem:       [ { position: 130, label: 'Result 1' } ]
+  Result1;
+
+  @EndUserText.label: 'Result 2'
+  @UI.identification: [ { position: 140, label: 'Result 2' } ]
+  @UI.lineItem:       [ { position: 140, label: 'Result 2' } ]
+  Result2;
+
+  @EndUserText.label: 'Result 3'
+  @UI.identification: [ { position: 150, label: 'Result 3' } ]
+  @UI.lineItem:       [ { position: 150, label: 'Result 3' } ]
+  Result3;
+
+  @UI.identification: [ { position: 160 } ]
+  @UI.lineItem:       [ { position: 160 } ]
+  CreatedOn;
+
+  @UI.identification: [ { position: 170 } ]
+  @UI.lineItem:       [ { position: 170 } ]
+  CreatedBy;
+
+  @UI.identification: [ { position: 180 } ]
+  @UI.lineItem:       [ { position: 180 } ]
+  ChangedOn;
+
+  @UI.identification: [ { position: 190 } ]
+  @UI.lineItem:       [ { position: 190 } ]
+  ChangedBy;
+
+  @UI.identification: [ { position: 200 } ]
+  @UI.lineItem:       [ { position: 200 } ]
+  LocalLastChangedOn;
+
+  @UI.identification: [ { position: 210 } ]
+  @UI.lineItem:       [ { position: 210 } ]
+  LocalLastChangedBy;
+
+//  @EndUserText.label: '_BaseEntity'
+//  @UI.identification: [ { position: 220, label: '_BaseEntity' } ]
+//  @UI.lineItem:       [ { position: 220, label: '_BaseEntity' } ]
+//  _BaseEntity;
+}
+
+
+//@Metadata.layer: #CORE
+//@UI.headerInfo.title.type: #STANDARD
+//@UI.headerInfo.title.value: 'Inspectionlot'
+//@UI.headerInfo.description.type: #STANDARD
+//@UI.headerInfo.description.value: 'Inspectionlot'
+//annotate view ZQM_PR_InprocessInspectionRecd with
+//{
+//  @EndUserText.label: 'Cuuid'
+//  @UI.identification: [ {
+//    position: 10 ,
+//    label: 'Cuuid'
+//  } ]
+//  @UI.lineItem: [ {
+//    position: 10 ,
+//    label: 'Cuuid'
+//  } ]
+//  @UI.selectionField: [ {
+//    position: 10
+//  } ]
+//  Cuuid;
+//
+//  @EndUserText.label: 'Inspectionlot'
+//  @UI.facet: [ {
+//    label: 'General Information',
+//    id: 'GeneralInfo',
+//    purpose: #STANDARD,
+//    position: 20 ,
+//    type: #IDENTIFICATION_REFERENCE
+//  } ]
+//  @UI.identification: [ {
+//    position: 20 ,
+//    label: 'Inspectionlot'
+//  } ]
+//  @UI.lineItem: [ {
+//    position: 20 ,
+//    label: 'Inspectionlot'
+//  } ]
+//  @UI.selectionField: [ {
+//    position: 20
+//  } ]
+//  Inspectionlot;
+//
+//  @UI.identification: [ {
+//    position: 30
+//  } ]
+//  @UI.lineItem: [ {
+//    position: 30
+//  } ]
+//  @UI.selectionField: [ {
+//    position: 30
+//  } ]
+//  Operationtext;
+//
+//  @EndUserText.label: 'ShifDate'
+//  @UI.identification: [ {
+//    position: 40 ,
+//    label: 'ShifDate'
+//  } ]
+//  @UI.lineItem: [ {
+//    position: 40 ,
+//    label: 'ShifDate'
+//  } ]
+//  @UI.selectionField: [ {
+//    position: 40
+//  } ]
+//  ShifDate;
+//
+//  @EndUserText.label: 'ShiftTime'
+//  @UI.identification: [ {
+//    position: 50 ,
+//    label: 'ShiftTime'
+//  } ]
+//  @UI.lineItem: [ {
+//    position: 50 ,
+//    label: 'ShiftTime'
+//  } ]
+//  @UI.selectionField: [ {
+//    position: 50
+//  } ]
+//  ShiftTime;
+//
+//  @EndUserText.label: 'ParameterName'
+//  @UI.identification: [ {
+//    position: 60 ,
+//    label: 'ParameterName'
+//  } ]
+//  @UI.lineItem: [ {
+//    position: 60 ,
+//    label: 'ParameterName'
+//  } ]
+//  @UI.selectionField: [ {
+//    position: 60
+//  } ]
+//  ParameterName;
+//
+//  @EndUserText.label: 'Specification'
+//  @UI.identification: [ {
+//    position: 70 ,
+//    label: 'Specification'
+//  } ]
+//  @UI.lineItem: [ {
+//    position: 70 ,
+//    label: 'Specification'
+//  } ]
+//  @UI.selectionField: [ {
+//    position: 70
+//  } ]
+//  Specification;
+//
+//  @EndUserText.label: 'MinValue'
+//  @UI.identification: [ {
+//    position: 80 ,
+//    label: 'MinValue'
+//  } ]
+//  @UI.lineItem: [ {
+//    position: 80 ,
+//    label: 'MinValue'
+//  } ]
+//  @UI.selectionField: [ {
+//    position: 80
+//  } ]
+//  MinValue;
+//
+//  @EndUserText.label: 'MaxValue'
+//  @UI.identification: [ {
+//    position: 90 ,
+//    label: 'MaxValue'
+//  } ]
+//  @UI.lineItem: [ {
+//    position: 90 ,
+//    label: 'MaxValue'
+//  } ]
+//  @UI.selectionField: [ {
+//    position: 90
+//  } ]
+//  MaxValue;
+//
+//  @EndUserText.label: 'RecTime1'
+//  @UI.identification: [ {
+//    position: 100 ,
+//    label: 'RecTime1'
+//  } ]
+//  @UI.lineItem: [ {
+//    position: 100 ,
+//    label: 'RecTime1'
+//  } ]
+//  @UI.selectionField: [ {
+//    position: 100
+//  } ]
+//  RecTime1;
+//
+//  @EndUserText.label: 'RecTime2'
+//  @UI.identification: [ {
+//    position: 110 ,
+//    label: 'RecTime2'
+//  } ]
+//  @UI.lineItem: [ {
+//    position: 110 ,
+//    label: 'RecTime2'
+//  } ]
+//  @UI.selectionField: [ {
+//    position: 110
+//  } ]
+//  RecTime2;
+//
+//  @EndUserText.label: 'RecTime3'
+//  @UI.identification: [ {
+//    position: 120 ,
+//    label: 'RecTime3'
+//  } ]
+//  @UI.lineItem: [ {
+//    position: 120 ,
+//    label: 'RecTime3'
+//  } ]
+//  @UI.selectionField: [ {
+//    position: 120
+//  } ]
+//  RecTime3;
+//
+//  @EndUserText.label: 'Result1'
+//  @UI.identification: [ {
+//    position: 130 ,
+//    label: 'Result1'
+//  } ]
+//  @UI.lineItem: [ {
+//    position: 130 ,
+//    label: 'Result1'
+//  } ]
+//  @UI.selectionField: [ {
+//    position: 130
+//  } ]
+//  Result1;
+//
+//  @EndUserText.label: 'Result2'
+//  @UI.identification: [ {
+//    position: 140 ,
+//    label: 'Result2'
+//  } ]
+//  @UI.lineItem: [ {
+//    position: 140 ,
+//    label: 'Result2'
+//  } ]
+//  @UI.selectionField: [ {
+//    position: 140
+//  } ]
+//  Result2;
+//
+//  @EndUserText.label: 'Result3'
+//  @UI.identification: [ {
+//    position: 150 ,
+//    label: 'Result3'
+//  } ]
+//  @UI.lineItem: [ {
+//    position: 150 ,
+//    label: 'Result3'
+//  } ]
+//  @UI.selectionField: [ {
+//    position: 150
+//  } ]
+//  Result3;
+//
+//  @UI.identification: [ {
+//    position: 160
+//  } ]
+//  @UI.lineItem: [ {
+//    position: 160
+//  } ]
+//  @UI.selectionField: [ {
+//    position: 160
+//  } ]
+//  CreatedOn;
+//
+//  @UI.identification: [ {
+//    position: 170
+//  } ]
+//  @UI.lineItem: [ {
+//    position: 170
+//  } ]
+//  @UI.selectionField: [ {
+//    position: 170
+//  } ]
+//  CreatedBy;
+//
+//  @UI.identification: [ {
+//    position: 180
+//  } ]
+//  @UI.lineItem: [ {
+//    position: 180
+//  } ]
+//  @UI.selectionField: [ {
+//    position: 180
+//  } ]
+//  ChangedOn;
+//
+//  @UI.identification: [ {
+//    position: 190
+//  } ]
+//  @UI.lineItem: [ {
+//    position: 190
+//  } ]
+//  @UI.selectionField: [ {
+//    position: 190
+//  } ]
+//  ChangedBy;
+//
+//  @UI.identification: [ {
+//    position: 200
+//  } ]
+//  @UI.lineItem: [ {
+//    position: 200
+//  } ]
+//  @UI.selectionField: [ {
+//    position: 200
+//  } ]
+//  LocalLastChangedOn;
+//
+//  @UI.identification: [ {
+//    position: 210
+//  } ]
+//  @UI.lineItem: [ {
+//    position: 210
+//  } ]
+//  @UI.selectionField: [ {
+//    position: 210
+//  } ]
+//  LocalLastChangedBy;
+//
+//  @EndUserText.label: '_BaseEntity'
+//  @UI.identification: [ {
+//    position: 220 ,
+//    label: '_BaseEntity'
+//  } ]
+//  @UI.lineItem: [ {
+//    position: 220 ,
+//    label: '_BaseEntity'
+//  } ]
+//  @UI.selectionField: [ {
+//    position: 220
+//  } ]
+//  _BaseEntity;
+//}

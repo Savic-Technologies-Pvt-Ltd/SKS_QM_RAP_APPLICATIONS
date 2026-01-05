@@ -1,0 +1,199 @@
+managed implementation in class ZBP_R_MMGATE_HEAD unique;
+strict ( 2 );
+with draft;
+extensible;
+define behavior for ZR_MMGATE_HEAD alias ZrMmgateHead
+persistent table ZMM_GATE_HEAD
+extensible
+late numbering
+draft table ZMMGATE_HEAD_D
+etag master LocalLastChangedAt
+lock master total etag ChanAt
+authorization master( global )
+{
+ // field ( mandatory : create )
+  // Gatenumber;
+  field ( readonly ) Gatenumber;   // <-- not mandatory
+
+  field ( readonly )
+   Createdby,
+   CreatDat,
+   ChanBy,
+   ChanAt,
+
+   LocalLastChangedAt;
+
+  field ( readonly : update )
+   Plant,gatetype;
+
+   field ( mandatory : create ) Plant,gatetype;
+
+field ( readonly )
+  ekorg                ,
+  ekgrp                 ,
+  lifnr                 ,
+  bukrs                 ,
+  podate,
+  vendorname            ;
+
+side effects {
+    field ebeln affects field ekorg,
+                        field ekgrp,
+                        field bukrs,
+                        field podate,
+                        field vendorname,
+                        field lifnr;
+                        action getItem affects $self;
+  }
+  determination updateHeaderDetails on modify{ field ebeln ; }
+
+  create;
+  update;
+  delete;
+
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Edit;
+  draft action Resume;
+  draft determine action Prepare;
+
+  determination createGoods on save { create; }
+
+     factory action getItem [1..*]  ;
+  action getpdf result [1] $self;
+  action postGoods result [1] $self;
+
+// factory action getItem parameter ZR_MMGATE_HEAD [1..*]  { default function GetDefaultsForCreateChild ; }
+  mapping for ZMM_GATE_HEAD
+  {
+    Gatenumber = gatenumber;
+    Truckdata = truckdata;
+    Transportername = transportername;
+    Vehicleno = vehicleno;
+    Drivername = drivername;
+    Createdby = createdby;
+    CreatDat = creat_dat;
+    ChanBy = chan_by;
+    ChanAt = chan_at;
+    LocalLastChangedAt = local_last_changed_at;
+    ebeln                 = ebeln;
+  ekorg                 = ekorg;
+  ekgrp                 = ekgrp;
+  lifnr                 = lifnr;
+  bukrs                 = bukrs;
+  vendorname            = vendorname;
+  einvoicenumber        = einvoicenumber;
+  einvoicedate          = einvoicedate;
+  gatetype = gatetype;
+  invoicenumber = invoicenumber;
+  invoicedate = invoicedate;
+  ewayinvoicedate = ewayinvoicedate;
+  ewayinvoicenumber = ewayinvoicenumber;
+  manualgateentry = manualgateentry;
+
+plant    = plant;
+  }
+ association _item { create; with draft;}
+
+  association _docHeader { create; with draft;}
+
+// association _coil { create; with draft;}
+
+}
+
+
+define behavior for ZR_MMGATE_ITEM //alias <alias_name>
+late numbering
+with additional save
+persistent table zmm_gate_item
+draft table zmm_gate_item_d
+lock dependent by _header
+authorization dependent by _header
+//etag master <field_name>
+{
+  update;
+  delete;
+  field ( readonly ) Gatenumber  ,Qty ,matnr,maktx,Meins,plant ;
+ //   field ( mandatory : create ) Item;
+
+  factory action getPoItem [1];
+  association _header { with draft;}
+
+
+ mapping for ZMM_GATE_ITEM corresponding
+  {
+  Gatenumber = gatenumber;
+  Item = item;
+  plant = plant ;
+
+  }
+  association _COIL { create; with draft; }
+}
+
+
+define behavior for ZR_MMGATE_DOC_HD //alias <alias_name>
+late numbering
+
+persistent table zmm_gate_doc_hd
+draft table zmm_gate_doc_d
+lock dependent by _header
+authorization dependent by _header
+//etag master <field_name>
+{
+  update;
+  delete;
+  field ( readonly ) Gatenumber ,Plant , doc_date  ;
+ //   field ( mandatory : create ) Item;
+
+  factory action getPoItem [1];
+  association _header { with draft;}
+
+
+ mapping for zmm_gate_doc_hd corresponding
+  {
+  Gatenumber = gatenumber;
+
+  plant = plant ;
+  doc_num = doc_num;
+
+  }
+
+}
+
+
+
+
+
+define behavior for ZR_MMGATE_COIL alias Coil
+//with unmanaged save
+late numbering
+with additional save
+
+    persistent table zmm_gate_coil
+draft table zmm_gate_coil_d
+lock dependent by _header
+authorization dependent by _header
+//etag master <field_name>
+{
+  update;
+  delete;
+  field ( readonly ) Gatenumber ,Plant,doc_num,Item ,Coilno;
+  ancestor association _Header { with draft; }
+  association _ITEM { with draft; }
+
+  mapping for zmm_gate_coil
+    {
+
+    Gatenumber = Gatenumber;
+    Coilno = Coilno;
+    Plant = Plant;
+    Item = Item;
+    doc_num = doc_num;
+    acceptance = acceptance;
+    qty = qty;
+    meins = meins;
+
+
+
+    }
+}

@@ -1,0 +1,7 @@
+@EndUserText.label: 'Service Definition'
+define service ZMM_GATE_APP_SRV_V2 {
+  expose ZC_MMGATE_HEAD;
+  expose ZC_MMGATE_ITEM;
+  expose ZC_MMGATE_DOC_HD;
+  expose ZC_MMGATE_COIL;
+}

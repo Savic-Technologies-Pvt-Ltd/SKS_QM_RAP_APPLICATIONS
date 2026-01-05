@@ -1,0 +1,34 @@
+{
+  "formatVersion": "2",
+  "header": {
+    "description": "First Five Piece Inspection",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "generalInformation": {
+    "appType": "ui5",
+    "catalogId": "SAP_TC_UI5_REPO_UIAD",
+    "targetMappingTitle": "First Five Piece Inspection"
+  },
+  "ui5AppDetails": {
+    "appId": "zfirstfivepinsp"
+  },
+  "navigation": {
+    "targetMappingId": "UI5R_6917D01C1144494705F30E33CF1152A412D1008B_TM",
+    "semanticObject": "zfirstfivepinsp",
+    "action": "manage",
+    "desktop": true,
+    "tablet": true,
+    "phone": true
+  },
+  "tiles": [
+    {
+      "id": "UI5R_6917D01C1144494705F30E33CF1152A412D1008B_AL",
+      "tileType": "static",
+      "isDefault": true,
+      "standard": {
+        "title": "First Five Piece Inspection"
+      }
+    }
+  ]
+}

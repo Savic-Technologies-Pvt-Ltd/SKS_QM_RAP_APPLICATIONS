@@ -1,0 +1,146 @@
+@Metadata.layer: #CORE
+@UI: {
+      headerInfo:
+      {
+         typeName: 'Line Inspection Lot',
+         typeNamePlural: 'Line Inspection Lot',
+         title:
+         {
+           type : #STANDARD,
+           label: 'Line Inspection Lot',
+           value: 'Inspectionlot'
+         }
+      }
+}
+@UI.deleteHidden: true
+annotate entity ZQM_CM_LINSP_HDR with
+{
+  /* === Facets === */
+  @UI.facet: [
+    {
+      id      : 'HDR',
+      purpose : #STANDARD,
+      position: 10,
+      label   : 'Line Inspection',
+      type    : #IDENTIFICATION_REFERENCE
+    },
+    {
+      id            : 'OPR',
+      purpose       : #STANDARD,
+      type          : #LINEITEM_REFERENCE,
+      label         : 'Operations',
+      position      : 30,
+      targetElement : '_OPR'
+    }
+  ]
+
+  /* === Key Fields === */
+  @UI:{
+        selectionField : [{ position: 10 }],
+        lineItem       : [{ position: 5, label: 'Operation Number' }],
+        identification : [{ position: 5, label: 'Operation Number' },{ type: #FOR_ACTION, dataAction: 'GetPDF', label: 'Get PDF'  }]
+      }
+        
+      
+  @EndUserText.label: 'Operation Number'
+  Inspectionlot;
+
+  @Consumption.valueHelpDefinition: [{ entity :{ element: 'Product', name: 'I_ProductText' } }]
+  @UI:{
+        selectionField : [{ position: 20 }],
+        lineItem       : [{ position: 10, label: 'Material' }],
+        identification : [{ position: 10, label: 'Material' }]
+      }
+  @EndUserText.label: 'Material'
+  Material;
+
+  @Consumption.valueHelpDefinition: [{ entity :{ element: 'Plant', name: 'I_PlantStdVH' } }]
+  @UI:{
+        selectionField : [{ position: 30 }],
+        lineItem       : [{ position: 15, label: 'Plant' }],
+        identification : [{ position: 15, label: 'Plant' }]
+      }
+  @EndUserText.label: 'Plant'
+  Plant;
+
+  @Consumption.valueHelpDefinition: [{ entity :{ element: 'ManufacturingOrder', name: 'ZQM_VH_ILOT_PROD_ORD' } }]
+  @UI.identification: [{ position: 20, label: 'Production Order' }]
+  @EndUserText.label: 'Production Order'
+  Productionorder;
+
+  /* === Header Details === */
+  @UI.identification: [{ position: 40, label: 'Operation Text' }]
+  Operationtext;
+
+  @UI.identification: [{ position: 45, label: 'Machine' }]
+  @Consumption.valueHelpDefinition: [{ entity:{ name: 'ZQM_BA_LINSP_MACHINE_VH',element: 'Opeartion' } }]
+  @EndUserText.label: 'Machine'
+  Machine;
+
+  @UI.identification: [{ position: 50, label: 'Operation Number' }]
+  Operationnumber;
+
+  @UI.identification: [{ position: 65, label: 'Operator Name' }]
+  Operatorname;
+
+  /* === Dates & Times === */
+  @UI:{
+        selectionField : [{ position: 40 }],
+        lineItem       : [{ position: 20, label: 'Lot Created Date' }],
+        identification : [{ position: 7, label: 'Lot Created Date' }]
+      }
+  Lotcreated;
+
+  @UI:{
+      selectionField : [{ position: 45 }],
+      lineItem       : [{ position: 20, label: 'Lot Created Time' }],
+      identification : [{ position: 9, label: 'Lot Created Time' }]
+    }
+  LotCreatedTime;
+
+  @UI:{
+        selectionField : [{ position: 50 }],
+        lineItem       : [{ position: 25, label: 'Start of Inspection' }],
+        identification : [{ position: 30, label: 'Start of Inspection' }]
+      }
+  Startofinspection;
+
+  @UI:{
+        selectionField : [{ position: 60 }],
+        lineItem       : [{ position: 30, label: 'End of Inspection' }],
+        identification : [{ position: 35, label: 'End of Inspection' }]
+      }
+  Endofinspection;
+
+  /* === Business Data === */
+  @UI:{ lineItem: [{ position: 25 }], identification: [{ position: 80, label: 'Customer' }] }
+  Customer;
+
+  @UI.identification: [{ position: 85, label: 'Batch' }]
+  @Consumption.valueHelpDefinition: [{ entity :{  element: 'Batch' , name: 'I_Batch' } }]
+  @UI:{
+        selectionField : [{ position: 40 }]
+      }
+  @EndUserText.label: 'Batch'
+  Batch;
+
+  @UI.identification: [{ position: 90, label: 'Lot Quantity' }]
+  Lotquantity;
+
+  @UI.identification: [{ position: 93, label: 'DRG Number' }]
+  DRGno;
+
+  @UI.identification: [{ position: 96, label: 'Grade' }]
+  Grade;
+
+  @UI.identification: [{ position: 100, label: 'RM Specification' }]
+  Rmspecification;
+
+  @UI.identification: [{ position: 105, label: 'Part Number' }]
+  Partnumber;
+  
+      @UI: { identification: [ { position: 110 }] }
+  @EndUserText.label: 'Form'
+  attachments;
+
+}

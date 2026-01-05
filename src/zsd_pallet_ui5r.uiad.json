@@ -1,0 +1,34 @@
+{
+  "formatVersion": "2",
+  "header": {
+    "description": "An SAP Fiori application.",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "generalInformation": {
+    "appType": "ui5",
+    "catalogId": "SAP_TC_UI5_REPO_UIAD",
+    "targetMappingTitle": "Palletization"
+  },
+  "ui5AppDetails": {
+    "appId": "zsdpallet"
+  },
+  "navigation": {
+    "targetMappingId": "UI5R_D0658086F6F3CDC318E9114D040817630F6F2495_TM",
+    "semanticObject": "ZSD_PALLET",
+    "action": "manage",
+    "desktop": true,
+    "tablet": true,
+    "phone": true
+  },
+  "tiles": [
+    {
+      "id": "UI5R_D0658086F6F3CDC318E9114D040817630F6F2495_AL",
+      "tileType": "static",
+      "isDefault": true,
+      "standard": {
+        "title": "Palletization"
+      }
+    }
+  ]
+}

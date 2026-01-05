@@ -1,0 +1,34 @@
+{
+  "formatVersion": "2",
+  "header": {
+    "description": "An SAP Fiori application.",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "generalInformation": {
+    "appType": "ui5",
+    "catalogId": "SAP_TC_UI5_REPO_UIAD",
+    "targetMappingTitle": "ZQM_SETUP_APPR"
+  },
+  "ui5AppDetails": {
+    "appId": "zqmsetupappr"
+  },
+  "navigation": {
+    "targetMappingId": "UI5R_59FB746C8FFD32E1D3C103015F09188050F9DBB9_TM",
+    "semanticObject": "ZQM_SETUP_APPR",
+    "action": "manage",
+    "desktop": true,
+    "tablet": true,
+    "phone": true
+  },
+  "tiles": [
+    {
+      "id": "UI5R_59FB746C8FFD32E1D3C103015F09188050F9DBB9_AL",
+      "tileType": "static",
+      "isDefault": true,
+      "standard": {
+        "title": "ZQM_SETUP_APPR"
+      }
+    }
+  ]
+}

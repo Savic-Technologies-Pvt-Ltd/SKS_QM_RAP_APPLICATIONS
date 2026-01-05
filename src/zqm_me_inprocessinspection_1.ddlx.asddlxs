@@ -1,0 +1,353 @@
+@Metadata.layer: #CORE
+@UI: {
+  headerInfo: { typeName: 'Inspection Lot',
+                typeNamePlural: 'Inspection Lot',
+                title: { type: #STANDARD, label: 'Inspection Lot',value: 'inspectionlot' } }
+              }
+@UI.deleteHidden: true
+
+
+annotate entity ZQM_PR_InprocessInspection_1 with
+{
+  @UI.facet: [ { id:              'LOT_H',
+              purpose:         #STANDARD,
+              type:            #IDENTIFICATION_REFERENCE,
+              label:           'Inprocess Inspection Lot',
+              position:        10 } ,
+  //              {
+  //                label: 'Result Recoding',
+  //                id: 'GeneralInfo',
+  //                type: #COLLECTION,
+  //                position: 20 },
+              { id:              'LOT_I',
+                purpose:         #STANDARD,
+                type:           #LINEITEM_REFERENCE,
+                     label:           'Operation Text',
+                position:        20 ,
+                targetElement: '_item_operation'},
+
+  //               { id:              'LOT_H2',
+  //               parentId: 'GeneralInfo',
+  //              purpose:         #STANDARD,
+  //              type:           #IDENTIFICATION_REFERENCE,
+  //              label:           'Inspection Accept/Reject',
+  //              position:        30 ,
+  //              targetQualifier: 'Remark1'},
+  //              { id:              'LOT_H1',
+  //              purpose:         #STANDARD,
+  //              type:           #IDENTIFICATION_REFERENCE,
+  //              label:           'Remark',
+  //              position:        40 ,
+  //              targetQualifier: 'Remark'},
+
+              { id:              'LOT_r1',
+              purpose:         #STANDARD,
+              type:           #IDENTIFICATION_REFERENCE,
+              label:           'Instrument Code',
+              position:        15 ,
+              targetQualifier: 'Inst_Code'}
+
+                  ]
+
+  @UI: {   lineItem:       [ { position: 10 } ],
+           identification: [ { position: 10 }] }
+  @EndUserText.label: 'Inspection Lot'
+  inspectionlot;
+  @UI: {  lineItem:       [ { position: 15 } ],
+      identification: [ { position: 15 } ],
+      selectionField: [ { position: 15 } ] }
+  @EndUserText.label: 'Lot Created'
+  Lotcreate;
+  
+  /*
+  @UI: {  lineItem:       [ { position: 20 } ],
+      identification: [ { position: 20 } ],
+      selectionField: [ { position: 20 } ] }
+  @EndUserText.label: 'Start of Inspection'
+  StartOfInsp;
+  @UI: {  lineItem:       [ { position: 25 } ],
+      identification: [ { position: 25 } ],
+      selectionField: [ { position: 25 } ] }
+  @EndUserText.label: 'End of Inspection'
+  EndOfInsp;
+  */
+  @UI: {  lineItem:       [ { position: 30 } ],
+      identification: [ { position: 30 } ],
+      selectionField: [ { position: 30 } ] }
+  @Consumption.valueHelpDefinition: [{ entity :{  element: 'Plant' , name: 'I_PlantStdVH' } }]
+  @EndUserText.label: 'Plant'
+  plant;
+  //  @UI: { identification: [ { position: 35 } ] }
+  //  @EndUserText.label: 'Inspection Lot Original'
+  //  InspLotOrig;
+  @UI: { identification: [ { position: 36 } ] }
+  @Consumption.valueHelpDefinition: [{ entity :{  element: 'ManufacturingOrder' , name: 'ZCDS_VH_05' } }]
+  @EndUserText.label: 'Production Order'
+  manufacturingorder;
+  @UI: {  lineItem:       [ { position: 40 } ],
+      identification: [ { position: 40 } ,  { type: #FOR_ACTION, dataAction: 'GetPDF', label: 'Get PDF'  }],
+      selectionField: [ { position: 40 } ] }
+  @Consumption.valueHelpDefinition: [{ entity :{  element: 'Product' , name: 'I_ProductText' } }]
+  @EndUserText.label: 'Material'
+  material;
+   @UI: {   lineItem:       [ { position: 200 } ],
+      identification: [ { position: 200 } ] }
+  @EndUserText.label: 'Form Type'
+  formtype;
+  
+    @UI: { identification: [ { position: 210 }] }
+  @EndUserText.label: 'Form'
+  Attachments;
+     @EndUserText.label: 'Material Description'
+  @UI.identification: [{ position: 70 }]
+  @UI.lineItem      : [{ position: 70 }]
+  MaterialDescription;
+  //  @UI: { identification: [ { position: 40 } ] }
+  //  @EndUserText.label: 'Object Text'
+  //  InspectionLotObjectText;
+  @UI: { identification: [ { position: 45 } ],
+      selectionField: [ { position: 45 } ] }
+  @Consumption.valueHelpDefinition: [{ entity :{  element: 'Batch' , name: 'I_Batch' } }]
+  @EndUserText.label: 'Batch'
+  batch;
+  /*
+  @UI: { identification: [ { position: 50 } ] }
+  @EndUserText.label: 'Supplier Batch'
+  supplier;
+  @UI: { identification: [ { position: 55 } ] }
+  @EndUserText.label: 'Manucturer'
+  manufacturer;
+  */
+  @UI: {  lineItem:       [ { position: 60 } ],
+      identification: [ { position: 60 } ] }
+  @EndUserText.label: 'Customer'
+  customer;
+  
+  @EndUserText.label: 'Customer Name'
+  @UI.identification: [{ position: 80, label: 'Customer Name' }]
+  @UI.lineItem      : [{ position: 80, label: 'Customer Name' }]
+  CustomerName;
+  
+   @UI: {  lineItem:       [ { position: 75 } ],
+      identification: [ { position: 75 } ] }
+  @EndUserText.label: 'Lot Quantity'
+  lotqty;
+  //  @UI: { identification: [ { position: 65 } ] }
+  //  @EndUserText.label: 'Monito'
+  //  Monito;
+  //  @UI: { identification: [ { position: 70 } ] }
+  //  @EndUserText.label: 'A'
+  //  A;
+  /*
+ 
+  //  @UI: {  lineItem:       [ { position: 75 } ],
+  //      identification: [ { position: 75 } ] }
+  //  @EndUserText.label: 'Base Unit'
+  //  Baseunit;
+  //  @UI: {  lineItem:       [ { position: 80 } ],
+  //      identification: [ { position: 80 } ] }
+  //  @EndUserText.label: 'System Status'
+  //  Systemstatus;
+  @UI: { identification: [ { position: 85 } ] }
+  @EndUserText.label: 'Activity'
+  InspectionOperation;
+
+  @UI: { identification: [ { position: 86 } ] }
+  @EndUserText.label: 'Inspector'
+  Inspection;
+  */
+  @UI: { identification: [ { position: 90 } ] }
+  @EndUserText.label: 'Sales Order'
+  SalesOrder;
+  
+    @UI: { identification: [ { position: 95 } ] }
+  @EndUserText.label: 'DRG No.'
+  DRGno;
+   @UI: { identification: [ { position: 97 } ] }
+  @EndUserText.label: 'Part No'
+  PartNo;
+/*
+
+  @UI: { identification: [ { position: 95.5 } ] }
+  @EndUserText.label: 'Grade'
+  Grade;
+  @UI: { identification: [ { position: 96 } ] }
+  @EndUserText.label: 'RM Specification'
+  RM_Specification;
+ 
+  @UI: { identification: [ { position: 98 } ] }
+  @Consumption.valueHelpDefinition: [{ entity : { name: 'ZCDS_QM_DD_06' , element: 'text' } }]
+  @EndUserText.label: 'Operation Text'
+  operationtext;
+  @UI: { identification: [ { position: 99 } ] }
+  @Consumption.valueHelpDefinition: [{ entity:{ name: 'ZCDS_VH_04',element: 'Opeartion' } }]
+  @EndUserText.label: 'Machine'
+  workcentertext;
+  @UI: { identification: [ { position: 100 } ] }
+  @Consumption.valueHelpDefinition: [{ entity : { name: 'ZCDS_VH_02' , element: 'ProductionOrderOperation' } }]
+  @EndUserText.label: 'Operation No'
+  operationconfirmation;
+  */
+  @UI: { identification: [ { position: 101 } ] }
+  @Consumption.valueHelpDefinition: [{ entity : { name: 'ZCDS_QM_DD_01' , element: 'Value' } }]
+  @EndUserText.label: 'Shift'
+  Shift;
+  //  @UI: { identification: [ { position: 102 } ] }
+  //  @EndUserText.label: 'Washer Lot No'
+  //  WasherLotNo;
+  @UI: { identification: [ { position: 103 } ] }
+  @EndUserText.label: 'Operator Name'
+  OperatorName;
+  //  @UI: { identification: [ { position: 104 } ] }
+  //  @EndUserText.label: 'Five Piece Approval Status From QA'
+  //  checkbox;
+  //  @UI: { identification: [ { position: 105 } ] }
+  //  @EndUserText.label: 'Machine Cleaning obs.by inspector'
+  //  checkbox2;
+  /*
+  @UI: { identification: [ { position: 104 } ]}
+  @Consumption.valueHelpDefinition: [{ entity:{ name: 'ZQM_OperationText_VH',element: 'Opeartion' } }]
+  @EndUserText.label: 'Pervious Operation'
+  previousopt;
+  @UI: { identification: [ { position: 105 } ]}
+  @Consumption.valueHelpDefinition: [{ entity:{ name: 'ZQM_OperationText_VH',element: 'Opeartion' } }]
+  @EndUserText.label: 'Next Operation'
+  nextopt;
+  //  @UI: { identification: [ { position: 106 } ,
+  //       { type: #FOR_ACTION, dataAction: 'GetPDF', label: 'Get PDF'  }] }
+  //  @EndUserText.label: 'Form'
+  //  Form;
+
+  */
+  //  @UI: { identification: [ { position: 1, qualifier: 'Remark' } ]}
+  //  @EndUserText.label: 'Approved'
+  //  approved;
+  //  @UI: { identification: [ { position: 3, qualifier: 'Remark' } ]}
+  //  @EndUserText.label: 'Snap Gauge Avl.'
+  //  snapgaugeavl;
+  //  //  @UI: { identification: [ { position: 2, qualifier: 'Remark' } ]}
+  //  //  @EndUserText.label: 'Rejected'
+  //  //  notapproved;
+  //  @UI: { identification: [ { position: 4, qualifier: 'Remark' } ]}
+  //  @EndUserText.label: 'Pokayoke Checked'
+  //  pokayokechecked;
+  //  //  @UI: { identification: [ { position: 5, qualifier: 'Remark' } ]}
+  //  //  @EndUserText.label: 'Cleaned'
+  //  //  cleaned;
+  //  @UI: { identification: [ { position: 6, qualifier: 'Remark' } ]}
+  //  @EndUserText.label: 'Load Verification'
+  //  loadverf;
+  //  @UI: { identification: [ { position: 6.1 , qualifier: 'Remark'} ] }
+  //  @Consumption.valueHelpDefinition: [{ entity : { name: 'ZCDS_QM_DD_04' , element: 'text' } }]
+  //  @EndUserText.label: 'Five Piece Approval Status From QA'
+  //  checkbox;
+  //  @UI: { identification: [ { position: 6.2 , qualifier: 'Remark'} ] }
+  //  @EndUserText.label: 'Machine Cleaning obs.by inspector'
+  //  checkbox2;
+  //  @UI: { identification: [ { position: 7, qualifier: 'Remark' } ]}
+  //  @Consumption.valueHelpDefinition: [{ entity : { name: 'ZCDS_QM_DD_05' , element: 'text' } }]
+  //  @EndUserText.label: 'Chute Cleaning Observation by Operator'
+  //  obseropera;
+  //  @UI: { identification: [ { position: 8, qualifier: 'Remark' } ]}
+  //  @EndUserText.label: 'No of Pieces in the Chute '
+  //  nopiecchute;
+  //  @UI: { identification: [ { position: 9, qualifier: 'Remark' } ]}
+  //  @EndUserText.label: 'Observation by Inspector'
+  //  obseinspector;
+  //  @UI: { identification: [ { position: 10, qualifier: 'Remark' } ]}
+  //  @EndUserText.label: 'No of pieces in and around machine'
+  //  nopiecesaroundmachine;
+  //  @UI: { identification: [ { position: 11, qualifier: 'Remark' } ]}
+  //  @Consumption.valueHelpDefinition: [{ entity :{ name: 'ZCDS_QM_DD_03',element: 'Value' }  }]
+  //  @EndUserText.label: 'Raw Material'
+  //  rawmaterial;
+  @UI: { identification: [ { position: 11, qualifier: 'Inst_Code' } ]}
+  @EndUserText.label: 'DMT '
+  dmt;
+  @UI: { identification: [ { position: 12,qualifier: 'Inst_Code'} ]}
+  @EndUserText.label: 'VCD'
+  vcd;
+  @UI: { identification: [ { position: 13,qualifier: 'Inst_Code' } ]}
+  @EndUserText.label: 'Dial'
+  dial;
+  @UI: { identification: [ { position: 14,qualifier: 'Inst_Code' } ]}
+  @EndUserText.label: 'DPMT'
+  dpmt;
+  @UI: { identification: [ { position: 15,qualifier: 'Inst_Code' } ]}
+  @EndUserText.label: 'PP'
+  pp;
+  @UI: { identification: [ { position: 16,qualifier: 'Inst_Code'} ]}
+  @EndUserText.label: 'Gauge No.'
+  gaugenogo;
+  @UI: { identification: [ { position: 17,qualifier: 'Inst_Code'} ]}
+  @EndUserText.label: 'Other'
+  nogo;
+  //  @UI: { identification: [ { position: 17, qualifier: 'Remark' } ]}
+  //  @EndUserText.label: 'Submited to QA by Production Time'
+  //  prodtime;
+  //  @UI: { identification: [ { position: 17, qualifier: 'Remark' } ]}
+  //  @EndUserText.label: 'Submited to Production by QA Time'
+  //  qatime;
+
+  //  @UI: { identification: [ { position: 17, qualifier: 'Remark' } ]}
+  //  @Consumption.valueHelpDefinition: [{ entity:{ name: 'ZCDS_VH_01',element: 'Opeartion' } }]
+  //  @EndUserText.label: 'Pervious Operation'
+  //  previousopt;
+  //  @UI: { identification: [ { position: 17, qualifier: 'Remark' } ]}
+  //  @Consumption.valueHelpDefinition: [{ entity:{ name: 'ZCDS_VH_01',element: 'Opeartion' } }]
+  //  @EndUserText.label: 'Next Operation'
+  //  nextopt;
+
+
+  //  @UI: { identification: [ { position: 18 , qualifier: 'Remark1'  } ]}
+  //  @Consumption.valueHelpDefinition: [{ entity : { name: 'ZCDS_QM_DD_02' , element: 'Value' } }]
+  //  @EndUserText.label: 'Result1 Acc Rej'
+  //  ar1;
+  //  @UI: { identification: [ { position: 19  , qualifier: 'Remark1'  } ]}
+  //  @Consumption.valueHelpDefinition: [{ entity:{ name: 'ZCDS_QM_DD_02' , element: 'Value'} }]
+  //  @EndUserText.label: 'Result2 Acc Rej'
+  //  ar2;
+  //  @UI: { identification: [ { position: 20, qualifier: 'Remark1' } ]}
+  //  @Consumption.valueHelpDefinition: [{ entity:{ name: 'ZCDS_QM_DD_02' , element: 'Value'} }]
+  //  @EndUserText.label: 'Result3 Acc Rej'
+  //  ar3;
+  //  @UI: { identification: [ { position: 21, qualifier: 'Remark1' } ]}
+  //  @Consumption.valueHelpDefinition: [{ entity:{ name: 'ZCDS_QM_DD_02' , element: 'Value'} }]
+  //  @EndUserText.label: 'Result4 Acc Rej'
+  //  ar4;
+  //  @UI: { identification: [ { position: 22, qualifier: 'Remark1' } ]}
+  //  @Consumption.valueHelpDefinition: [{ entity:{ name: 'ZCDS_QM_DD_02' , element: 'Value'} }]
+  //  @EndUserText.label: 'Result5 Acc Rej'
+  //  ar5;
+  //  @UI: { identification: [ { position: 23, qualifier: 'Remark1' } ]}
+  //  @Consumption.valueHelpDefinition: [{ entity:{ name: 'ZCDS_QM_DD_02' , element: 'Value'} }]
+  //  @EndUserText.label: 'Result6 Acc Rej'
+  //  ar6;
+  //  @UI: { identification: [ { position: 24, qualifier: 'Remark1' } ]}
+  //  @Consumption.valueHelpDefinition: [{ entity:{ name: 'ZCDS_QM_DD_02' , element: 'Value'} }]
+  //  @EndUserText.label: 'Result7 Acc Rej'
+  //  ar7;
+  //  @UI: { identification: [ { position: 25, qualifier: 'Remark1' } ]}
+  //  @Consumption.valueHelpDefinition: [{ entity:{ name: 'ZCDS_QM_DD_02' , element: 'Value'} }]
+  //  @EndUserText.label: 'Result8 Acc Rej'
+  //  ar8;
+  //  @UI: { identification: [ { position: 26, qualifier: 'Remark1' } ]}
+  //  @Consumption.valueHelpDefinition: [{ entity:{ name: 'ZCDS_QM_DD_02' , element: 'Value'} }]
+  //  @EndUserText.label: 'Result9 Acc Rej'
+  //  ar9;
+  //  @UI: { identification: [ { position: 27, qualifier: 'Remark1' } ]}
+  //  @Consumption.valueHelpDefinition: [{ entity:{ name: 'ZCDS_QM_DD_02' , element: 'Value'} }]
+  //  @EndUserText.label: 'Result10 Acc Rej'
+  //  ar10;
+  //  @UI: { identification: [ { position: 28, qualifier: 'Remark1' } ]}
+  //  @Consumption.valueHelpDefinition: [{ entity:{ name: 'ZCDS_QM_DD_02' , element: 'Value'} }]
+  //  @EndUserText.label: 'Result11 Acc Rej'
+  //  ar11;
+
+  // === QA Status tab (Fieldgroup6) ===
+/*
+  @Consumption.valueHelpDefinition: [{ entity:{ name: 'ZQM_VH_ILOT_QC_STS',element: 'Text' } }]
+  @UI.identification: [{ position: 10, qualifier: 'Fieldgroup6', label: 'QC Status' }]
+  Qcstatus;
+*/
+}

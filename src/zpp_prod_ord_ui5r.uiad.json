@@ -1,0 +1,34 @@
+{
+  "formatVersion": "2",
+  "header": {
+    "description": "An SAP Fiori application.",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "generalInformation": {
+    "appType": "ui5",
+    "catalogId": "SAP_TC_UI5_REPO_UIAD",
+    "targetMappingTitle": "Production Order Log"
+  },
+  "ui5AppDetails": {
+    "appId": "zppprodlog"
+  },
+  "navigation": {
+    "targetMappingId": "UI5R_9B0B28D4EB6DE5F0FEFC5197F14000DBD3C98682_TM",
+    "semanticObject": "ZPP_PROD_LOG",
+    "action": "DISPLAY",
+    "desktop": true,
+    "tablet": true,
+    "phone": true
+  },
+  "tiles": [
+    {
+      "id": "UI5R_9B0B28D4EB6DE5F0FEFC5197F14000DBD3C98682_AL",
+      "tileType": "static",
+      "isDefault": true,
+      "standard": {
+        "title": "Production Order Log"
+      }
+    }
+  ]
+}

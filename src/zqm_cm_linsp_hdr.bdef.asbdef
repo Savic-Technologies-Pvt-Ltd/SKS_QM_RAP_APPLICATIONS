@@ -1,0 +1,57 @@
+projection;
+strict ( 2 );
+use draft;
+
+define behavior for ZQM_CM_LINSP_HDR //alias <alias_name>
+{
+  use create;
+  use update;
+  use delete;
+
+  use action Edit;
+  use action Discard;
+  use action Resume;
+  use action Activate;
+  use action Prepare;
+  use action getpdf;
+
+  use association _OPR { create; with draft; }
+}
+
+define behavior for ZQM_CM_LINSP_OPR //alias <alias_name>
+{
+  use update;
+  use delete;
+
+  use association _HDR { with draft; }
+  use association _DT { create; with draft; }
+}
+
+define behavior for ZQM_CM_LINSP_DT //alias <alias_name>
+{
+  use update;
+  use delete;
+
+  use association _HDR { with draft; }
+  use association _OPR { with draft; }
+  use association _SPC { create; with draft; }
+}
+
+define behavior for ZQM_CM_LINSP_SPC //alias <alias_name>
+{
+  use update;
+  use delete;
+
+  use association _HDR { with draft; }
+  use association _DT { with draft; }
+  use association _RES { create; with draft; }
+}
+
+define behavior for ZQM_CM_LINSP_RES //alias <alias_name>
+{
+  use update;
+  use delete;
+
+  use association _HDR { with draft; }
+  use association _SPC { with draft; }
+}

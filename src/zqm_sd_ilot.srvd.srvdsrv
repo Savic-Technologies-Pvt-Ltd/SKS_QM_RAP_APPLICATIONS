@@ -1,0 +1,5 @@
+@EndUserText.label: '5 Piece Inspection Lot'
+define service ZQM_SD_ILOT {
+  expose ZQM_CM_ILOT_H;
+  expose ZQM_CM_ILOT_I;
+}

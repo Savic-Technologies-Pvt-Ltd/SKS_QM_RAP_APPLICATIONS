@@ -1,0 +1,43 @@
+@Metadata.layer: #CORE
+annotate entity ZQM_CM_LINSP_RES with
+{
+
+  @UI.lineItem: [{ position: 5, label: 'Recording Date & Time'  }]
+  RecordingDateTime;
+
+  @UI.lineItem: [{ position: 10, label: 'Result 1'  }]
+  Result1;
+
+  @UI.lineItem: [{ position: 20, label: 'Result 2'  }]
+  Result2;
+
+  @UI.lineItem: [{ position: 30, label: 'Result 3'  }]
+  Result3;
+
+  @UI.lineItem: [{ position: 40, label: 'Result 4'  }]
+  Result4;
+
+  @UI.lineItem: [{ position: 50, label: 'Result 5'  }]
+  Result5;
+
+  @UI.lineItem: [{ position: 60, label: 'Result 6'  }]
+  Result6;
+
+  @UI.lineItem: [{ position: 70, label: 'Result 7'  }]
+  Result7;
+
+  @UI.lineItem: [{ position: 80, label: 'Result 8'  }]
+  Result8;
+
+  @UI.lineItem: [{ position: 90, label: 'Result 9'  }]
+  Result9;
+
+  @UI.lineItem: [{ position: 100, label: 'Result 10'  }]
+  Result10;
+
+  @UI.lineItem: [{ position: 110, label: 'Result 11'  }]
+  Result11;
+
+  @UI.lineItem: [{ position: 120, label: 'Result 12'  }]
+  Result12;
+}

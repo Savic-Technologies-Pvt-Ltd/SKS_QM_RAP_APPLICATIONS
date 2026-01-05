@@ -1,0 +1,11 @@
+@EndUserText: {
+  label: 'Service Definition for ZQM_PR_InprocessInspectionRpt'
+}
+@ObjectModel: {
+  leadingEntity: {
+    name: 'ZQM_PR_InprocessInspectionRpt'
+  }
+}
+define service ZQM_SD_InprocessInspectionRpt provider contracts odata_v4_ui {
+  expose ZQM_PR_INPROCESSINSPECTIONRPT;
+}

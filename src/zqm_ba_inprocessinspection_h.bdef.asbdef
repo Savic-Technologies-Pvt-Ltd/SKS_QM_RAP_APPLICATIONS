@@ -1,0 +1,45 @@
+managed implementation in class zbp_cl_inprocess_insp unique;
+strict ( 2 );
+with draft;
+
+define behavior for ZQM_BA_InprocessInspection_H //alias <alias_name>
+persistent table zqm_t_inpr_ins_h
+draft table zqm_t_inp_ins_hd
+lock master total etag ChangedOn
+authorization master ( none )
+{
+  create ( authorization : none );
+
+  update;
+
+  delete;
+
+  field ( mandatory : create, readonly : update ) Material, Plant, Productionorder, Batch;
+  field ( numbering : managed, readonly ) Uniqueid;
+  field ( readonly ) Reportnumber;
+
+  determination createinsplot on save { create; }
+
+  draft action Edit;
+  draft action Discard;
+  draft action Resume;
+  draft action Activate optimized;
+  draft determine action Prepare;
+
+  association _item { create; with draft; }
+
+}
+
+define behavior for ZQM_BA_InprocessInspection_I with unmanaged save
+draft table zqm_t_inp_ins_id
+lock dependent by _Header
+authorization dependent by _Header
+{
+
+  determination createitem on save { create; }
+
+  update;
+  delete;
+  field ( readonly ) Uniqueid, InspPlanOperationInternalID;
+  association _Header { with draft; }
+}

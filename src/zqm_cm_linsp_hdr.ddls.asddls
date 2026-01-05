@@ -1,0 +1,83 @@
+@AccessControl.authorizationCheck: #NOT_REQUIRED
+@EndUserText.label: 'Line Inspection Header Projection View'
+@Metadata.ignorePropagatedAnnotations: false
+@Metadata.allowExtensions: true
+define root view entity ZQM_CM_LINSP_HDR
+  provider contract transactional_query
+  as projection on ZQM_BA_LINSP_HDR
+{
+  key       Cuuid,
+            Inspectionlot,
+            Material,
+            Plant,
+            Productionorder,
+            Operationtext,
+            Machine,
+            Operationnumber,
+            Shift,
+            Washerlotnumber,
+            Operatorname,
+            Lotcreated,
+            LotCreatedTime,
+            Startofinspection,
+            Endofinspection,
+            Customer,
+            Batch,
+            Lotquantity,
+            Lotquantityunit,
+            DRGno,
+            Grade,
+            Rmspecification,
+            Partnumber,
+            Dmt,
+            Vcd,
+            Dial,
+            Dpmt,
+            Pp,
+            Gaugenumber,
+            Nogo,
+            Other,
+            Snapgauge,
+            Pokayokecheck,
+            Loadverification,
+            Machinecleanins,
+            Qa5pcsstat,
+            Chutecleanop,
+            Chutpieces,
+            Inspobs,
+            Machpcs,
+            Rawmaterial,
+            Subqa2prd,
+            Subprd2qa,
+            Obs5pcs1st,
+            Obslast,
+            Obsfinal,
+            Rejqty,
+            Result1,
+            Result2,
+            Result3,
+            Result4,
+            Result5,
+            Result6,
+            Result7,
+            Result8,
+            Result9,
+            Result10,
+            Result11,
+            Qcstatus,
+            Createdby,
+            Createdon,
+            Changedby,
+            Changedon,
+             
+    filename           ,
+       @Semantics.largeObject:{
+          mimeType: 'mimetype',
+          fileName: 'filename',
+          contentDispositionPreference: #INLINE
+          }
+  attachments       ,
+  mimetype          ,
+            /* Associations */
+            _OPR : redirected to composition child ZQM_CM_LINSP_OPR
+}

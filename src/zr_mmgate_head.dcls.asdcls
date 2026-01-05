@@ -1,0 +1,6 @@
+@EndUserText.label: 'ZR_MMGATE_HEAD'
+@MappingRole: true
+define role ZR_MMGATE_HEAD {
+  grant select on ZR_MMGATE_HEAD
+  where TRUE;
+}

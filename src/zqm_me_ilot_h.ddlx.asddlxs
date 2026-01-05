@@ -1,0 +1,170 @@
+@Metadata.layer: #CUSTOMER
+annotate entity ZQM_CM_ILOT_H with
+{
+  // === Facets (each as a separate tab) ===
+  @UI.facet: [
+    {
+      id             : 'Fieldgroup1ID',
+      purpose         : #STANDARD,
+      type           : #IDENTIFICATION_REFERENCE,
+      label          : 'Inspection Lot',
+      targetQualifier: 'Fieldgroup1',
+      position       : 10
+    },
+      {
+        id             : 'Fieldgroup2ID',
+        type           : #IDENTIFICATION_REFERENCE,
+        label          : 'Instrument Code',
+        targetQualifier: 'Fieldgroup2',
+        position       : 20
+      },
+    {
+      id             : 'Fieldgroup3ID',
+      purpose        : #STANDARD,
+      type           : #LINEITEM_REFERENCE,
+      label          : 'Operation Text',
+      targetElement : '_Item',
+      position       : 20
+    },
+      {
+        id             : 'Fieldgroup4ID',
+        type           : #IDENTIFICATION_REFERENCE,
+        label          : 'Inspection Accept/Reject',
+        targetQualifier: 'Fieldgroup4',
+        position       : 40
+      },
+      {
+        id             : 'Fieldgroup5ID',
+        type           : #IDENTIFICATION_REFERENCE,
+        label          : 'Remarks',
+        targetQualifier: 'Fieldgroup5',
+        position       : 50
+      },
+      {
+        id             : 'Fieldgroup6ID',
+        type           : #IDENTIFICATION_REFERENCE,
+        label          : 'QA Status',
+        targetQualifier: 'Fieldgroup6',
+        position       : 60
+      }
+  ]
+
+  // === Your fields stay the same (qualifier-based grouping) ===
+  @UI.lineItem: [{ position: 10 }]
+  Uniqueid;
+
+  @UI.identification: [{ position: 10, qualifier: 'Fieldgroup1', label: 'Report Number' }]
+  Reportnumber;
+  @UI.identification: [{ position: 20, qualifier: 'Fieldgroup1', label: 'Material' }]
+  @EndUserText.label: 'Material'
+  @Consumption.valueHelpDefinition: [{ entity :{  element: 'Product' , name: 'I_ProductText' } }]
+  Material;
+  @UI.identification: [{ position: 30, qualifier: 'Fieldgroup1', label: 'Plant' }]
+  @EndUserText.label: 'Plant'
+  @Consumption.valueHelpDefinition: [{ entity :{  element: 'Plant' , name: 'I_PlantStdVH' } }]
+  Plant;
+  @Consumption.valueHelpDefinition: [{ entity :{  element: 'ManufacturingOrder' , name: 'ZQM_VH_ILOT_PROD_ORD' } }]
+  @UI.identification: [{ position: 40, qualifier: 'Fieldgroup1', label: 'Production Order' }]
+  @EndUserText.label: 'Production Order'
+  Productionorder;
+  @UI.identification: [{ position: 50, qualifier: 'Fieldgroup1', label: 'Operator Name' }]
+  Operatorname;
+  @UI.identification: [{ position: 60, qualifier: 'Fieldgroup1', label: 'Previous Operation' }]
+  Previousoperation;
+  @UI.identification: [{ position: 70, qualifier: 'Fieldgroup1', label: 'Operation Text' }]
+  Operationtext;
+  @UI.identification: [{ position: 80, qualifier: 'Fieldgroup1', label: 'Next Operation' }]
+  Nextoperation;
+  @UI.identification: [{ position: 90, qualifier: 'Fieldgroup1', label: 'Inspector Name' }]
+  Inspectorname;
+  @UI.identification: [{ position: 100, qualifier: 'Fieldgroup1', label: 'Machine' }]
+  Machine;
+  @UI.identification: [{ position: 110, qualifier: 'Fieldgroup1', label: 'Operation Number' }]
+  Operationnumber;
+  @UI.identification: [{ position: 120, qualifier: 'Fieldgroup1', label: 'Shift' }]
+  Shift;
+  @UI.identification: [{ position: 130, qualifier: 'Fieldgroup1', label: 'Batch' }]
+  Batch;
+  @UI.identification: [{ position: 140, qualifier: 'Fieldgroup1', label: 'Washer Lot Number' }]
+  Washerlotnumber;
+
+  // === Instrument Code tab (Fieldgroup2) ===
+  @UI.identification: [{ position: 10, qualifier: 'Fieldgroup2', label: 'DMT' }]
+  Dmt;
+  @UI.identification: [{ position: 20, qualifier: 'Fieldgroup2', label: 'VCD' }]
+  Vcd;
+  @UI.identification: [{ position: 30, qualifier: 'Fieldgroup2', label: 'Dial' }]
+  Dial;
+  @UI.identification: [{ position: 40, qualifier: 'Fieldgroup2', label: 'DPMT' }]
+  Dpmt;
+  @UI.identification: [{ position: 50, qualifier: 'Fieldgroup2', label: 'PP' }]
+  Pp;
+  @UI.identification: [{ position: 60, qualifier: 'Fieldgroup2', label: 'Gauge No' }]
+  Gaugenumber;
+  @UI.identification: [{ position: 70, qualifier: 'Fieldgroup2', label: 'No Go' }]
+  Nogo;
+  @UI.identification: [{ position: 80, qualifier: 'Fieldgroup2', label: 'Other' }]
+  Other;
+
+  // === Remarks tab (Fieldgroup5) ===
+  @UI.identification: [{ position: 10, qualifier: 'Fieldgroup5', label: 'Snap Gauge Availability' }]
+  Snapgauge;
+  @UI.identification: [{ position: 20, qualifier: 'Fieldgroup5', label: 'Poka Yoke Check' }]
+  Pokayokecheck;
+  @UI.identification: [{ position: 30, qualifier: 'Fieldgroup5', label: 'Load Verification' }]
+  Loadverification;
+  @UI.identification: [{ position: 40, qualifier: 'Fieldgroup5', label: 'Machine Cleaning Obs. by Superviser' }]
+  Machinecleanins;
+  @UI.identification: [{ position: 50, qualifier: 'Fieldgroup5', label: 'QA 5 Pcs Approval Status' }]
+  Qa5pcsstat;
+  @UI.identification: [{ position: 60, qualifier: 'Fieldgroup5', label: 'Chute Clean Obs. by Operator' }]
+  Chutecleanop;
+  @UI.identification: [{ position: 70, qualifier: 'Fieldgroup5', label: 'No of Pieces in Chute' }]
+  Chutpieces;
+  @UI.identification: [{ position: 80, qualifier: 'Fieldgroup5', label: 'Observations by Inspector' }]
+  Inspobs;
+  @UI.identification: [{ position: 90, qualifier: 'Fieldgroup5', label: 'No of Pieces in and arround Machine' }]
+  Machpcs;
+  @UI.identification: [{ position: 100, qualifier: 'Fieldgroup5', label: 'Raw Material' }]
+  Rawmaterial;
+  @UI.identification: [{ position: 110, qualifier: 'Fieldgroup5', label: 'Submited to QA by Production Time' }]
+  Subqa2prd;
+  @UI.identification: [{ position: 120, qualifier: 'Fieldgroup5', label: 'Submited to Production by QA Time' }]
+  Subprd2qa;
+  @UI.identification: [{ position: 130, qualifier: 'Fieldgroup5', label: 'Last Piece Observation' }]
+  Obs5pcs1st;
+  @UI.identification: [{ position: 140, qualifier: 'Fieldgroup5', label: 'Final Observation' }]
+  Obslast;
+  @UI.identification: [{ position: 150, qualifier: 'Fieldgroup5', label: 'Rejection Quantity' }]
+  Obsfinal;
+  @UI.identification: [{ position: 160, qualifier: 'Fieldgroup5', label: 'Rejected Qty' }]
+  Rejqty;
+
+  // === Accept/Reject tab (Fieldgroup4) ===
+  @UI.identification: [{ position: 10, qualifier: 'Fieldgroup4', label: 'Result 1 Acc/Rej' }]
+  Result1;
+  @UI.identification: [{ position: 20, qualifier: 'Fieldgroup4', label: 'Result 2 Acc/Rej' }]
+  Result2;
+  @UI.identification: [{ position: 30, qualifier: 'Fieldgroup4', label: 'Result 3 Acc/Rej' }]
+  Result3;
+  @UI.identification: [{ position: 40, qualifier: 'Fieldgroup4', label: 'Result 4 Acc/Rej' }]
+  Result4;
+  @UI.identification: [{ position: 50, qualifier: 'Fieldgroup4', label: 'Result 5 Acc/Rej' }]
+  Result5;
+  @UI.identification: [{ position: 60, qualifier: 'Fieldgroup4', label: 'Result 6 Acc/Rej' }]
+  Result6;
+  @UI.identification: [{ position: 70, qualifier: 'Fieldgroup4', label: 'Result 7 Acc/Rej' }]
+  Result7;
+  @UI.identification: [{ position: 80, qualifier: 'Fieldgroup4', label: 'Result 8 Acc/Rej' }]
+  Result8;
+  @UI.identification: [{ position: 90, qualifier: 'Fieldgroup4', label: 'Result 9 Acc/Rej' }]
+  Result9;
+  @UI.identification: [{ position: 100, qualifier: 'Fieldgroup4', label: 'Result 10 Acc/Rej' }]
+  Result10;
+  @UI.identification: [{ position: 110, qualifier: 'Fieldgroup4', label: 'Result 11 Acc/Rej' }]
+  Result11;
+
+  // === QA Status tab (Fieldgroup6) ===
+  @UI.identification: [{ position: 10, qualifier: 'Fieldgroup6', label: 'QC Status' }]
+  Qcstatus;
+}

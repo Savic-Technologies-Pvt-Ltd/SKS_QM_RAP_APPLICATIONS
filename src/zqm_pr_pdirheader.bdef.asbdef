@@ -1,0 +1,51 @@
+projection;
+strict ( 2 );
+use draft;
+
+define behavior for ZQM_PR_PDIRHeader //alias <alias_name>
+{
+  use create;
+  use update;
+  use delete;
+
+  use action getpdf;
+
+  use action Edit;
+  use action Activate;
+  use action Discard;
+  use action Resume;
+  use action Prepare;
+
+  use association _Item { create; with draft; }
+    use association _OperationItem { create; with draft; }
+
+}
+
+define behavior for ZQM_PR_PDIRItem //alias <alias_name>
+{
+  use update;
+  use delete;
+
+  use association _Head { with draft; }
+}
+
+
+define behavior for ZQM_C_PDIR_OPERTION_LIST //alias <alias_name>
+{
+  use update;
+  use delete;
+
+  use association _HDR { with draft; }
+  use association _SPC { with draft; }
+
+}
+
+define behavior for ZQM__C_PDIR_SPECIFICATION_LIST //alias <alias_name>
+{
+  use update;
+  use delete;
+
+  use association _HDR { with draft; }
+  use association _OperationItem { with draft; }
+
+}

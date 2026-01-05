@@ -1,0 +1,32 @@
+@Metadata.layer: #CORE
+@UI.createHidden: true
+@UI.deleteHidden: true
+@UI: {
+      headerInfo: {
+         typeName: 'Line Inspectioion Lot',
+         typeNamePlural: 'Line Inspection Lot',
+         title: {
+           type : #STANDARD,
+           label: 'Line Inspection Lot',
+           value: 'Operationtext'   // <-- no quotes
+         }
+      }
+}
+annotate entity ZQM_CM_LINSP_OPR with
+{
+  /* === Facets === */
+  @UI.facet: [
+    {
+      id            : 'OPRDT',
+      purpose       : #STANDARD,
+      type          : #LINEITEM_REFERENCE,
+      label         : 'Operation Date',
+      position      : 20,
+      targetElement : '_DT'
+    }
+  ]
+
+  @UI: { lineItem: [ { position: 10, label: 'Operation Text' } ],
+         identification: [ { position: 10, label: 'Operation Text' } ] }
+  Operationtext;
+}

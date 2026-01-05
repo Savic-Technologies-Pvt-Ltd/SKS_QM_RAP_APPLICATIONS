@@ -1,0 +1,6 @@
+@EndUserText.label: 'Line Inspection SD'
+define service ZSD_LINE_INSP_NEW {
+  expose ZQM_C_line_insp_NEW;
+  expose ZQM_C_line_insp_item_NEW;
+  expose ZQM_C_RESULT_NEW;
+}

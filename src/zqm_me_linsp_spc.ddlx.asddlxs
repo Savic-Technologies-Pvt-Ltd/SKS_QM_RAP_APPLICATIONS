@@ -1,0 +1,46 @@
+@Metadata.layer: #CORE
+@UI: {
+      headerInfo:
+      {
+         typeName: 'Line Inspection Lot',
+         typeNamePlural: 'Line Inspection Lot',
+         title:
+         {
+           type : #STANDARD,
+           label: 'Line Inspection Lot',
+           value: 'InspectionSpecification'
+         }
+      }
+}
+annotate entity ZQM_CM_LINSP_SPC with
+{
+
+  /* === Facets === */
+  @UI.facet: [
+
+    {
+      id            : 'RES',
+      purpose       : #STANDARD,
+      type          : #LINEITEM_REFERENCE,
+      label         : 'Results',
+      position      : 10,
+      targetElement : '_RES'
+    }
+  ]
+
+  @UI.lineItem: [{ position: 10 }]
+  @UI.identification: [{ position: 10 }]
+  InspectionSpecification;
+
+  @UI.lineItem: [{ position: 20 }]
+  Specification;
+
+  @UI.lineItem: [{ position: 30 }]
+  InspSpecTargetValue;
+
+  @UI.lineItem: [{ position: 40 }]
+  InspSpecUpperLimit;
+
+  @UI.lineItem: [{ position: 50 }]
+  InspSpecLowerLimit;
+}

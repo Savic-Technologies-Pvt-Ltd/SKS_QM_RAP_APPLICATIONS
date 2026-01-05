@@ -1,0 +1,148 @@
+@Metadata.layer: #CORE
+
+@UI: {
+  headerInfo: {
+    typeName       : 'Feasibility No',
+    typeNamePlural : 'Feasibility No',
+    title          : { type: #STANDARD, label: 'Feasibility No', value: 'Feasibilityno' },
+    description    : { type: #STANDARD, value: 'Feasibilityno' }
+  }
+}
+annotate entity ZC_FEASI_HD
+    with 
+{
+@UI.facet: [
+  {
+    id      : 'GeneralInfo',
+    label   : 'Header',
+    type    : #IDENTIFICATION_REFERENCE,
+    purpose : #STANDARD,
+    position: 10
+  },
+    
+     { id           : 'LOT_I1',
+    purpose      : #STANDARD,
+    type         : #LINEITEM_REFERENCE,
+    label        : 'Item',
+    position     :  20 ,
+    targetElement: '_Item'}
+    ,
+    
+     { id           : 'LOT_I2',
+    purpose      : #STANDARD,
+    type         : #IDENTIFICATION_REFERENCE,
+    label        : 'Clarification',
+    position     :  30 ,
+    targetQualifier: 'clarification'
+    
+    },
+    { id           : 'LOT_I3',
+    purpose      : #STANDARD,
+    type         : #IDENTIFICATION_REFERENCE,
+    label        : 'Raw Material',
+    position     :  40 ,
+    targetQualifier: 'rawMaterial'
+    
+    } ,
+     { id           : 'LOT_I4',
+    purpose      : #STANDARD,
+    type         : #LINEITEM_REFERENCE,
+    label        : 'Operation Sequence',
+    position     :  50 ,
+    targetElement: '_Opr'}
+     ,
+     { id           : 'LOT_I5',
+    purpose      : #STANDARD,
+    type         : #LINEITEM_REFERENCE,
+    label        : 'Risk Assessment',
+    position     :  60 ,
+    targetElement: '_Risk'}
+       ,
+     { id           : 'LOT_I6',
+    purpose      : #STANDARD,
+    type         : #IDENTIFICATION_REFERENCE,
+    label        : 'Footer',
+    position     :  70  ,
+    targetQualifier: 'footer'}
+    ]
+    
+               @UI.identification: [  { type: #FOR_ACTION, dataAction: 'GetPDF', label: 'Get PDF'  }]
+                  
+    Cuuid;
+     @UI.identification: [{ position: 10, label: 'Feasibility No' }]
+  @UI.lineItem      : [{ position: 10, label: 'Feasibility No' }]
+    Feasibilityno;
+    @UI.identification: [{ position: 10, label: 'Any Clarification Required :' , qualifier: 'clarification'}]
+    @UI.multiLineText: true
+    clarificationfield;
+        @UI.identification: [{ position: 10, label: 'Requirement of New Gauges, Instruments / Dedicated gauges' , qualifier: 'rawMaterial'}]
+    
+      req_of_new_guage   ;
+              @UI.identification: [{ position: 20, label: 'Raw Material' , qualifier: 'rawMaterial'}]
+      
+  raw_material         ;
+          @UI.identification: [{ position: 30, label: 'Wire Dia.' , qualifier: 'rawMaterial'}]
+  
+  wire_dia             ;
+          @UI.identification: [{ position: 40, label: 'Surface Area' , qualifier: 'rawMaterial'}]
+  
+  surface_area         ;
+          @UI.identification: [{ position: 50, label: 'Input Weight' , qualifier: 'rawMaterial'}]
+  
+  input_weight       ;
+          @UI.identification: [{ position: 60, label: 'Finish Weight' , qualifier: 'rawMaterial'}]
+  
+  finish_weight      ;
+  
+            @UI.identification: [{ position: 10, label: 'Engg. Name' , qualifier: 'footer'}]
+  
+  engg_name;
+   
+             @UI.identification: [{ position: 20, label: 'Sales Member Name' , qualifier: 'footer'}]
+  
+  sales_mem_name;
+  
+    @UI.identification: [{ position: 30, label: 'Conclusion' , qualifier: 'footer'}]
+  
+  conclusion;
+  
+               @UI.identification: [{ position: 20, label: 'Inquiry No.' }]
+  @EndUserText.label: 'Inquiry No'
+   enquiry_no         ;
+   @UI.identification: [{ position: 25, label: 'Inquiry Item No.' }]
+  @EndUserText.label: 'Inquiry Item No.'
+   enquiryitem;
+                  @UI.identification: [{ position: 30, label: 'Customer' }]
+   
+  customer             ;
+                 @UI.identification: [{ position: 40, label: 'Part Description' }]
+  
+  part_description      ;
+                 @UI.identification: [{ position: 50, label: 'Part No.' }]
+  
+  part_no               ;
+                 @UI.identification: [{ position: 60, label: 'Grade' }]
+  
+  grade                ;
+                 @UI.identification: [{ position: 70, label: 'Surface Finish ' }]
+  
+  surface_finish        ;
+                 @UI.identification: [{ position: 80, label: 'Volume Reqt. / Month  ' }]
+  
+  volume             ;
+                 @UI.identification: [{ position: 90, label: 'What is provided by customer (Drawing / Sample / STD)' }]
+  
+  provided_by          ;
+                 @UI.identification: [{ position: 100, label: 'Application of product ' }]
+  
+  application           ;
+                 @UI.identification: [{ position: 110, label: 'Other ' }]
+  
+  other                 ;
+                 @UI.identification: [{ position: 120, label: 'Sales Co-ordinator Name ' }]
+  
+  sales_coord_name    ;
+     @UI: { identification: [ { position: 130 }] }
+  @EndUserText.label: 'Form'
+  attachments;
+}

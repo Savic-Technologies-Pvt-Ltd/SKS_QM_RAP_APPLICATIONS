@@ -1,0 +1,7 @@
+@EndUserText.label: 'Feasibility Service Definition'
+define service ZC_FEASIBILITY {
+  expose ZC_FEASI_HD;
+  expose ZC_FEASI_IT;
+  expose ZC_FEASI_OP;
+  expose ZC_FEASI_RS;
+}

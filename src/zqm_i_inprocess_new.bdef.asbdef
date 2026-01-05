@@ -1,0 +1,192 @@
+
+managed implementation in class zbp_qm_i_inprocess_new unique;
+strict ( 2 );
+with draft;
+
+define behavior for ZQM_I_Inprocess_NEW //alias <alias_name>
+persistent table zqm_t_inpr_hd
+draft table zqm_t_inpr_hdd
+with additional save
+
+etag master LocalLastChangedOn
+lock master total etag ChangedOn
+authorization master ( instance )
+//etag master <field_name>
+{
+   create ( authorization : none );
+  update;
+  delete;
+   field ( features : instance ) inspectionlot, Material, plant, manufacturingorder, Batch, Qcstatus, MaterialDescription ,
+  materiallongtxt;
+  field ( numbering : managed, readonly ) Cuuid;
+    field ( mandatory : create )   ManufacturingOrder,Batch; // Batch;
+  determination createinsplot on save { create; }
+ action getpdf result [1] $self;
+  determination updateHeaderDetails on modify{ field manufacturingorder ; }
+field(readonly)Lotcreate ,lotcreatetime,Salesorder,Customername,SksDraw,Partno,Customer;
+    draft action Edit;
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Resume;
+  draft determine action Prepare;
+  association _Item { create; with draft; }
+    association _ChemItem { create; with draft; }
+mapping for zqm_t_inpr_hd
+{
+Cuuid = cuuid;
+  QtyChkd             = qty_chkd;
+  RMSpecification     = rm_specification;
+  InvDate             = inv_date;
+  InvNo               = inv_no;
+  InvQty              = inv_qty;
+
+  CustDraw            = cust_draw;
+  SksDraw             = sks_draw;
+
+
+  ApprovedBy          = approved_by;
+  ReportedBy          = reported_by;
+  PoNo                = po_no;
+  CheckedVisually     = checked_visually;
+
+  CreatedBy           = created_by;
+  CreatedOn           = created_on;
+  ChangedBy           = changed_by;
+  ChangedOn           = changed_on;
+  LocalLastChangedBy  = local_last_changed_by;
+  LocalLastChangedOn  = local_last_changed_on;
+  //LotCreateTime       = lotcreate;
+
+
+   Result1               = result1;
+  Result2               = result2;
+  Result3               = result3;
+  Result4               = result4;
+  Result5               = result5;
+  Result6               = result6;
+  Result7               = result7;
+  Result8               = result8;
+  Result9               = result9;
+  Result10              = result10;
+  Result11              = result11;
+  Result12              = result12;
+  Result13              = result13;
+  Result14              = result14;
+  Result15              = result15;
+  Result16              = result16;
+
+  SnapGauge             = snapgauge;
+  QcStatus              = qcstatus;
+  LoadVerification      = loadverification;
+  PokayokeCheck         = pokayokecheck;
+  Qa5PcsStat            = qa5pcsstat;
+  MachineCleanIns       = machinecleanins;
+  ChutPieces            = chutpieces;
+  ChuteCleanOp          = chutecleanop;
+  MachPcs               = machpcs;
+  InspObs               = inspobs;
+  SubQa2Prd             = subqa2prd;
+  RawMaterial           = rawmaterial;
+  Obs5Pcs1st            = obs5pcs1st;
+  SubPrd2Qa             = subprd2qa;
+  ObsFinal              = obsfinal;
+  ObsLast               = obslast;
+
+  Material              = material;
+  MaterialDescription   = materialdescription;
+  MaterialLongTxt       = materiallongtxt;
+  Plant                 = plant;
+  Batch                 = batch;
+  BaseUnit              = baseunit;
+  LotQty                = lotqty;
+  RejQty                = rejqty;
+
+  ManufacturingOrder    = manufacturingorder;
+  InspectionLot         = inspectionlot;
+  Inspection            = inspection;
+  InspectionOperation   = inspectionoperation;
+  InspectionLotObjectText = inspectionlotobjecttext;
+
+  Manufacturer          = manufacturer;
+  Supplier              = supplier;
+  Customer              = customer;
+  CustomerName          = customername;
+
+  SalesOrder            = salesorder;
+  PartNo                = partno;
+  DrgNo                 = drgno;
+  Grade                 = grade;
+
+  WorkCenterText        = workcentertext;
+  OperationText         = operationtext;
+  Shift                 = shift;
+  OperationConfirmation = operationconfirmation;
+  PreviousOpt           = previousopt;
+  NextOpt               = nextopt;
+  OperatorName          = operatorname;
+
+  Vcd                   = vcd;
+  Dmt                   = dmt;
+  Dpmt                  = dpmt;
+  Dial                  = dial;
+  GaugeNoGo             = gaugenogo;
+  Pp                    = pp;
+  NoGo                  = nogo;
+  Other                 = other;
+
+  FileName              = filename;
+  MimeType              = mimetype;
+  Attachments           = attachments;
+
+  LotCreate             = lotcreate;
+
+  StartOfInsp           = startofinsp;
+  EndOfInsp             = endofinsp;
+
+  FormType              = formtype;
+  Lever                 = lever;
+  Remark                = remark;
+  Appr_Further          = appr_further;
+  BasedOn               = basedon;
+
+}
+
+
+}
+
+define behavior for ZQM_I_Inprocess_item_NEW //alias <alias_name>
+with unmanaged save
+//persistent table zqm_t_pdir_IT
+
+draft table zqm_t_inpr_ITD
+
+lock dependent by _HDR
+authorization dependent by _HDR
+//etag master <field_name>
+{
+  update;
+  delete;
+  field ( readonly ) Cuuid, Boooperationinternalid, Inspectionlotitem, Inspectionlot, Boocharacteristicversion, Inspectionplangroup,
+  InspSpecTargetValue,InspSpecUpperLimit,InspSpecLowerLimit,InspectionSpecification,Specification;
+  association _HDR;
+
+
+}
+
+
+define behavior for ZQM_i_Inprocess_cHEM_NEW
+ //alias <alias_name>
+with unmanaged save
+//persistent table zqm_t_pdir_IT
+draft table zqm_t_inpr_CHD
+
+
+lock dependent by _HDR
+authorization dependent by _HDR
+//etag master <field_name>
+{
+  update;
+  delete;
+  field ( readonly ) Cuuid,element,MinValue,MaxValue;
+  association _HDR;
+}

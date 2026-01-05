@@ -1,0 +1,96 @@
+@Metadata.layer: #CUSTOMER
+
+@UI: {
+  headerInfo: {
+    typeName       : 'Palletisation Form',
+    typeNamePlural : 'Palletisation Form'
+  }
+}
+annotate entity ZC_PALLET_F_IT
+    with 
+{
+
+ @UI.facet: [
+  {
+    id      : 'GeneralInfo',
+    label   : 'Header',
+    type    : #IDENTIFICATION_REFERENCE,
+    purpose : #STANDARD,
+    position: 10
+  }]
+
+  @UI.identification: [{ position: 10, label: 'Delivery' }]
+@UI.lineItem      : [{ position: 10, label: 'Delivery' }]
+Delivery;
+  @UI.identification: [{ position: 20, label: 'Itemno' }]
+@UI.lineItem      : [{ position: 20, label: 'Itemno' }]
+Itemno;
+  @UI.identification: [{ position: 30, label: 'Material' }]
+@UI.lineItem      : [{ position: 30, label: 'Material' }]
+Partno;
+  @UI.identification: [{ position: 40, label: 'PO Number' }]
+@UI.lineItem      : [{ position: 40, label: 'PO Number' }]
+Pono;
+  @UI.identification: [{ position: 50, label: 'Part Number' }]
+@UI.lineItem      : [{ position: 50, label: 'Part Number' }]
+Catcode;
+  @UI.identification: [{ position: 60, label: 'Part Description' }]
+@UI.lineItem      : [{ position: 60, label: 'Part Description' }]
+Partdesc;
+  @UI.identification: [{ position: 70, label: 'Qty' }]
+@UI.lineItem      : [{ position: 70, label: 'Qty' }]
+Qty;
+  
+  @UI.identification: [{ position: 80, label: 'Lotno' }]
+@UI.lineItem      : [{ position: 80, label: 'Lotno' }]
+Lotno;
+  @UI.identification: [{ position: 90, label: 'Stock' }]
+@UI.lineItem      : [{ position: 90, label: 'Stock' }]
+Stock;
+  @UI.identification: [{ position: 100, label: 'Poqty' }]
+@UI.lineItem      : [{ position: 100, label: 'Poqty' }]
+Poqty;
+  @UI.identification: [{ position: 110, label: 'Pallettype' }]
+@UI.lineItem      : [{ position: 110, label: 'Pallettype' }]
+Pallettype;
+  @UI.identification: [{ position: 120, label: 'Qty/Box' }]
+@UI.lineItem      : [{ position: 120, label: 'Qty/Box' }]
+   qty_box     ;
+     @UI.identification: [{ position: 130, label: 'PALLET' }]
+@UI.lineItem      : [{ position: 130, label: 'PALLET' }]
+  pallet       ;
+    @UI.identification: [{ position: 140, label: 'NO OF BOXES' }]
+@UI.lineItem      : [{ position: 140, label: 'NO OF BOXES' }]
+  no_of_boxes  ;
+    @UI.identification: [{ position: 150, label: 'TOTAL' }]
+@UI.lineItem      : [{ position: 150, label: 'TOTAL' }]
+  total        ;
+    @UI.identification: [{ position: 160, label: 'FINISH WT' }]
+@UI.lineItem      : [{ position: 160, label: 'FINISH WT' }]
+
+  finish_wt    ;
+    @UI.identification: [{ position: 170, label: 'NET WT' }]
+@UI.lineItem      : [{ position: 170, label: 'NET WT' }]
+   
+  net_wt       ;
+    @UI.identification: [{ position: 180, label: 'BOX WT' }]
+@UI.lineItem      : [{ position: 180, label: 'BOX WT' }]
+   
+  box_wt      ;
+    @UI.identification: [{ position: 190, label: 'PALLET WT' }]
+@UI.lineItem      : [{ position: 190, label: 'PALLET WT' }]
+   
+  pallet_wt    ;
+    @UI.identification: [{ position: 200, label: 'GROSS WT' }]
+@UI.lineItem      : [{ position: 200, label: 'GROSS WT' }]
+   
+  gross_wt     ;
+  
+    @UI.identification: [{ position: 21, label: 'Sales Order' }]
+@UI.lineItem      : [{ position: 21, label: 'Sales Order' }]
+  vbeln ;
+    @UI.identification: [{ position: 22, label: 'Sales Order Item' }]
+@UI.lineItem      : [{ position: 22, label: 'Sales Order Item' }]
+vbelp ;
+    
+}

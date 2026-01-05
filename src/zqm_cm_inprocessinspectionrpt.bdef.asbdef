@@ -1,0 +1,106 @@
+managed implementation in class ZQM_BP_CL__INPR_INSP unique;
+strict ( 2 );
+with draft;
+extensible;
+define behavior for ZQM_CM_InprocessInspectionRpt alias ZqmCmInprocessinspectionrpt
+persistent table zqm_t_inpr_insp
+extensible
+draft table zqm_t_inprinsp_d
+etag master LocalLastChangedOn
+lock master total etag ChangedOn
+authorization master ( instance )
+{
+  field ( readonly )
+  CreatedOn,
+  CreatedBy,
+  ChangedOn,
+  ChangedBy,
+  LocalLastChangedOn,
+  LocalLastChangedBy;
+
+  field ( numbering : managed )
+  Cuuid, ItemCuuid;
+  field ( readonly )
+  Cuuid, ItemCuuid;
+
+  field ( features : instance ) inspectionlot, Material, plant, manufacturingorder, Batch, Qcstatus;
+
+  field ( mandatory : create ) Material, Plant, ManufacturingOrder, Batch;
+
+  create ( authorization : none );
+  update;
+  delete;
+
+  determination createinsplot on save { create; }
+
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Edit;
+  draft action Resume;
+  draft determine action Prepare;
+
+  mapping for zqm_t_inpr_insp corresponding extensible
+    {
+      Cuuid                   = cuuid;
+      ItemCuuid               = item_cuuid;
+      Inspectionlot           = inspectionlot;
+      Lotcreate               = lotcreate;
+      Startofinsp             = startofinsp;
+      Endofinsp               = endofinsp;
+      Plant                   = plant;
+      Material                = material;
+      Customer                = customer;
+      Lotqty                  = lotqty;
+      Baseunit                = baseunit;
+      Manufacturingorder      = manufacturingorder;
+      Inspectionlotobjecttext = inspectionlotobjecttext;
+      Batch                   = batch;
+      Supplier                = supplier;
+      Manufacturer            = manufacturer;
+      Inspectionoperation     = inspectionoperation;
+      Inspection              = inspection;
+      Salesorder              = salesorder;
+      Drgno                   = drgno;
+      RmSpecification         = rm_specification;
+      Grade                   = grade;
+      Partno                  = partno;
+      Operationtext           = operationtext;
+      Workcentertext          = workcentertext;
+      Operationconfirmation   = operationconfirmation;
+      Shift                   = shift;
+      Operatorname            = operatorname;
+      Previousopt             = previousopt;
+      Nextopt                 = nextopt;
+      Filename                = filename;
+      Attachments             = attachments;
+      Mimetype                = mimetype;
+      Dmt                     = dmt;
+      Vcd                     = vcd;
+      Dial                    = dial;
+      Dpmt                    = dpmt;
+      Pp                      = pp;
+      Gaugenogo               = gaugenogo;
+      Nogo                    = nogo;
+      Other                   = other;
+      ShifDate                = shif_date;
+      ShiftTime               = shift_time;
+      ParameterName           = parameter_name;
+      Specification           = specification;
+      MinValue                = min_value;
+      MaxValue                = max_value;
+      RecTime1                = rec_time1;
+      RecTime2                = rec_time2;
+      RecTime3                = rec_time3;
+      Result1                 = result_1;
+      Result2                 = result_2;
+      Result3                 = result_3;
+      Qcstatus                = qcstatus;
+      CreatedOn               = created_on;
+      CreatedBy               = created_by;
+      ChangedOn               = changed_on;
+      ChangedBy               = changed_by;
+      LocalLastChangedOn      = local_last_changed_on;
+      LocalLastChangedBy      = local_last_changed_by;
+    }
+
+}

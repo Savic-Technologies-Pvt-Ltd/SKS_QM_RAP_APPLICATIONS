@@ -1,0 +1,34 @@
+{
+  "formatVersion": "2",
+  "header": {
+    "description": "An SAP Fiori application.",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "generalInformation": {
+    "appType": "ui5",
+    "catalogId": "SAP_TC_UI5_REPO_UIAD",
+    "targetMappingTitle": "Line Inspection Lot"
+  },
+  "ui5AppDetails": {
+    "appId": "linereport"
+  },
+  "navigation": {
+    "targetMappingId": "UI5R_85750367E9862EA8453C82FB4676DA4CB81F2CDE_TM",
+    "semanticObject": "Linelnspection_lot",
+    "action": "display",
+    "desktop": true,
+    "tablet": true,
+    "phone": true
+  },
+  "tiles": [
+    {
+      "id": "UI5R_85750367E9862EA8453C82FB4676DA4CB81F2CDE_AL",
+      "tileType": "static",
+      "isDefault": true,
+      "standard": {
+        "title": "Line Inspection Lot"
+      }
+    }
+  ]
+}

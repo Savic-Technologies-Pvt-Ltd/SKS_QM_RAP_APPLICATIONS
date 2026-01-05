@@ -1,0 +1,169 @@
+@Metadata.layer: #CUSTOMER
+@UI: {
+  headerInfo: { typeName: 'Inspection Lot',
+                typeNamePlural: 'Inspection Lot',
+                title: { type: #STANDARD, label: 'Inspection Lot' } }
+              }
+@UI.deleteHidden: true
+annotate entity ZQM_CM_ILOT_I with
+{
+  // === Facets ===
+  @UI.facet: [
+    {
+      id        : 'Facet1-ID',
+      type     : #COLLECTION,
+      label    : '',
+      position : 10
+    },
+    {
+      id             : 'Fieldgroup1ID',
+      type           : #FIELDGROUP_REFERENCE,
+      label          : '',
+      parentId       : 'Facet1-ID',
+      targetQualifier: 'Fieldgroup1',
+      position       : 10
+    },
+    {
+      id             : 'Fieldgroup2ID',
+      type           : #FIELDGROUP_REFERENCE,
+      label          : '',
+      parentId       : 'Facet1-ID',
+      targetQualifier: 'Fieldgroup2',
+      position       : 20
+    },
+    {
+      id             : 'Fieldgroup3ID',
+      type           : #FIELDGROUP_REFERENCE,
+      label          : '',
+      parentId       : 'Facet1-ID',
+      targetQualifier: 'Fieldgroup3',
+      position       : 30
+    } ,
+    {
+      id             : 'Fieldgroup4ID',
+      type           : #FIELDGROUP_REFERENCE,
+      label          : '',
+      parentId       : 'Facet1-ID',
+      targetQualifier: 'Fieldgroup4',
+      position       : 40
+    }
+  ]
+
+
+  @UI.fieldGroup: [ { qualifier: 'Fieldgroup4', position: 10 } ]
+  @UI.lineItem: [{ position: 10, label: 'Parameter' }]
+  Parameter_;
+
+  @UI.lineItem: [{ position: 20, label: 'Specification(All Dimension are in mm)' }]
+  SelectedCodeSetText;
+
+  @UI.lineItem: [{ position: 30, label: 'Max' }]
+  InspSpecUpperLimit;
+
+  @UI.lineItem: [{ position: 40, label: 'Target Value' } ]
+  InspSpecTargetValue;
+
+  @UI.lineItem: [{ position: 50, label: 'Min' }]
+  InspSpecLowerLimit;
+
+  @UI.fieldGroup: [ { qualifier: 'Fieldgroup1', cssDefault.width: '5em', position: 10 } ]
+  Resulttxt1;
+
+  @UI.fieldGroup: [ { qualifier: 'Fieldgroup2', position: 10 } ]
+  Result1val1;
+
+  @UI.fieldGroup: [ { qualifier: 'Fieldgroup3', position: 10 } ]
+  Result2val1;
+
+  @UI.fieldGroup: [ { qualifier: 'Fieldgroup1',  position: 10 } ]
+  Resulttxt2;
+
+  @UI.fieldGroup: [ { qualifier: 'Fieldgroup2', position: 10 } ]
+  Result1val2;
+
+  @UI.fieldGroup: [ { qualifier: 'Fieldgroup3', position: 10 } ]
+  Result2val2;
+
+  @UI.fieldGroup: [ { qualifier: 'Fieldgroup1', position: 10 } ]
+  Resulttxt3;
+
+  @UI.fieldGroup: [ { qualifier: 'Fieldgroup2', position: 10 } ]
+  Result1val3;
+
+  @UI.fieldGroup: [ { qualifier: 'Fieldgroup3', position: 10 } ]
+  Result2val3;
+
+  @UI.fieldGroup: [ { qualifier: 'Fieldgroup1', position: 10 } ]
+  Resulttxt4;
+
+  @UI.fieldGroup: [ { qualifier: 'Fieldgroup2', position: 10 } ]
+  Result1val4;
+
+  @UI.fieldGroup: [ { qualifier: 'Fieldgroup3', position: 10 } ]
+  Result2val4;
+
+  @UI.fieldGroup: [ { qualifier: 'Fieldgroup1', position: 10 } ]
+  Resulttxt5;
+
+  @UI.fieldGroup: [ { qualifier: 'Fieldgroup2', position: 10 } ]
+  Result1val5;
+
+  @UI.fieldGroup: [ { qualifier: 'Fieldgroup3', position: 10 } ]
+  Result2val5;
+
+  @UI.fieldGroup: [ { qualifier: 'Fieldgroup1', position: 10 } ]
+  Resulttxt6;
+
+  @UI.fieldGroup: [ { qualifier: 'Fieldgroup2', position: 10 } ]
+  Result1val6;
+
+  @UI.fieldGroup: [ { qualifier: 'Fieldgroup3', position: 10 } ]
+  Result2val6;
+
+  @UI.fieldGroup: [ { qualifier: 'Fieldgroup1', position: 10 } ]
+  Resulttxt7;
+
+  @UI.fieldGroup: [ { qualifier: 'Fieldgroup2', position: 10 } ]
+  Result1val7;
+
+  @UI.fieldGroup: [ { qualifier: 'Fieldgroup3', position: 10 } ]
+  Result2val7;
+
+
+  @UI.fieldGroup: [ { qualifier: 'Fieldgroup1', position: 10 } ]
+  Resulttxt8;
+
+  @UI.fieldGroup: [ { qualifier: 'Fieldgroup2', position: 10 } ]
+  Result1val8;
+
+  @UI.fieldGroup: [ { qualifier: 'Fieldgroup3', position: 10 } ]
+  Result2val8;
+
+  @UI.fieldGroup: [ { qualifier: 'Fieldgroup1', position: 10 } ]
+  Resulttxt9;
+
+  @UI.fieldGroup: [ { qualifier: 'Fieldgroup2', position: 10 } ]
+  Result1val9;
+
+  @UI.fieldGroup: [ { qualifier: 'Fieldgroup3', position: 10 } ]
+  Result2val9;
+
+  @UI.fieldGroup: [ { qualifier: 'Fieldgroup1', position: 10 } ]
+  Resulttxt10;
+
+  @UI.fieldGroup: [ { qualifier: 'Fieldgroup2', position: 10 } ]
+  Result1val10;
+
+  @UI.fieldGroup: [ { qualifier: 'Fieldgroup3', position: 10 } ]
+  Result2val10;
+
+  @UI.fieldGroup: [ { qualifier: 'Fieldgroup1', position: 10 } ]
+  Resulttxt11;
+
+  @UI.fieldGroup: [ { qualifier: 'Fieldgroup2', position: 10 } ]
+  Result1val11;
+
+  @UI.fieldGroup: [ { qualifier: 'Fieldgroup3', position: 10 } ]
+  Result2val11;
+
+}

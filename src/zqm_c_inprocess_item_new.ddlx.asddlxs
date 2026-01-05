@@ -1,0 +1,248 @@
+@Metadata.layer: #CORE
+
+@UI: {
+      headerInfo:
+      {
+         typeName: 'Line Inspection Lot',
+         typeNamePlural: 'Line Inspection Lot',
+         title:
+         {
+           type : #STANDARD,
+           label: 'Line Inspection Lot',
+           value: 'Specification'
+         }
+      }
+}
+annotate entity ZQM_C_Inprocess_item_NEW with
+{
+
+  /* === Facets === */
+
+  @UI.facet: [
+     {
+       id        : 'Facet1-ID',
+       type     : #COLLECTION,
+       label    : '',
+       position : 10
+     },
+     {
+       id             : 'Fieldgroup1ID',
+       type           : #FIELDGROUP_REFERENCE,
+       label          : 'Result',
+       parentId       : 'Facet1-ID',
+       targetQualifier: 'Fieldgroup1',
+       position       : 10
+     },
+     {
+       id             : 'Fieldgroup2ID',
+       type           : #FIELDGROUP_REFERENCE,
+       label          : 'Recorded Value(mm)',
+       parentId       : 'Facet1-ID',
+       targetQualifier: 'Fieldgroup2',
+       position       : 20
+     },
+     {
+       id             : 'Fieldgroup3ID',
+       type           : #FIELDGROUP_REFERENCE,
+       label          : 'Recorded Value(inch)',
+       parentId       : 'Facet1-ID',
+       targetQualifier: 'Fieldgroup3',
+       position       : 30
+     }  ,
+     {
+       id             : 'Fieldgroup4ID',
+       type           : #FIELDGROUP_REFERENCE,
+       label          : '',
+       parentId       : 'Facet1-ID',
+       targetQualifier: 'Fieldgroup4',
+       position       : 40
+     }
+   ]
+
+
+  @UI.lineItem: [{ position: 10 }]
+
+  @UI.fieldGroup: [ { qualifier: 'Fieldgroup4', position: 10 } ]
+  @EndUserText.label: 'Nature of Test'
+  InspectionSpecification;
+  @EndUserText.label: 'Evaluation/Measurement Technique'
+  @UI.lineItem: [{ position: 20 }]
+  @UI.fieldGroup: [ { qualifier: 'Fieldgroup4', position: 10 } ]
+
+  Specification;
+
+  @EndUserText.label: 'Specified'
+  @UI.lineItem: [{ position: 30 ,  cssDefault.width: '20em'}]
+  @UI.fieldGroup: [ { qualifier: 'Fieldgroup4', position: 10 } ]
+
+
+  InspSpecTargetValue;
+  @EndUserText.label: 'Max'
+  @UI.lineItem: [{ position: 40 ,cssDefault.width: '5rem'}]
+  @UI.fieldGroup: [ { qualifier: 'Fieldgroup4', position: 10 } ]
+
+  InspSpecUpperLimit;
+  @EndUserText.label: 'Min'
+  @UI.lineItem: [{ position: 45 ,cssDefault.width: '5rem'}]
+  @UI.fieldGroup: [ { qualifier: 'Fieldgroup4', position: 10 } ]
+
+  InspSpecLowerLimit;
+  @EndUserText.label: 'Samples'
+  @UI.lineItem: [{ position: 50 }]
+  @UI.fieldGroup: [ { qualifier: 'Fieldgroup4', position: 10 } ]
+  samples;
+  @EndUserText.label: 'Observed (Results Field)'
+  @UI.lineItem: [{ position: 60 ,cssDefault.width: '60rem'}]
+  @UI.fieldGroup: [ { qualifier: 'Fieldgroup4', position: 10 } ]
+  observed;
+  @EndUserText.label: 'Thread Details'
+  @UI.lineItem: [{ position: 70 }]
+  @UI.fieldGroup: [ { qualifier: 'Fieldgroup4', position: 10 } ]
+  threaddetails;
+
+
+  //   @UI.lineItem: [{ position: 70 ,cssDefault.width: '5rem' }]
+  //
+  //      @EndUserText.label: 'Result 1'
+  //
+  //   Result1;
+  //   @UI.lineItem: [{ position: 80 ,cssDefault.width: '5rem' }]
+  //   @EndUserText.label: 'Result 2'
+  //      Result2;
+  //      @EndUserText.label: 'Result 3'
+  //      @UI.lineItem: [{ position: 90,cssDefault.width: '5rem'  }]
+  //      Result3;
+  //      @EndUserText.label: 'Result 4'
+  //      @UI.lineItem: [{ position: 100,cssDefault.width: '5rem'  }]
+  //      Result4;
+  //      @EndUserText.label: 'Result 5'
+  //      @UI.lineItem: [{ position:110,cssDefault.width: '5rem'  }]
+  //      Result5;
+  //      @EndUserText.label: 'Result 6'
+  //      @UI.lineItem: [{ position: 120,cssDefault.width: '5rem'  }]
+  //      Result6;
+  //      @EndUserText.label: 'Result 7'
+  //      @UI.lineItem: [{ position: 130,cssDefault.width: '5rem'  }]
+  //      Result7;
+  //      @EndUserText.label: 'Result 8'
+  //      @UI.lineItem: [{ position: 140,cssDefault.width: '5rem'  }]
+  //      Result8;
+  //      @EndUserText.label: 'Result 9'
+  //      @UI.lineItem: [{ position: 150 ,cssDefault.width: '5rem' }]
+  //      Result9;
+  //      @EndUserText.label: 'Result 10'
+  //      @UI.lineItem: [{ position: 160 ,cssDefault.width: '5rem' }]
+  //      Result10;
+
+  //
+  //        @UI.fieldGroup: [ { qualifier: 'Fieldgroup1', position: 10 } ]
+  //  Resulttxt1;
+  //
+  //  @EndUserText.label: 'Res 1(mm)'
+  //  @UI.fieldGroup: [ { qualifier: 'Fieldgroup2', position: 10 } ]
+  //  @UI.lineItem: [{ position: 50 ,  cssDefault.width: '5em'}]
+  //  Result1;
+  //
+  //
+  //  @UI.fieldGroup: [ { qualifier: 'Fieldgroup1',  position: 20 } ]
+  //  Resulttxt2;
+  //   @EndUserText.label: 'Res 2(mm)'
+  // @UI.lineItem: [{ position: 70 ,  cssDefault.width: '5em'}]
+  //  @UI.fieldGroup: [ { qualifier: 'Fieldgroup2', position: 20 } ]
+  //  Result2;
+  //
+  //
+  //  @UI.fieldGroup: [ { qualifier: 'Fieldgroup1', position: 30 } ]
+  //  Resulttxt3;
+  //   @EndUserText.label: 'Res 3(mm)'
+  //@UI.lineItem: [{ position: 90 ,  cssDefault.width: '5em'}]
+  //  @UI.fieldGroup: [ { qualifier: 'Fieldgroup2', position: 30 } ]
+  //  Result3;
+  //
+  //
+  //  @UI.fieldGroup: [ { qualifier: 'Fieldgroup1', position: 40 } ]
+  //  Resulttxt4;
+  // @EndUserText.label: 'Res 4(mm)'
+  //  @UI.fieldGroup: [ { qualifier: 'Fieldgroup2', position: 40 } ]
+  //   @UI.lineItem: [{ position: 110 ,  cssDefault.width: '5em'}]
+  //
+  //  Result4;
+  //
+  //
+  //
+  //
+  //  @UI.fieldGroup: [ { qualifier: 'Fieldgroup1', position: 50 } ]
+  //  Resulttxt5;
+  //   @UI.lineItem: [{ position: 130 ,  cssDefault.width: '5em'}]
+  //
+  // @EndUserText.label: 'Res 5(mm)'
+  //  @UI.fieldGroup: [ { qualifier: 'Fieldgroup2', position: 50 } ]
+  //  Result5;
+  //
+  //
+  //
+  //  @UI.fieldGroup: [ { qualifier: 'Fieldgroup1', position: 60 } ]
+  //  Resulttxt6;
+  //   @UI.lineItem: [{ position: 150 ,  cssDefault.width: '5em'}]
+  //
+  // @EndUserText.label: 'Res 6(mm)'
+  //  @UI.fieldGroup: [ { qualifier: 'Fieldgroup2', position: 60 } ]
+  //  Result6;
+  //
+  //  @UI.fieldGroup: [ { qualifier: 'Fieldgroup1', position: 70 } ]
+  //  Resulttxt7;
+  //
+  //   @UI.lineItem: [{ position: 170 ,  cssDefault.width: '5em'}]
+  //
+  // @EndUserText.label: 'Res 7(mm)'
+  //  @UI.fieldGroup: [ { qualifier: 'Fieldgroup2', position: 70 } ]
+  //  Result7;
+  //
+  //
+  //
+  //
+  //  @UI.fieldGroup: [ { qualifier: 'Fieldgroup1', position: 80 } ]
+  //  Resulttxt8;
+  //
+  //   @UI.lineItem: [{ position: 190 ,  cssDefault.width: '5em'}]
+  //
+  // @EndUserText.label: 'Res 8(mm)'
+  //  @UI.fieldGroup: [ { qualifier: 'Fieldgroup2', position: 80 } ]
+  //  Result8;
+  //
+  //
+  //  @UI.fieldGroup: [ { qualifier: 'Fieldgroup1', position: 90 } ]
+  //  Resulttxt9;
+  //   @UI.lineItem: [{ position: 210 ,  cssDefault.width: '5em'}]
+  //
+  // @EndUserText.label: 'Res 9(mm)'
+  //  @UI.fieldGroup: [ { qualifier: 'Fieldgroup2', position: 90 } ]
+  //  Result9;
+  //
+  //
+  //
+  //
+  //  @UI.fieldGroup: [ { qualifier: 'Fieldgroup1', position: 100 } ]
+  //  Resulttxt10;
+  //   @UI.lineItem: [{ position: 230 ,  cssDefault.width: '5em'}]
+  //
+  // @EndUserText.label: 'Res 10(mm)'
+  //  @UI.fieldGroup: [ { qualifier: 'Fieldgroup2', position: 100 } ]
+  //  Result10;
+
+
+  //  @UI.fieldGroup: [ { qualifier: 'Fieldgroup1', position: 110 } ]
+  //  Resulttxt11;
+  //   @UI.lineItem: [{ position: 250 ,  cssDefault.width: '5em'}]
+  //
+  // @EndUserText.label: 'Res 11(mm)'
+  //  @UI.fieldGroup: [ { qualifier: 'Fieldgroup2', position: 110 } ]
+  //  Result11;
+  //   @UI.lineItem: [{ position: 260 ,  cssDefault.width: '5em'}]
+  //
+  //   @EndUserText.label: 'Res 11(in)'
+  //  @UI.fieldGroup: [ { qualifier: 'Fieldgroup3', position: 110 } ]
+  //  result11mm;
+
+
+}

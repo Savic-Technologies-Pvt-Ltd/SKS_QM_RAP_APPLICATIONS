@@ -1,0 +1,34 @@
+{
+  "formatVersion": "2",
+  "header": {
+    "description": "An SAP Fiori application.",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "generalInformation": {
+    "appType": "ui5",
+    "catalogId": "SAP_TC_UI5_REPO_UIAD",
+    "targetMappingTitle": "Downtime Application"
+  },
+  "ui5AppDetails": {
+    "appId": "zqmdowntime"
+  },
+  "navigation": {
+    "targetMappingId": "UI5R_0E0A0BD33684734283777368343D2F6D4640C828_TM",
+    "semanticObject": "ZQM_DOWNTIME",
+    "action": "manage",
+    "desktop": true,
+    "tablet": true,
+    "phone": true
+  },
+  "tiles": [
+    {
+      "id": "UI5R_0E0A0BD33684734283777368343D2F6D4640C828_AL",
+      "tileType": "static",
+      "isDefault": true,
+      "standard": {
+        "title": "Downtime Application"
+      }
+    }
+  ]
+}

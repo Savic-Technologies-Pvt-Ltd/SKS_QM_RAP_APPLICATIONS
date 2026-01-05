@@ -1,0 +1,211 @@
+managed implementation in class zbp_cds_qm_ins_lot_h unique;
+strict ( 2 );
+with draft;
+define behavior for ZCDS_QM_INS_LOT_H alias Header
+persistent table zta_qm_ins_lot
+draft table zta_qm_ins_lot_d
+lock master
+total etag Inspectionlot
+authorization master ( instance )
+
+{
+  create;
+  update;
+  delete;
+  field ( features : instance ) inspectionlot, Material, plant, manufacturingorder, QC_Status;
+  field ( numbering : managed, readonly ) cuuid;
+  association _Item { create; with draft; }
+  field ( mandatory : create ) Material, Plant, ManufacturingOrder;
+  field ( readonly ) a, Baseunit, Customer, EndOfInsp, InspLotOrig, LotQty, Lotcreate,
+  Manufacturer, Monito, Ord, StartOfInsp, Supplier, Systemstatus, InspectionOperation,
+  InspectionLotObjectText, DRGno, Grade, RM_Specification, PartNo, Attachments, InspectionLotCreatedOnTime;
+  determination createinsplot on save { create; }
+  draft action Edit;
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Resume;
+  draft determine action Prepare;
+  side effects
+  {
+    field ar6 affects entity _Item;
+    field ar7 affects entity _Item;
+    field ar8 affects entity _Item;
+    field ar9 affects entity _Item;
+    field ar10 affects entity _Item;
+  }
+
+
+  action getpdf result [1] $self;
+
+  mapping for zta_qm_ins_lot
+    {
+      cuuid                   = cuuid;
+      inspectionlot           = inspectionlot;
+      lotcreate               = lotcreate;
+      material                = material;
+      inspectionlotobjecttext = inspectionlotobjecttext;
+      batch                   = batch;
+      plant                   = plant;
+      insplotorig             = insplotorig;
+      manufacturingorder      = manufacturingorder;
+      inspectionlottext       = inspectionlottext;
+      inspectionlottype       = inspectionlottype;
+      lotqty                  = lotqty;
+      baseunit                = baseunit;
+      equipment               = equipment;
+      statusprofile           = statusprofile;
+      startofinsp             = startofinsp;
+      endofinsp               = endofinsp;
+      customer                = customer;
+      supplier                = supplier;
+      manufacturer            = manufacturer;
+      purchasingdocument      = purchasingdocument;
+      purchasingdocumentitem  = purchasingdocumentitem;
+      scheduleline            = scheduleline;
+      ord                     = ord;
+      salesorderitem          = salesorderitem;
+      language                = language;
+      companycode             = companycode;
+      inspectionoperation     = inspectionoperation;
+      operationtext           = operationtext;
+      workcentertext          = workcentertext;
+      operationconfirmation   = operationconfirmation;
+      drgno                   = drgno;
+      grade                   = grade;
+      rm_specification        = rm_specification;
+      partno                  = partno;
+      shift                   = shift;
+      washerlotno             = washerlotno;
+      operatorname            = operatorname;
+      inspection              = inspection;
+      checkbox                = checkbox;
+      checkbox2               = checkbox2;
+      approved                = approved;
+      snapgaugeavl            = snapgaugeavl;
+      notapproved             = notapproved;
+      pokayokechecked         = pokayokechecked;
+      obseropera              = obseropera;
+      cleaned                 = cleaned;
+      loadverf                = loadverf;
+      nopiecchute             = nopiecchute;
+      obseinspector           = obseinspector;
+      nopiecesaroundmachine   = nopiecesaroundmachine;
+      dmt                     = dmt;
+      vcd                     = vcd;
+      dial                    = dial;
+      dpmt                    = dpmt;
+      pp                      = pp;
+      gaugenogo               = gaugenogo;
+      nogo                    = nogo;
+      other                   = other;
+      ar1                     = ar1;
+      ar2                     = ar2;
+      ar3                     = ar3;
+      ar4                     = ar4;
+      ar5                     = ar5;
+      ar6                     = ar6;
+      ar7                     = ar7;
+      ar8                     = ar8;
+      ar9                     = ar9;
+      ar10                    = ar10;
+      ar11                    = ar11;
+      prodtime                = prodtime;
+      qatime                  = qatime;
+      previousopt             = previousopt;
+      nextopt                 = nextopt;
+      rawmaterial             = rawmaterial;
+      FirstFivePieceObse      = firstfivepieceobservation;
+      lastpieceobservation    = lastpieceobservation;
+      finalobservation        = finalobservation;
+      qc_status               = qc_status;
+      qc_criticality          = qc_criticality;
+      Rejection_Quantity      = rejectionquantity;
+      filename                = filename;
+      attachments             = attachments;
+      mimetype                = mimetype;
+      filename_ul             = filename_ul;
+      attachments_ul          = attachments_ul;
+      mimetype_ul             = mimetype_ul;
+      productlongtext         = productlongtext;
+    }
+
+}
+
+define behavior for ZCDS_QM_INS_LOT_I alias Item
+with unmanaged save
+draft table zta_qm_inslot_id
+lock dependent by _Header
+authorization dependent by _Header
+{
+  update;
+  delete;
+  field ( readonly ) cuuid, InspPlanOperationInternalID;
+  field ( readonly ) Inspectionlot, InspLotItem, Inspect, Inspected, Specification, SelectedCodeSetText, Specification1, SelectedCodeSetText1,
+  Reslab1, Reslab2, Reslab3, Reslab4, Reslab5, Reslab6, Reslab7, Reslab8, Reslab9, Reslab10, Reslab11, InspSpecLowerLimit, InspSpecUpperLimit,
+  lab_max, lab_min, dm;
+  determination field_readonly on modify
+  { field Resval1, Resval2, Resval3, Resval4, Resval5, Resval6, Resval7, Resval8, Resval9, Resval10, Resval11,
+    res_mark1, res_mark2, res_mark3, res_mark4, res_mark5, res_mark6, res_mark7, res_mark8, res_mark9,
+    res_mark10, res_mark11; }
+  field ( features : instance ) Resval1, Resval2, Resval3, Resval4, Resval5, Resval6, Resval7, Resval8, Resval9, Resval10, Resval11,
+  res_mark1, res_mark2, res_mark3, res_mark4, res_mark5, res_mark6, res_mark7, res_mark8, res_mark9,
+  res_mark10, res_mark11;
+  association _Header { with draft; }
+
+  side effects
+  { field Resval1 affects $self;
+    field Resval2 affects $self;
+    field Resval3 affects $self;
+    field Resval4 affects $self;
+    field Resval5 affects $self;
+    field Resval6 affects $self;
+    field Resval7 affects $self;
+    field Resval8 affects $self;
+    field Resval9 affects $self;
+    field Resval10 affects $self;
+    field res_mark1 affects $self;
+    field res_mark2 affects $self;
+    field res_mark3 affects $self;
+    field res_mark4 affects $self;
+    field res_mark5 affects $self;
+    field res_mark6 affects $self;
+    field res_mark7 affects $self;
+    field res_mark8 affects $self;
+    field res_mark9 affects $self;
+    field res_mark10 affects $self;
+  }
+//
+  mapping for zta_qm_insplot_i //  mapping for zta_qm_ins_lot_i
+    {
+      cuuid               = cuuid;
+      Inspectionlot       = inspectionlot;
+      InspLotItem         = insp_lot_item;
+      Inspect             = inspect;
+      Inspected           = inspected;
+      Specification       = specification;
+      SelectedCodeSetText = selectedcodesettext;
+      Resval1             = res;
+      Resval2             = res2;
+      Resval3             = res3;
+      Resval4             = res4;
+      Resval5             = res5;
+      Resval6             = res6;
+      Resval7             = res7;
+      Resval8             = res8;
+      Resval9             = res9;
+      Resval10            = res10;
+      Resval11            = res11;
+      res_mark1           = res_mark1;
+      res_mark2           = res_mark2;
+      res_mark3           = res_mark3;
+      res_mark4           = res_mark4;
+      res_mark5           = res_mark5;
+      res_mark6           = res_mark6;
+      res_mark7           = res_mark7;
+      res_mark8           = res_mark8;
+      res_mark9           = res_mark9;
+      res_mark10          = res_mark10;
+      res_mark11          = res_mark11;
+    }
+
+}

@@ -1,0 +1,78 @@
+@Metadata.layer: #CORE
+
+@UI: {
+      headerInfo:
+      {
+         typeName: 'Line Inspection Lot',
+         typeNamePlural: 'Line Inspection Lot',
+         title:
+         {
+           type : #STANDARD,
+           label: 'Line Inspection Lot',
+           value: 'InspectionSpecification'
+         }
+      }
+}
+annotate entity ZQM__C_PDIR_SPECIFICATION_LIST
+    with 
+{
+    
+  /* === Facets === */
+ 
+
+  @UI.lineItem: [{ position: 10 }]
+  @UI.identification: [{ position: 10 }]
+  @EndUserText.label: 'Specification'
+  InspectionSpecification;
+@EndUserText.label: 'Method'
+  @UI.lineItem: [{ position: 20 }]
+  Specification;
+@EndUserText.label: 'Target Value'
+  @UI.lineItem: [{ position: 30 }]
+  
+  InspSpecTargetValue;
+@EndUserText.label: 'Max'
+  @UI.lineItem: [{ position: 40 ,cssDefault.width: '5rem'}]
+  InspSpecUpperLimit;
+@EndUserText.label: 'Min'
+  @UI.lineItem: [{ position: 50 ,cssDefault.width: '5rem'}]
+  InspSpecLowerLimit;
+      @UI.lineItem: [{ position: 170 ,cssDefault.width: '5rem'}]
+      
+        @Consumption.valueHelpDefinition: [{ entity :{  element: 'VALUE' , name: 'ZC_REMARK' } }]
+      
+  remark;
+  
+   @UI.lineItem: [{ position: 70 ,cssDefault.width: '5rem' }]
+
+      @EndUserText.label: 'Result 1'
+      
+   Result1;
+   @UI.lineItem: [{ position: 80 ,cssDefault.width: '5rem' }]
+   @EndUserText.label: 'Result 2'
+      Result2;
+      @EndUserText.label: 'Result 3'
+      @UI.lineItem: [{ position: 90,cssDefault.width: '5rem'  }]
+      Result3;
+      @EndUserText.label: 'Result 4'
+      @UI.lineItem: [{ position: 100,cssDefault.width: '5rem'  }]
+      Result4;
+      @EndUserText.label: 'Result 5'
+      @UI.lineItem: [{ position:110,cssDefault.width: '5rem'  }]
+      Result5;
+      @EndUserText.label: 'Result 6'
+      @UI.lineItem: [{ position: 120,cssDefault.width: '5rem'  }]
+      Result6;
+      @EndUserText.label: 'Result 7'
+      @UI.lineItem: [{ position: 130,cssDefault.width: '5rem'  }]
+      Result7;
+      @EndUserText.label: 'Result 8'
+      @UI.lineItem: [{ position: 140,cssDefault.width: '5rem'  }]
+      Result8;
+      @EndUserText.label: 'Result 9'
+      @UI.lineItem: [{ position: 150 ,cssDefault.width: '5rem' }]
+      Result9;
+      @EndUserText.label: 'Result 10'
+      @UI.lineItem: [{ position: 160 ,cssDefault.width: '5rem' }]
+      Result10;
+}

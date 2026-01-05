@@ -1,0 +1,295 @@
+@Metadata.layer: #CORE
+@UI.headerInfo.title.type: #STANDARD
+@UI.headerInfo.title.value: 'Gatenumber'
+@UI.headerInfo.description.type: #STANDARD
+@UI.headerInfo.description.value: 'Gatenumber'
+annotate view ZC_MMGATE_HEAD with
+{
+  @EndUserText.label: 'Gatenumber'
+  @UI.facet: [ {
+    label: 'Truck/Gate Information', 
+    id: 'GeneralInfo', 
+    purpose: #STANDARD, 
+    position: 10 , 
+    type: #IDENTIFICATION_REFERENCE,
+    targetQualifier: 'idSection1'
+  } ,
+   {
+    label: 'Invoice Information', 
+    id: 'invoiceInfo', 
+    purpose: #STANDARD, 
+    position: 15 , 
+    type: #IDENTIFICATION_REFERENCE,
+    targetQualifier: 'idSection3'
+  } ,
+   {
+    label: 'Document Information', 
+    id: 'purchaseInfo', 
+    purpose: #STANDARD, 
+    position: 20 , 
+    type: #IDENTIFICATION_REFERENCE,
+    targetQualifier: 'idSection2'
+  } ,
+  
+  { 
+purpose: #STANDARD, 
+position: 25, 
+label: 'Document header', 
+type: #LINEITEM_REFERENCE, 
+targetElement: '_docHeader' 
+}, 
+  
+  
+  { 
+purpose: #STANDARD, 
+position: 30, 
+label: 'Document Item', 
+type: #LINEITEM_REFERENCE, 
+targetElement: '_item' 
+}]
+@UI.identification: [ {type: #FOR_ACTION, dataAction: 'getItem', label: 'Get Item'  }
+////,
+////{type: #FOR_ACTION, dataAction: 'postGoods', label: 'Post Goods Movement'  } 
+]
+
+
+
+  @UI.lineItem: [ {
+    position: 10 , 
+    label: 'Gate Number'
+  } ]
+  @UI.selectionField: [ {
+    position: 10 
+  } ]
+  Gatenumber;
+  
+
+  @EndUserText.label: 'Transporter Name'
+  @UI.identification: [ {
+    position: 30 , 
+    label: 'Transporter Name',
+    qualifier: 'idSection1'
+  } ]
+  @UI.lineItem: [ {
+    position: 30 , 
+    label: 'Transporter Name'
+  } ]
+  
+  Transportername;
+  
+  @EndUserText.label: 'Vehicle Number'
+  @UI.identification: [ {
+    position: 40 , 
+    label: 'Vehicle Number',
+    qualifier: 'idSection1'
+  } ]
+  @UI.lineItem: [ {
+    position: 40 , 
+    label: 'Vehicle Number'
+  } ]
+ 
+  Vehicleno;
+  
+  @EndUserText.label: 'Driver Name'
+  @UI.identification: [ {
+    position: 50 , 
+    label: 'Driver Name',
+    qualifier: 'idSection1'
+  } ]
+  @UI.lineItem: [ {
+    position: 50 , 
+    label: 'Driver Name'
+  } ]
+ 
+  Drivername;
+  
+  
+   @UI: { identification: [ { position: 400 ,
+    qualifier: 'idSection1'}] }
+  @EndUserText.label: 'Form'
+  Attachments;
+  
+ 
+  
+  
+ @UI.identification: [ {
+    position: 200 , 
+    label: 'Created By',
+    qualifier: 'idSection1'
+  } ]
+  @UI.lineItem: [ {
+    position: 60 
+  } ]
+  
+  Createdby;
+  
+  @UI.identification: [ {
+    position: 210 , 
+    label: 'Created Date',
+    qualifier: 'idSection1'
+  } ]
+  @UI.lineItem: [ {
+    position: 70 
+  } ]
+  
+  CreatDat;
+  
+  @UI.identification: [ {
+    position: 80 
+  } ]
+  @UI.lineItem: [ {
+    position: 80 
+  } ]
+ 
+  ChanBy;
+  
+  @UI.identification: [ {
+    position: 90 
+  } ]
+  @UI.lineItem: [ {
+    position: 90 
+  } ]
+ 
+  ChanAt;
+  
+  @UI.identification: [ {
+    position: 100 
+  } ]
+  @UI.lineItem: [ {
+    position: 100 
+  } ]
+ 
+  LocalLastChangedAt;
+  
+  @EndUserText.label: '_BaseEntity'
+  @UI.identification: [ {
+    position: 110 , 
+    label: '_BaseEntity'
+  } ]
+  @UI.lineItem: [ {
+    position: 110 , 
+    label: '_BaseEntity'
+  } ]
+ 
+  _BaseEntity;
+  
+  
+  @EndUserText.label: 'Document Number'
+  @UI.identification: [ {
+    position: 120 , 
+    label: 'Document Number',
+    qualifier: 'idSection2'
+  } ]
+  @UI.lineItem: [ {
+    position: 120 , 
+    label: 'Document Number'
+  } ]
+  @UI.selectionField: [ {
+    position: 120 
+  } ]
+    ebeln             ;
+      
+       @EndUserText.label: 'Plant'
+  @UI.identification: [ {
+    position: 125 , 
+    label: 'Plant',
+    qualifier: 'idSection1'
+  } ]
+  @UI.lineItem: [ {
+    position: 125 , 
+    label: 'Plant'
+  } ]
+ @UI.selectionField: [ {
+    position: 145 
+  } ]
+  plant  ;
+    @EndUserText.label: 'E-Invoice Number'
+  @UI.identification: [ {
+    position: 180 , 
+    label: 'E-Invoice No',
+    qualifier: 'idSection3'
+  } ]
+  @UI.lineItem: [ {
+    position: 180 , 
+    label: 'E-Invoice No'
+  } ]
+  @UI.selectionField: [ {
+    position: 180 
+  } ]
+  einvoicenumber        ;
+    @EndUserText.label: 'E-Invoice Date'
+  @UI.identification: [ {
+    position: 182 , 
+    label: 'E-Invoice No Date',
+    qualifier: 'idSection3'
+  } ]
+  @UI.lineItem: [ {
+    position: 182 , 
+    label: 'E-Invoice No Date'
+  } ]
+  @UI.selectionField: [ {
+    position: 182 
+  } ]
+  einvoicedate          ;
+   @UI.identification: [ {
+    position: 190 , 
+    label: 'Manual Gate Entry',
+    qualifier: 'idSection1'
+  } ]
+  manualgateentry;
+   @UI.identification: [ {
+    position: 190 , 
+    label: 'Challan Number',
+    qualifier: 'idSection3'
+  } ]
+   challanno              ;
+    @UI.identification: [ {
+    position: 195 , 
+    label: 'Challan Date',
+    qualifier: 'idSection3'
+  } ]
+  challandate         ;
+         @EndUserText.label: 'Gate In/Gate Out'
+  
+   @UI.identification: [ {
+    position: 190 , 
+    label: 'Gate Type',
+    qualifier: 'idSection1'
+  } ]
+  gatetype;
+   
+  
+     @UI.identification: [ {
+    position: 190 , 
+    label: 'Inward Type',
+    qualifier: 'idSection2'
+  } ]
+  inwardtype;
+    @UI.identification: [ {
+    position:200 , 
+    label: 'Invoice Number',
+    qualifier: 'idSection3'
+  } ]
+   invoicenumber       ;
+     @UI.identification: [ {
+    position: 210 , 
+    label: 'Invoice Date',
+    qualifier: 'idSection3'
+  } ]
+  invoicedate          ;
+  
+      @UI.identification: [ {
+    position:220 , 
+    label: 'Eway-Bill Number',
+    qualifier: 'idSection3'
+  } ]
+   ewayinvoicenumber       ;
+     @UI.identification: [ {
+    position: 230 , 
+    label: 'Eway-Bill Date',
+    qualifier: 'idSection3'
+  } ]
+  ewayinvoicedate    ;
+  @UI.identification: [{type: #FOR_ACTION, dataAction: 'GetPDF', label: 'Get Form'  }]
+  lifnr;
+}

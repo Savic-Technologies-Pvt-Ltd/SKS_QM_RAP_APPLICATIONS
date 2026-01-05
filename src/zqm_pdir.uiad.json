@@ -1,0 +1,32 @@
+{
+  "formatVersion": "2",
+  "header": {
+    "description": "PDIR Application",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "generalInformation": {
+    "appType": "ui5",
+    "catalogId": "SAP_TC_ALV5_DEFAULT"
+  },
+  "ui5AppDetails": {
+    "appId": "zqmpdir"
+  },
+  "navigation": {
+    "targetMappingId": "ZQM_PDIR_TM",
+    "semanticObject": "zqmpdir",
+    "action": "manage",
+    "desktop": true,
+    "tablet": true,
+    "phone": true
+  },
+  "tiles": [
+    {
+      "id": "ZQM_PDIR_AL",
+      "tileType": "static",
+      "standard": {
+        "title": "PDIR Application"
+      }
+    }
+  ]
+}

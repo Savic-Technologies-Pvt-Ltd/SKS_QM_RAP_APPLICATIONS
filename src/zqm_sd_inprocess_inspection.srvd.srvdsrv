@@ -1,0 +1,8 @@
+@EndUserText: {
+  label: 'Service Definition for ZQM_PR_InprocessInspectionHead'
+}
+define service ZQM_SD_Inprocess_Inspection
+  provider contracts odata_v4_ui {
+  expose ZQM_PR_InprocessInspectionHead as Header;
+  expose ZQM_PR_InprocessInspectionRecd as Item;
+}

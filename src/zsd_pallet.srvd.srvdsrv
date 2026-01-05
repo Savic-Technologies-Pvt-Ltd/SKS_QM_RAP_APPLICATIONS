@@ -1,0 +1,5 @@
+@EndUserText.label: 'Palletisation Service'
+define service ZSD_PALLET {
+  expose ZC_PALLET_F_HD;
+  expose ZC_PALLET_F_IT;
+}

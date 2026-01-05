@@ -1,0 +1,81 @@
+@Metadata.layer: #CORE
+
+@UI: {
+  headerInfo: {
+    typeName       : 'Production Order Log',
+    typeNamePlural : 'Production Order Log',
+    title          : { type: #STANDARD, label: 'Production Order Log', value : 'operationtext' }
+  }
+}
+annotate entity ZC_PROD_LOG_HD
+    with 
+{
+
+ @UI.facet: [
+  {
+    id      : 'GeneralInfo',
+    label   : 'Header',
+    type    : #IDENTIFICATION_REFERENCE,
+    purpose : #STANDARD,
+    position: 10
+  }]
+  
+           
+  @UI.selectionField: [{ position: 10 }]
+  @UI.identification: [{ position: 10, label: 'Date' },
+  
+  { type: #FOR_ACTION, dataAction: 'postProductionOrder', label: 'Reprocess'  } ]
+  @UI.lineItem      : [{ position: 10, label: 'Date' }]
+  @EndUserText.label: 'Date'
+    Zdate;
+      @UI.identification: [{ position: 20, label: 'Time' }]
+  @UI.lineItem      : [{ position: 20, label: 'Time' }]
+  @EndUserText.label: 'Time'
+    Ztime;
+      @UI.identification: [{ position: 30, label: 'User' }]
+  @UI.lineItem      : [{ position: 30, label: 'User' }]
+  @UI.selectionField: [{ position: 20 }]
+      @EndUserText.label: 'User'
+  
+    Zuser;  @UI.identification: [{ position: 40, label: 'Message' }]
+  @UI.lineItem      : [{ position: 40, label: 'Message' }]
+  @UI.selectionField: [{ position: 30 }]
+    @EndUserText.label: 'Message'
+  
+    Msg;
+      @UI.identification: [{ position: 50, label: 'Message Desc.' }]
+  @UI.lineItem      : [{ position: 50, label: 'Message Desc.' }]
+    Msgdesc;
+      @UI.identification: [{ position: 60, label: 'Production Order' }]
+  @UI.lineItem      : [{ position: 60, label: 'Production Order' }]
+    Productionorder;
+      @UI.selectionField: [{ position: 70 }]
+  @UI.identification: [{ position: 70, label: 'Ref.Production Order' }]
+  @UI.lineItem      : [{ position: 70, label: 'Ref.Production Order' }]
+  @EndUserText.label: 'Ref.Production Order'
+    ref_productionorder;
+     @UI.identification: [{ position: 80, label: 'Operation Text' }]
+  @UI.lineItem      : [{ position: 80, label: 'Operation Text' }]
+  @EndUserText.label: 'Operation Text'
+    operationtext;
+      @UI.identification: [{ position: 90, label: 'Product' }]
+  @UI.lineItem      : [{ position: 90, label: 'Product' }]
+  @EndUserText.label: 'Product'
+    material                 ;
+      @UI.identification: [{ position: 100, label: 'Product Desc' }]
+  @UI.lineItem      : [{ position: 100, label: 'Product Desc' }]
+  @EndUserText.label: 'Product Desc'
+  material_desc            ;
+     @UI.identification: [{ position: 110, label: 'Sales Order' }]
+  @UI.lineItem      : [{ position: 110, label: 'Sales Order' }]
+  @EndUserText.label: 'Sales Order'
+  salesorder            ;
+     @UI.identification: [{ position: 120, label: 'Customer Name' }]
+  @UI.lineItem      : [{ position: 120, label: 'Customer Name' }]
+  @EndUserText.label: 'Customer Name'
+  customername            ;
+     @UI.identification: [{ position: 130, label: 'Cat Code' }]
+  @UI.lineItem      : [{ position: 130, label: 'Cat Code' }]
+  @EndUserText.label: 'Cat Code'
+  cat_code            ;
+}

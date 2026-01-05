@@ -1,0 +1,78 @@
+@Metadata.layer: #CORE
+annotate entity ZC_DOWNTIME_IT
+    with 
+{
+@UI.facet: [
+  {
+    id      : 'GeneralInfo',
+    label   : 'Observations',
+    type    : #IDENTIFICATION_REFERENCE,
+    purpose : #STANDARD,
+    position: 10
+  },
+  
+          {
+        id            : 'SPC',
+        purpose       : #STANDARD,
+        type          : #LINEITEM_REFERENCE,
+        label         : 'Remarks',
+        position      : 20,
+        targetElement : '_remark'
+          } ]
+@UI.identification: [{ position: 10, label: 'Work Center' }]
+@UI.lineItem      : [{ position: 10, label: 'Work Center' }]
+@EndUserText.label: 'Work Center'
+Workcenter;
+@UI.identification: [{ position: 20, label: 'Work Center Name' }]
+@UI.lineItem      : [{ position: 20, label: 'Work Center Name' }]
+Workcentername;
+@UI.identification: [{ position: 30, label: 'Shift' }]
+
+    shift          ;
+        @UI.identification: [{ position: 31, label: 'Shift Start Time' }]
+    
+    shiftstarttime  ;
+    @UI.identification: [{ position: 32, label: 'Shift End Time' }]
+  shiftendtime;
+  @UI.identification: [{ position: 33, label: 'Total Production Min' }]
+  totalprodmin    ;
+  @UI.identification: [{ position: 34, label: 'Total Non Production Min' }]
+  ztotalnonprodmin ;
+    @UI.identification: [{ position: 40, label: 'Operator' }]
+        
+    
+  operator       ;
+  @UI.identification: [{ position: 50, label: 'Supervisor' }]
+  
+  supervisor      ;
+  @UI.identification: [{ position: 60, label: 'Machine Space' }]
+  
+  machinespace   ;
+  @UI.identification: [{ position: 70, label: 'Non prod1' }]
+  
+  nonprd1        ;
+  @UI.identification: [{ position: 80, label: 'Non prod2' }]
+  
+  nonprd2         ;
+  @UI.identification: [{ position: 90, label: 'Production Order' }]
+  @EndUserText.label: 'Production Order'
+  productionorder ;
+  @UI.identification: [{ position: 100, label: 'Contractor' }]
+  
+  contractor     ;
+  @UI.identification: [{ position: 110, label: 'Rework Qty' }]
+  
+  reworkqty    ;
+  @UI.identification: [{ position: 120, label: 'Rejected Qty' }]
+  
+  rejectqty     ;
+  @UI.identification: [{ position: 130, label: 'Lot No' }]
+  
+  lotno       ;
+  @UI.identification: [{ position: 140, label: 'BOM' }]
+  
+  bom           ;
+  @UI.identification: [{ position: 150, label: 'Production Qty' }]
+  
+  prodqty       ;
+}

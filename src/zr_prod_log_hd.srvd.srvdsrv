@@ -1,0 +1,4 @@
+@EndUserText.label: 'Production Order Log'
+define service ZR_PROD_LOG_HD {
+  expose ZC_PROD_LOG_HD;
+}

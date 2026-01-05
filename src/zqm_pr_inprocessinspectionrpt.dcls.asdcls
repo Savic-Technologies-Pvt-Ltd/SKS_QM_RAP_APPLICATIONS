@@ -1,0 +1,6 @@
+@EndUserText.label: 'ZQM_PR_InprocessInspectionRpt'
+@MappingRole: true
+define role ZQM_PR_InprocessInspectionRpt {
+  grant select on ZQM_PR_InprocessInspectionRpt
+  where INHERITING CONDITIONS FROM ENTITY ZQM_CM_InprocessInspectionRpt REPLACING { ROOT WITH _BaseEntity };
+}

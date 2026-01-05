@@ -1,0 +1,5 @@
+@EndUserText.label: 'Service Definition for Inprocess Inspection'
+define service ZQM_SD_INPROCESSINSPECTION {
+  expose ZQM_PR_INPROCESSINSPECTION_H as Header;
+  expose ZQM_PR_INPROCESSINSPECTION_I as Item;
+}

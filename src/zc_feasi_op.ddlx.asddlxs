@@ -1,0 +1,28 @@
+@Metadata.layer: #CORE
+annotate entity ZC_FEASI_OP
+    with 
+{
+   @UI.facet: [
+  {
+    id      : 'GeneralInfo',
+    label   : 'Operation',
+    type    : #IDENTIFICATION_REFERENCE,
+    purpose : #STANDARD,
+    position: 10
+  }]
+
+    Cuuid;
+    @UI.identification: [{ position: 10, label: 'Itemno' }]
+@UI.lineItem      : [{ position: 10, label: 'Itemno' }]
+     itemnumber;
+       @UI.identification: [{ position: 20, label: 'Operation' }]
+@UI.lineItem      : [{ position: 20, label: 'Operation' }]
+        operation;
+      @UI.identification: [{ position: 25, label: 'Itemno' }]
+@UI.lineItem      : [{ position: 25, label: 'Machine' }]
+    Machine;
+    @UI.identification: [{ position: 30, label: 'Itemno' }]
+@UI.lineItem      : [{ position: 30, label: 'Remarks' }]
+    Remarks;
+     
+}

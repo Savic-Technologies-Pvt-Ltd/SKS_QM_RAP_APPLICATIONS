@@ -1,0 +1,52 @@
+@Metadata.layer: #CORE
+
+@UI: {
+  headerInfo: {
+    typeName       : 'Machine Plan',
+    typeNamePlural : 'Machine Plan',
+    title          : { type: #STANDARD, label: 'Machine Plan', value: 'Machineplanno' },
+    description    : { type: #STANDARD, value: 'Machineplanno' }
+  }
+}
+annotate entity ZC_MACH_PL_HD
+    with 
+{
+
+ @UI.facet: [
+  {
+    id      : 'GeneralInfo',
+    label   : 'Header',
+    type    : #IDENTIFICATION_REFERENCE,
+    purpose : #STANDARD,
+    position: 10
+  },
+    
+     { id           : 'LOT_I1',
+    purpose      : #STANDARD,
+    type         : #LINEITEM_REFERENCE,
+    label        : 'Item',
+    position     :  20 ,
+    targetElement: '_Item'}]
+    
+               @UI.identification: [  { type: #FOR_ACTION, dataAction: 'GetPDF', label: 'Get PDF'  }]
+                              
+               
+    
+Cuuid;
+
+  @UI.identification: [{ position: 20, label: 'Machine Plan No' }]
+  @UI.lineItem      : [{ position: 20, label: 'Machine Plan No' }]
+Machineplanno;
+
+
+      @UI: { identification: [ { position: 400 }] }
+  @EndUserText.label: 'Form'
+  attachments;
+      @UI: { identification: [ { position: 400 }] }
+  @EndUserText.label: 'Workcenter Group Name'
+    workcenter        ;
+        @UI: { identification: [ { position: 400 }] }
+  @EndUserText.label: 'Workcenter Group'
+  workcenterid       ;
+
+}

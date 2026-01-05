@@ -1,0 +1,49 @@
+projection;
+strict ( 2 );
+use draft;
+
+define behavior for ZC_FEASI_HD //alias <alias_name>
+{
+  use create;
+  use update;
+  use delete;
+
+  use action Edit;
+  use action Activate;
+  use action Discard;
+  use action Resume;
+  use action Prepare;
+  use action getpdf;
+
+  use association _Item { create; }
+  use association _Opr { create; }
+  use association _Risk { create; }
+
+}
+
+define behavior for ZC_FEASI_IT //alias <alias_name>
+{
+  use update;
+  use delete;
+
+  use association _HDR { with draft; }
+}
+
+define behavior for ZC_FEASI_OP
+ //alias <alias_name>
+{
+  use update;
+  use delete;
+
+  use association _HDR { with draft; }
+}
+
+define behavior for ZC_FEASI_RS
+
+ //alias <alias_name>
+{
+  use update;
+  use delete;
+
+  use association _HDR { with draft; }
+}

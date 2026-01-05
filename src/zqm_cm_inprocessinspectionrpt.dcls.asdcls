@@ -1,0 +1,6 @@
+@EndUserText.label: 'ZQM_CM_InprocessInspectionRpt'
+@MappingRole: true
+define role ZQM_CM_InprocessInspectionRpt {
+  grant select on ZQM_CM_InprocessInspectionRpt
+  where TRUE;
+}

@@ -1,0 +1,112 @@
+@Metadata.layer: #CUSTOMER
+annotate entity ZC_BOOKING_F_IT
+    with 
+{
+   @UI.facet: [
+  {
+    id      : 'GeneralInfo',
+    label   : 'Observations',
+    type    : #IDENTIFICATION_REFERENCE,
+    purpose : #STANDARD,
+    position: 10
+  }]
+  
+  @UI.identification: [{ position: 10, label: 'Sales order' }]
+@UI.lineItem      : [{ position: 10, label: 'Sales order' }]
+salesorder_k;
+@UI.identification: [{ position: 20, label: 'Item No' }]
+@UI.lineItem      : [{ position: 20, label: 'Item No' }]
+Itemno;
+@UI.identification: [{ position: 30, label: 'Material' }]
+@UI.lineItem      : [{ position: 30, label: 'Material' }]
+Material;
+@UI.identification: [{ position: 40, label: 'Sales Ord.Type' }]
+@UI.lineItem      : [{ position: 40, label: 'Sales Ord.Type' }]
+salesdoctype      ;
+@UI.identification: [{ position: 50, label: 'Company' }]
+@UI.lineItem      : [{ position: 50, label: 'Company' }]
+  company            ;
+@UI.identification: [{ position: 60, label: 'PN#' }]
+  @UI.lineItem      : [{ position: 60, label: 'PN#' }]
+  partnum;
+
+  @UI.identification: [{ position: 70, label: 'Part Description' }]
+  @UI.lineItem      : [{ position: 70, label: 'Part Description' }]
+  partdesc;
+
+  @UI.identification: [{ position: 80, label: 'Pallet length' }]
+  @UI.lineItem      : [{ position: 80, label: 'Pallet length' }]
+  palletlen;
+
+  @UI.identification: [{ position: 90, label: 'Pallet width' }]
+  @UI.lineItem      : [{ position: 90, label: 'Pallet width' }]
+  palletwid;
+
+  @UI.identification: [{ position: 100, label: 'Pallet height included side corner and top cover' }]
+  @UI.lineItem      : [{ position: 100, label: 'Pallet height included side corner and top cover' }]
+  pallethgt;
+
+  @UI.identification: [{ position: 110, label: 'Qty *Carton' }]
+  @UI.lineItem      : [{ position: 110, label: 'Qty *Carton' }]
+  qtypercarton;
+
+  @UI.identification: [{ position: 120, label: 'Shipment QTY in pcs' }]
+  @UI.lineItem      : [{ position: 120, label: 'Shipment QTY in pcs' }]
+  shipqty;
+  
+  @UI.identification: [{ position: 125, label: 'PO Quantity' }]
+  @UI.lineItem      : [{ position: 125, label: 'PO Quantity' }]
+  poqty;
+  @UI.identification: [{ position: 126, label: 'Variance Quantity' }]
+  @UI.lineItem      : [{ position: 126, label: 'Variance Quantity' }]
+  varqty;
+
+  @UI.identification: [{ position: 130, label: 'Gross WT. (With Pallet) In KGS.' }]
+  @UI.lineItem      : [{ position: 130, label: 'Gross WT. (With Pallet) In KGS.' }]
+  grosswt;
+
+  @UI.identification: [{ position: 140, label: 'Loading Port' }]
+  @UI.lineItem      : [{ position: 140, label: 'Loading Port' }]
+  loadport;
+
+  @UI.identification: [{ position: 150, label: 'Finish Wt' }]
+  @UI.lineItem      : [{ position: 150, label: 'Finish Wt' }]
+  finishwt;
+
+  @UI.identification: [{ position: 160, label: 'Net Wt' }]
+  @UI.lineItem      : [{ position: 160, label: 'Net Wt' }]
+  netwt;
+
+  @UI.identification: [{ position: 170, label: 'Total box' }]
+  @UI.lineItem      : [{ position: 170, label: 'Total box' }]
+  totbox;
+
+  @UI.identification: [{ position: 180, label: 'Single Box Weight' }]
+  @UI.lineItem      : [{ position: 180, label: 'Single Box Weight' }]
+  boxwt;
+
+  @UI.identification: [{ position: 190, label: 'Box Net Wt' }]
+  @UI.lineItem      : [{ position: 190, label: 'Box Net Wt' }]
+  boxnetwt;
+
+  @UI.identification: [{ position: 200, label: 'Pallet Type' }]
+  @UI.lineItem      : [{ position: 200, label: 'Pallet Type' }]
+  pallettype;
+
+  @UI.identification: [{ position: 210, label: 'Total pallet' }]
+  @UI.lineItem      : [{ position: 210, label: 'Total pallet' }]
+  totpallet;
+
+  @UI.identification: [{ position: 220, label: 'Pallet wt' }]
+  @UI.lineItem      : [{ position: 220, label: 'Pallet wt' }]
+  palletwt;
+
+  @UI.identification: [{ position: 230, label: 'FNL Code (Order Release Id)' }]
+  @UI.lineItem      : [{ position: 230, label: 'FNL Code (Order Release Id)' }]
+  fnlcode;
+
+  @UI.identification: [{ position: 240, label: 'PO#' }]
+  @UI.lineItem      : [{ position: 240, label: 'PO#' }]
+  ponum;
+    
+}

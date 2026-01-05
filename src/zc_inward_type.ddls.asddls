@@ -1,0 +1,18 @@
+
+@AccessControl.authorizationCheck: #NOT_REQUIRED
+@EndUserText.label: 'Gate Type Domain Values'
+
+@ObjectModel.dataCategory: #VALUE_HELP
+@ObjectModel.representativeKey: 'GateType'
+define view entity ZC_INWARD_TYPE
+  as select from DDCDS_CUSTOMER_DOMAIN_VALUE_T( 
+       p_domain_name: 'ZD_INWARD_TYPE' ) as dd07t
+{
+  @EndUserText.label: 'Gate Type'
+  @ObjectModel.text.element: ['GateTypeText']
+  key dd07t.value_low as GateType,
+
+  @EndUserText.label: 'Gate Type Text'
+  dd07t.text as GateTypeText
+}
+where dd07t.language = $session.system_language

@@ -1,0 +1,11 @@
+{
+  "formatVersion": "1",
+  "header": {
+    "description": "SAP Object Node Type ZQMT_INPROC_2",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "name": "ZQMT_INPROC_2",
+  "sapObjectType": "ZQMT_INPROC_2",
+  "rootNode": true
+}

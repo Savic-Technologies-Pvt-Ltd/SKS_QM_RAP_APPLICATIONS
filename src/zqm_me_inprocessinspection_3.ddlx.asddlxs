@@ -1,0 +1,116 @@
+@Metadata.layer: #CORE
+@UI: {
+  headerInfo: { typeName: 'Operation Text',
+                typeNamePlural: 'Operation Text',
+                title: { type: #STANDARD, label: 'Operation Text',value: 'InspectionSpecification' } }
+              }
+@UI.createHidden: true
+@UI.deleteHidden: true
+annotate entity ZQM_PR_InprocessInspection_3 with
+{
+  @UI.facet: [
+  //      { id:              'LOT_IP3_1',
+  //                     purpose:         #STANDARD,
+  //                     type:            #IDENTIFICATION_REFERENCE,
+  //                     label:           'Time',
+  //                     position:        10 },
+  {
+  //              label: 'Calculation',
+              id: 'Chart1',
+              type: #COLLECTION,
+              position: 20 ,
+              targetElement: '_item_calculation'},
+  //                    { parentId: 'Chart1' ,
+  //                    id:              'LOT_IP4',
+  //                      purpose:         #STANDARD,
+  //                      type:           #LINEITEM_REFERENCE,
+  //                        label:           'Inspection Lot Calculation',
+  //                      position:        20 ,
+  //                        targetElement: '_item_calculation',
+  //                      targetQualifier: 'Calculation'},
+
+                        {
+                        id:              'LOT_IP5',
+                      purpose:         #STANDARD,
+                      type:           #IDENTIFICATION_REFERENCE,
+                        label:           'Calculation Forumlas ',
+                      position:        30 ,
+                        targetElement: '_item_calculation',
+                      targetQualifier: 'Calculation_Fields'}
+  //                       { id:              'LOT_H1',
+  //              purpose:         #STANDARD,
+  //              type:           #IDENTIFICATION_REFERENCE,
+  //              label:           'Remark',
+  //              position:        40 ,
+  //              targetElement: '_Header',
+  //              targetQualifier: 'Remark'}
+
+                     ]
+  @UI: {  lineItem:       [ { position: 10 } ],identification: [{ position: 10 }]}
+
+  @EndUserText.label: 'Parameter'
+  InspectionSpecification;
+  @UI: {  lineItem:       [ { position: 12 } ] }
+  @EndUserText.label: 'Specification'
+  Specification;
+  @UI: {  lineItem:       [ { position: 15 } ]//,        identification: [ { position: 15 } ]
+  }
+  @EndUserText.label: 'Min'
+  InspSpecLowerLimit;
+  @UI: {  lineItem:       [ { position: 20 } ]//,  identification: [ { position: 20 } ]
+  }
+  @EndUserText.label: 'Max'
+  InspSpecUpperLimit;
+  //  @UI: {  lineItem:       [ { position: 25 , label: 'Type'} ]//,        identification: [ { position: 25 , label: 'Type' } ]
+  //  }
+  //  Ind;
+  //  @UI: {  lineItem:       [ { position: 30 , label: 'Time'} ]//,        identification: [ { position: 30 , label: 'Time' } ]
+  //   }
+  //  Time;
+  @UI: {  lineItem:       [ { position: 35 } ]//,          identification: [ { position: 35  } ]
+  }
+  @EndUserText.label: 'Result 1'
+  Res1;
+  @UI: {  lineItem:       [ { position: 36 } ]//,          identification: [ { position: 36  } ]
+  }
+  @EndUserText.label: 'Result 2'
+  Res2;
+  @UI: {  lineItem:       [ { position: 37 } ]//,       identification: [ { position: 37  } ]
+  }
+  @EndUserText.label: 'Result 3'
+  Res3;
+  //  @UI: {  lineItem:       [ { position: 38 } ]//,          identification: [ { position: 38  } ]
+  //  }
+  //  @EndUserText.label: 'Result 4'
+  //  Res4;
+  //
+  //  @UI: {  lineItem:       [ { position: 39 } ]//,          identification: [ { position: 39  } ]
+  //  }
+  //  @EndUserText.label: 'Result 5'
+  //  Res5;
+  //  @UI: {  lineItem:       [ { position: 40 } ]//,          identification: [ { position: 40  } ]
+  //   }
+  //  @EndUserText.label: 'Result 6'
+  //  Res6;
+  //  @UI: {  lineItem:       [ { position: 41 } ]//,          identification: [ { position: 41  } ]
+  //  }
+  //  @EndUserText.label: 'Result 7'
+  //  Res7;
+  //  @UI: {  lineItem:       [ { position: 42 } ]//,          identification: [ { position: 42  } ]
+  //  }
+  //  @EndUserText.label: 'Result 8'
+  //  Res8;
+  //  @UI: {  lineItem:       [ { position: 43 } ]//,          identification: [ { position: 43  } ]
+  //  }
+  //  @EndUserText.label: 'Result 9'
+  //  Res9;
+  //  @UI: {  lineItem:       [ { position: 44 } ]//,        identification: [ { position: 44  } ]
+  //  }
+  //  @EndUserText.label: 'Result 10'
+  //  Res10;
+  //  @UI: {  lineItem:       [ { position: 45 } ]//,          identification: [ { position: 45  } ]
+  //   }
+  //  @EndUserText.label: 'Result 11'
+  //  Res11;
+
+}

@@ -1,0 +1,6 @@
+@EndUserText.label: 'New Inprocess Inspection App'
+define service ZSD_INPROCESS_NEW {
+  expose ZQM_C_Inprocess_NEW;
+  expose ZQM_C_Inprocess_item_NEW;
+  expose ZQM_C_Inprocess_cHEM_NEW;
+}

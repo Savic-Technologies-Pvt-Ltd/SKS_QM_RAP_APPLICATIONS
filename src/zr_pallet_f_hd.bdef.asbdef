@@ -1,0 +1,57 @@
+managed implementation in class zbp_r_pallet_f_hd unique;
+strict ( 2 );
+
+with draft;
+define behavior for ZR_PALLET_F_HD //alias <alias_name>
+persistent table zsd_pallet_hd
+draft table zsd_pallet_hdd
+with additional save
+etag master LocalLastChangedOn
+lock master total etag ChangedOn
+authorization master ( instance )
+//etag master <field_name>
+{
+  create ( authorization : none );
+  update;
+  delete;
+    draft action Edit;
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Resume;
+    draft determine action Prepare;
+      field ( numbering : managed, readonly ) Cuuid;
+  association _Item { create; }
+    action getpdf result [1] $self;
+
+
+field( readonly ) Palletform;
+    action ( features : instance ) getItem parameter ZSD_DELIVERY_ABSTRACT result [1] $self;
+
+      determination createBookingFormNo on save { create; }
+
+side effects {
+
+                action getItem affects $self;
+  }
+}
+
+define behavior for ZR_PALLET_F_IT //alias <alias_name>
+persistent table zsd_pallet_it
+draft table zsd_pallet_itd
+
+lock dependent by _HDR
+authorization dependent by _HDR
+//etag master <field_name>
+{
+  update;
+  delete;
+  field ( readonly ) Cuuid, Delivery, Itemno,Pallettype,Poqty,Stock,Lotno,Qty,Partdesc,Catcode,Pono,Partno,vbeln,vbelp;
+  association _HDR{ with draft;}
+  determination calculateNoofBoxes on modify{ field qty_box; }
+  determination calculateGrossWeight on modify { field pallet_wt, box_wt;}
+  side effects {
+  field qty_box affects field no_of_boxes;
+  field pallet_wt affects field gross_wt;
+  field box_wt affects field gross_wt;
+  }
+}

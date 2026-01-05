@@ -1,0 +1,230 @@
+
+
+
+
+managed implementation in class zbp_qm_i_line_insp_new unique;
+strict ( 2 );
+with draft;
+
+define behavior for ZQM_I_line_insp_NEW //alias <alias_name>
+persistent table zqm_t_linein_HD
+
+draft table zqm_t_linein_HDD
+
+
+etag master LocalLastChangedOn
+lock master total etag ChangedOn
+authorization master ( instance )
+//etag master <field_name>
+{
+   create ( authorization : none );
+  update;
+  delete;
+   field ( features : instance ) inspectionlot, Material, plant, manufacturingorder, Batch, Qcstatus, MaterialDescription ,
+  materiallongtxt,CustomerName;
+  field ( numbering : managed, readonly ) Cuuid;
+    field ( mandatory : create )   ManufacturingOrder,Batch; // Batch;
+  determination createinsplot on save { create; }
+ action getpdf result [1] $self;
+  determination updateHeaderDetails on modify{ field manufacturingorder ; }
+
+    draft action Edit;
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Resume;
+  draft determine action Prepare;
+  association _Item { create; with draft; }
+
+   mapping for zqm_t_linein_HD
+
+    {
+    Cuuid = cuuid ;
+Inspectionlot = inspectionlot;
+Lotcreate = lotcreate;
+Startofinsp = startofinsp ;
+Endofinsp = endofinsp;
+Plant = plant ;
+Material = material                                    ;
+Customer                  =     Customer              ;
+Lotqty                     =    Lotqty                ;
+Baseunit                   =    Baseunit              ;
+Manufacturingorder         =    Manufacturingorder    ;
+Inspectionlotobjecttext    =    Inspectionlotobjecttext ;
+Batch                      =    Batch                 ;
+Supplier                   =    Supplier              ;
+Manufacturer               =    Manufacturer          ;
+Inspectionoperation        =    Inspectionoperation    ;
+Inspection                 =    Inspection            ;
+Salesorder                 =    Salesorder            ;
+Drgno                      =    Drgno                 ;
+RmSpecification            =    Rm_Specification       ;
+Grade                      =    Grade                 ;
+Partno                     =    Partno                ;
+Operationtext              =    Operationtext         ;
+Workcentertext             =    Workcentertext        ;
+Operationconfirmation      =    Operationconfirmation   ;
+Shift                      =    Shift                  ;
+Operatorname               =    Operatorname           ;
+Previousopt                =    Previousopt            ;
+Nextopt                    =    Nextopt                ;
+Filename                   =    Filename               ;
+Attachments                =    Attachments            ;
+Mimetype                   =    Mimetype               ;
+Dmt                        =    Dmt                    ;
+Vcd                        =    Vcd                     ;
+Dial                       =    Dial                   ;
+Dpmt                       =    Dpmt                   ;
+Pp                         =    Pp                     ;
+Gaugenogo                  =    Gaugenogo              ;
+Nogo                       =    Nogo                   ;
+Other                      =    Other                  ;
+Result1                    =    Result1                ;
+Result2                    =    Result2                ;
+Result3                    =    Result3                 ;
+Result4                    =    Result4                ;
+Result5                    =    Result5                ;
+Result6                    =    Result6                ;
+Result7                    =    Result7                ;
+Result8                    =    Result8                ;
+Result9                    =    Result9                ;
+Result10                   =    Result10               ;
+Result11                   =    Result11               ;
+Result12                   =    Result12                 ;
+Result13                   =    Result13                ;
+Result14                   =    Result14                ;
+Result15                   =    Result15                ;
+Result16                   =    Result16                ;
+Qcstatus                   =    Qcstatus                ;
+Snapgauge                  =    Snapgauge               ;
+Pokayokecheck              =    Pokayokecheck           ;
+Loadverification           =    Loadverification        ;
+Machinecleanins            =    Machinecleanins          ;
+Qa5pcsstat                 =    Qa5pcsstat              ;
+Chutecleanop               =    Chutecleanop            ;
+Chutpieces                 =    Chutpieces              ;
+Inspobs                    =    Inspobs                 ;
+Machpcs                    =    Machpcs                 ;
+Rawmaterial                =    Rawmaterial             ;
+Subqa2prd                  =    Subqa2prd               ;
+Subprd2qa                  =    Subprd2qa               ;
+Obs5pcs1st                 =    Obs5pcs1st               ;
+Obslast                    =    Obslast                 ;
+Obsfinal                   =    Obsfinal                ;
+Rejqty                     =    Rejqty                  ;
+Materialdescription        =    Materialdescription     ;
+Customername               =    Customername            ;
+QtyChkd                    =    qty_chkd                 ;
+InvNo                      =    Inv_No                   ;
+InvDate                    =    Inv_Date                 ;
+InvQty                     =    Inv_Qty                   ;
+CustDraw                   =    Cust_Draw                ;
+SksDraw                    =    Sks_Draw                 ;
+Materiallongtxt            =    Materiallongtxt         ;
+FilenameUl                 =    filename_ul              ;
+AttachmentsUl              =    attachments_ul           ;
+MimetypeUl                 =    mimetype_ul             ;
+Formtype                   =    Formtype                ;
+Remark                     =    Remark                  ;
+Lever                      =    Lever                    ;
+Basedon                    =    Basedon                 ;
+PoNo                       =    Po_No                    ;
+ApprovedBy                 =    Approved_By              ;
+ReportedBy                 =    Reported_By              ;
+CheckedVisually            =    Checked_Visually         ;
+CreatedOn                  =    Created_On               ;
+CreatedBy                  =    Created_By               ;
+ChangedOn                  =    Changed_On               ;
+ChangedBy                  =    Changed_By                 ;
+LocalLastChangedOn         =    local_last_changed_on      ;
+LocalLastChangedBy         =    local_last_changed_by      ;
+
+
+    }
+}
+
+define behavior for ZQM_I_line_insp_item_NEW //alias <alias_name>=
+with unmanaged save
+//persistent table zqm_t_pdir_IT
+
+draft table zqm_t_linein_ITD
+
+
+lock dependent by _HDR
+authorization dependent by _HDR
+//etag master <field_name>
+{
+  update;
+  delete;
+  field ( readonly ) Cuuid, Boooperationinternalid, Inspectionlotitem, Inspectionlot, Boocharacteristicversion, Inspectionplangroup,
+  resulttxt1, resulttxt2, resulttxt3, resulttxt4, resulttxt5, resulttxt6, resulttxt7, resulttxt8, resulttxt9, resulttxt10, resulttxt11, resulttxt12, resulttxt13, resulttxt14, resulttxt15, resulttxt16,
+result1mm,
+result2mm , result3mm ,result4mm , result5mm , result6mm , result7mm ,
+result8mm ,result9mm , result10mm , result11mm , result12mm ,
+result13mm , result14mm ,result15mm ,result16mm ,
+  InspSpecTargetValue,InspSpecUpperLimit,InspSpecLowerLimit,InspectionSpecification,Specification,
+   result1time  ,
+ result2time    ,
+ result3time     ,
+ result4time      ,
+ result5time       ,
+ result6time        ,
+ result7time         ,
+ result8time          ,
+ result9time           ,
+ result10time           ,
+ result11time           ,
+ result12time           ,
+ result13time           ,
+ result14time           ,
+ result15time           ,
+ result16time
+
+  ;
+  association _HDR;
+    association _RES { create; with draft; }
+
+}
+
+
+define behavior for ZQM_I_RESULT_NEW
+ // with unmanaged save
+persistent table zqm_t_res_IT
+
+draft table zqm_t_res_ITD
+
+lock dependent by _HDR
+authorization dependent by _HDR
+{
+  update;
+  delete;
+
+  field ( numbering : managed, readonly ) Cuuidresult;
+
+  field ( features : instance ) Result1, Result2, Result3, Result4, Result5, Result6, Result7, Result8,
+  Result9, Result10, Result11, Result12;
+
+  field ( features : instance ) RecordingDateTime;
+
+  determination update_features on modify { field RecordingDateTime; }
+
+  field ( readonly ) Cuuid, Inspectionlot, Inspectionlotitem, InspectionPlanGroup,
+  BOOOperationInternalID, BOOCharacteristicVersion;
+
+  ancestor association _HDR { with draft; }
+  association _SPC { with draft; }
+
+  mapping for ZQM_BA_LINSP_RES
+  {
+   inspectionlot = Inspectionlot;
+  InspectionPlanGroup = InspectionPlanGroup;
+  BOOOperationInternalID = BOOOperationInternalID;
+
+  InspectionLotItem = InspectionLotItem;
+  BOOCharacteristicVersion = BOOCharacteristicVersion;
+  Cuuidresult = Cuuidresult;
+  }
+
+
+
+
+}

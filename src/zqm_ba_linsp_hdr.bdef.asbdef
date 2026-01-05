@@ -1,0 +1,154 @@
+managed implementation in class zbp_qm_ba_linsp_hdr1 unique;
+strict ( 2 );
+with draft;
+
+define behavior for ZQM_BA_LINSP_HDR
+persistent table zqm_t_linsp_hdr
+draft table zqm_t_linsp_hdrd
+lock master total etag Inspectionlot
+authorization master ( none )
+{
+  create ( authorization : none );
+  update;
+  delete;
+
+  field ( numbering : managed, readonly ) cuuid;
+  field ( readonly ) Inspectionlot, Lotcreated, LotCreatedTime, Startofinspection, Endofinspection, Customer,
+  Lotquantity, Lotquantityunit, DRGno, Grade, Rmspecification, Partnumber;
+  field ( mandatory : create, readonly : update ) Material, Plant, Productionorder, Batch;
+
+  determination createlineinsplot on save { create; }
+
+  association _OPR { create; with draft; }
+
+  draft action Edit;
+  draft action Discard;
+  draft action Resume;
+  draft action Activate optimized;
+  draft determine action Prepare;
+    action getpdf result [1] $self;
+
+
+}
+
+define behavior for ZQM_BA_LINSP_OPR
+with unmanaged save
+draft table zqm_t_linsp_oprd
+lock dependent by _HDR
+authorization dependent by _HDR
+{
+  update;
+  delete;
+
+  field ( readonly ) Cuuid, Inspectionlot, InspectionPlanGroup,
+  BOOOperationInternalID, Operationtext;
+
+  association _HDR { with draft; }
+  association _DT { create; with draft; }
+
+   mapping for ZQM_BA_LINSP_OPR
+  {
+  inspectionlot = Inspectionlot;
+  InspectionPlanGroup = InspectionPlanGroup;
+  BOOOperationInternalID = BOOOperationInternalID;
+  }
+}
+
+define behavior for ZQM_BA_LINSP_DT
+persistent table zqm_t_linsp_dt
+draft table zqm_t_linsp_dtd
+lock dependent by _HDR
+authorization dependent by _HDR
+{
+  update;
+  delete;
+
+  field ( numbering : managed, readonly ) cuuiddate;
+  field ( readonly ) Cuuid, Inspectionlot, InspectionPlanGroup, BOOOperationInternalID;
+  field ( mandatory : create, readonly : update ) Operationdate, Shift;
+
+  association _HDR { with draft; }
+  association _OPR { with draft; }
+
+  association _SPC { create; with draft; }
+
+     mapping for ZQM_BA_LINSP_DT
+  {
+
+  inspectionlot = Inspectionlot;
+  InspectionPlanGroup = InspectionPlanGroup;
+  BOOOperationInternalID = BOOOperationInternalID;
+  cuuiddate = cuuiddate;
+  }
+
+}
+
+define behavior for ZQM_BA_LINSP_SPC with unmanaged save
+//persistent table zqm_t_linsp_spc
+draft table zqm_t_linsp_spcd
+lock dependent by _HDR
+authorization dependent by _HDR
+{
+  update;
+  delete;
+
+  determination resulttxt on save { create; }
+
+  field ( readonly ) Cuuid, cuuiddate, Inspectionlot, InspectionPlanGroup,
+  BOOOperationInternalID, BOOCharacteristicVersion, InspectionSpecification,
+  InspectionLotItem, InspSpecUpperLimit, InspSpecLowerLimit, Specification, InspSpecTargetValue;
+
+  ancestor association _HDR { with draft; }
+  association _DT { with draft; }
+
+
+  association _RES { create; with draft; }
+
+    mapping for ZQM_BA_LINSP_SPC
+  {
+
+  inspectionlot = Inspectionlot;
+  InspectionPlanGroup = InspectionPlanGroup;
+  BOOOperationInternalID = BOOOperationInternalID;
+  cuuiddate = cuuiddate;
+  InspectionLotItem = InspectionLotItem;
+  BOOCharacteristicVersion = BOOCharacteristicVersion;
+  }
+
+}
+
+define behavior for ZQM_BA_LINSP_RES // with unmanaged save
+persistent table zqm_t_linsp_res
+draft table zqm_t_linsp_resd
+lock dependent by _HDR
+authorization dependent by _HDR
+{
+  update;
+  delete;
+
+  field ( numbering : managed, readonly ) Cuuidresult;
+
+  field ( features : instance ) Result1, Result2, Result3, Result4, Result5, Result6, Result7, Result8,
+  Result9, Result10, Result11, Result12;
+
+  field ( features : instance ) RecordingDateTime;
+
+  determination update_features on modify { field RecordingDateTime; }
+
+  field ( readonly ) Cuuid, Cuuiddate, Inspectionlot, Inspectionlotitem, InspectionPlanGroup,
+  BOOOperationInternalID, BOOCharacteristicVersion;
+
+  ancestor association _HDR { with draft; }
+  association _SPC { with draft; }
+
+  mapping for ZQM_BA_LINSP_RES
+  {
+   inspectionlot = Inspectionlot;
+  InspectionPlanGroup = InspectionPlanGroup;
+  BOOOperationInternalID = BOOOperationInternalID;
+  cuuiddate = cuuiddate;
+  InspectionLotItem = InspectionLotItem;
+  BOOCharacteristicVersion = BOOCharacteristicVersion;
+  Cuuidresult = Cuuidresult;
+  }
+}

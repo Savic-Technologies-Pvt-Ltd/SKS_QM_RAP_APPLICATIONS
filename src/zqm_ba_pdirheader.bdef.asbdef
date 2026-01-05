@@ -1,0 +1,254 @@
+managed implementation in class zbp_qm_ba_pdirheader unique;
+strict ( 2 );
+with draft;
+
+define behavior for ZQM_BA_PDIRHeader alias Header
+persistent table zqm_t_pdir_1
+draft table zqm_t_pdir_1d
+etag master LocalLastChangedOn
+lock master total etag ChangedOn
+authorization master ( instance )
+{
+
+  create ( authorization : none );
+  update;
+  delete;
+  field ( features : instance ) inspectionlot, Material, plant, manufacturingorder, Batch, Qcstatus, MaterialDescription ,
+  materiallongtxt,CustomerName;
+  field ( numbering : managed, readonly ) Cuuid;
+  field ( mandatory : create ) Material, Plant, ManufacturingOrder,Batch; // Batch;
+  field ( readonly ) Baseunit, EndOfInsp, Inspection, LotQty, Lotcreate,
+  Manufacturer,  StartOfInsp, Supplier, InspectionOperation,customer,salesorder,
+  InspectionLotObjectText, DRGno, Grade, PartNo, Attachments, CreatedBy,CreatedOn,
+  ChangedOn,
+  ChangedBy,
+  LocalLastChangedOn,
+  LocalLastChangedBy;
+  determination createinsplot on save { create; }
+  draft action Edit;
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Resume;
+  draft determine action Prepare;
+  association _Item { create; with draft; }
+  association _OperationItem { create; with draft; }
+
+
+  action getpdf result [1] $self;
+  determination updateHeaderDetails on modify{ field manufacturingorder ; }
+
+
+
+  mapping for zqm_t_pdir_1
+    {
+      Cuuid                   = cuuid;
+      Inspectionlot           = inspectionlot;
+      Lotcreate               = lotcreate;
+      Startofinsp             = startofinsp;
+      Endofinsp               = endofinsp;
+      Plant                   = plant;
+      Material                = material;
+      Customer                = customer;
+      CustomerName = CustomerName;
+      Lotqty                  = lotqty;
+      Baseunit                = baseunit;
+      Manufacturingorder      = manufacturingorder;
+      Inspectionlotobjecttext = inspectionlotobjecttext;
+      Batch                   = batch;
+      Supplier                = supplier;
+      Manufacturer            = manufacturer;
+      Inspectionoperation     = inspectionoperation;
+      Inspection              = inspection;
+      Salesorder              = salesorder;
+      Drgno                   = drgno;
+      RmSpecification         = rm_specification;
+      Grade                   = grade;
+      Partno                  = partno;
+      Operationtext           = operationtext;
+      Workcentertext          = workcentertext;
+      Operationconfirmation   = operationconfirmation;
+      Shift                   = shift;
+      Operatorname            = operatorname;
+      Previousopt             = previousopt;
+      Nextopt                 = nextopt;
+      Filename                = filename;
+      Attachments             = attachments;
+      Mimetype                = mimetype;
+      Dmt                     = dmt;
+      Vcd                     = vcd;
+      Dial                    = dial;
+      Dpmt                    = dpmt;
+      Pp                      = pp;
+      Gaugenogo               = gaugenogo;
+      Nogo                    = nogo;
+      Other                   = other;
+      Qcstatus                = qcstatus;
+      reported_by = reported_by;
+      approved_by = approved_by;
+      po_no = po_no;
+      checked_visually = checked_visually;
+     qty_chkd = qty_chkd;
+     inv_no = inv_no;
+     inv_date = inv_date;
+     inv_qty = inv_qty;
+     cust_draw = cust_draw;
+     formtype = formtype;
+     remark = remark;
+     lever = lever;
+     basedon = basedon;
+     sks_draw = sks_draw;
+
+      CreatedOn               = created_on;
+      CreatedBy               = created_by;
+      ChangedOn               = changed_on;
+      ChangedBy               = changed_by;
+      LocalLastChangedOn      = local_last_changed_on;
+      LocalLastChangedBy      = local_last_changed_by;
+    }
+
+
+}
+
+define behavior for ZQM_BA_PDIRItem //alias <alias_name>
+persistent table zqm_t_pdir_2
+draft table zqm_t_pdir_2d
+lock dependent by _Head
+authorization dependent by _Head
+//etag master <field_name>
+{
+
+  update;
+  delete;
+
+  field ( readonly : update )
+  Cuuid, Inspectionlot, InspectionLotItem;
+
+  field ( readonly )
+  CreatedBy,
+  ChangedOn,
+  ChangedBy,
+  LocalLastChangedOn,
+  LocalLastChangedBy;
+
+  association _Head { with draft; }
+
+  mapping for zqm_t_pdir_2
+    {
+      Cuuid              = cuuid;
+      Inspectionlot      = inspectionlot;
+      InspectionLotItem  = inspectionlotitem;
+      Operationtext      = operationtext;
+      ShifDate           = shif_date;
+      ShiftTime          = shift_time;
+      ParameterName      = parameter_name;
+      Specification      = specification;
+      MinValue           = min_value;
+      MaxValue           = max_value;
+      RecTime1           = rec_time1;
+      RecTime2           = rec_time2;
+      RecTime3           = rec_time3;
+      Result1            = result_1;
+      Result2            = result_2;
+      Result3            = result_3;
+      CreatedOn          = created_on;
+      CreatedBy          = created_by;
+      ChangedOn          = changed_on;
+      ChangedBy          = changed_by;
+      LocalLastChangedOn = local_last_changed_on;
+      LocalLastChangedBy = local_last_changed_by;
+    }
+
+}
+
+
+
+define behavior for ZQM_PDIR_OPERTION_LIST
+with unmanaged save
+draft table zqm_t_pdir_oprd
+lock dependent by _HDR
+authorization dependent by _HDR
+{
+  update;
+  delete;
+
+  field ( readonly ) Cuuid, Inspectionlot, InspectionPlanGroup,
+  BOOOperationInternalID, Operationtext;
+
+  association _HDR { with draft; }
+    association _SPC { with draft; }
+
+    mapping for zqm_t_pdir_1
+    {
+
+
+    result1 = result1;
+    result2 = result2;
+    result3 = result3;
+    result4 = result4;
+    result5 = result5;
+    result6 = result6;
+    result7 = result7;
+    result8 = result8;
+    result9 = result9;
+    result10 = result10;
+
+    }
+
+}
+
+
+define behavior for ZQM_PDIR_SPECIFICATION_LIST with unmanaged save
+//persistent table zqm_t_linsp_spc
+draft table zqm_t_pdir_spcd
+lock dependent by _HDR
+authorization dependent by _HDR
+{
+  update;
+  delete;
+
+  determination resulttxt on save { create; }
+
+  field ( readonly ) Cuuid, Inspectionlot, InspectionPlanGroup,
+  BOOOperationInternalID, BOOCharacteristicVersion, InspectionSpecification,
+  InspectionLotItem, InspSpecUpperLimit, InspSpecLowerLimit, Specification, InspSpecTargetValue;
+
+  ancestor association _HDR { with draft; }
+  association _OperationItem { with draft; }
+
+
+    determination field_readonly on modify   { field Result1  ; }
+
+
+   field ( features : instance ) Result1;
+
+  side effects
+  {
+        field Result1 affects $self;
+
+
+        field res_mark1_ind affects $self;
+
+  }
+
+
+   mapping for zqm_t_pdir_spc //  mapping for zta_qm_ins_lot_i
+    {
+      cuuid               = cuuid;
+      Inspectionlot       = inspectionlot;
+      InspectionLotItem         = inspectionlotitem;
+      Specification       = specification;
+      InspectionPlanGroup = inspectionplangroup ;
+
+     BOOCharacteristicVersion = boocharacteristicversion;
+     BOOOperationInternalID = boooperationinternalid;
+
+      Result1             = result1 ;
+res_mark1_ind = res_mark1_ind;
+res_mark1 = res_mark1;
+
+
+    }
+
+
+
+}

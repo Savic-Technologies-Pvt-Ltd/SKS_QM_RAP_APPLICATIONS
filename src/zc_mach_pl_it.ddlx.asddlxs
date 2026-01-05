@@ -1,0 +1,82 @@
+@Metadata.layer: #CORE
+annotate entity ZC_MACH_PL_IT
+
+    with 
+{
+
+
+ @UI.facet: [
+  {
+    id      : 'GeneralInfo',
+    label   : 'Observations',
+    type    : #IDENTIFICATION_REFERENCE,
+    purpose : #STANDARD,
+    position: 10
+  }]
+@UI.identification: [{ position: 10, label: 'Item No' }]
+@UI.lineItem      : [{ position: 10, label: 'Item No' }]
+Itemno;
+
+@UI.identification: [{ position: 20, label: 'Work Order' }]
+@UI.lineItem      : [{ position: 20, label: 'Work Order' }]
+workorder;
+
+@UI.identification: [{ position: 30, label: 'Work Center' }]
+@UI.lineItem      : [{ position: 30, label: 'Work Center' }]
+workcenter;
+@UI.identification: [{ position: 35, label: 'Work Center Name' }]
+@UI.lineItem      : [{ position: 35, label: 'Work Center Name' }]
+workcentername;
+//@UI.identification: [{ position: 40, label: 'distributionchannel' }]
+//@UI.lineItem      : [{ position: 40, label: 'distributionchannel' }]
+//distributionchannel;
+//
+//@UI.identification: [{ position: 50, label: 'catalogcode' }]
+//@UI.lineItem      : [{ position: 50, label: 'catalogcode' }]
+//catalogcode;
+
+@UI.identification: [{ position: 60, label: 'Description' }]
+@UI.lineItem      : [{ position: 60, label: 'Description' }]
+description;
+
+//@UI.identification: [{ position: 70, label: 'toollayout' }]
+//@UI.lineItem      : [{ position: 70, label: 'toollayout' }]
+@EndUserText.label: 'Tool Layout'
+toollayout;
+//
+//@UI.identification: [{ position: 80, label: 'sksdrgno' }]
+//@UI.lineItem      : [{ position: 80, label: 'sksdrgno' }]
+@EndUserText.label: 'SKS Drawing No'
+
+sksdrgno;
+//
+//@UI.identification: [{ position: 90, label: 'rmgrade' }]
+//@UI.lineItem      : [{ position: 90, label: 'rmgrade' }]
+@EndUserText.label: 'RM Grade'
+
+rmgrade;
+
+
+//@UI.identification: [{ position: 110, label: 'customer_name' }]
+//@UI.lineItem      : [{ position: 110, label: 'customer_name' }]
+@EndUserText.label: 'Customer Name'
+
+customer_name;
+//
+//@UI.identification: [{ position: 120, label: 'hardness' }]
+//@UI.lineItem      : [{ position: 120, label: 'hardness' }]
+@EndUserText.label: 'Hardness'
+
+hardness;
+
+@UI.identification: [{ position: 130, label: 'Machine' }]
+@UI.lineItem      : [{ position: 130, label: 'Machine' }]
+machine;
+@UI.identification: [{ position: 140, label: 'Serial No' }]
+@UI.lineItem      : [{ position: 140, label: 'Serial No' }]
+ext_ser;
+
+@UI.identification: [{ position: 150, label: 'Speed' }]
+@UI.lineItem      : [{ position: 150, label: 'Speed' }]
+speed;
+}

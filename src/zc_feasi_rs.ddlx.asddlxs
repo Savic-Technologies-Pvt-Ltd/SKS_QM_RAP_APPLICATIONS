@@ -1,0 +1,42 @@
+@Metadata.layer: #CORE
+annotate entity ZC_FEASI_RS
+    with 
+{
+
+   @UI.facet: [
+  {
+    id      : 'GeneralInfo',
+    label   : 'Operation',
+    type    : #IDENTIFICATION_REFERENCE,
+    purpose : #STANDARD,
+    position: 10
+  }]
+
+   Cuuid;
+       @UI.identification: [{ position: 10, label: 'Itemno' }]
+@UI.lineItem      : [{ position: 10, label: 'Itemno' }]
+   Itemno;
+       @UI.identification: [{ position: 20, label: 'Area' }]
+@UI.lineItem      : [{ position: 20, label: 'Area' }]
+
+   Area;
+       @UI.identification: [{ position: 30, label: 'High' }]
+@UI.lineItem      : [{ position: 30, label: 'High' }]
+   High;
+       @UI.identification: [{ position: 40, label: 'Medium' }]
+@UI.lineItem      : [{ position: 40, label: 'Medium' }]
+   Medium;
+       @UI.identification: [{ position: 50, label: 'Low' }]
+@UI.lineItem      : [{ position: 50, label: 'Low' }]
+   Low;
+    @UI.identification: [{ position: 60, label: 'High' }]
+@UI.lineItem      : [{ position: 60, label: 'High' }]
+    high_value  ;
+     @UI.identification: [{ position: 70, label: 'Medium' }]
+@UI.lineItem      : [{ position: 70, label: 'Medium' }]
+  medium_value ;
+   @UI.identification: [{ position: 80, label: 'Low' }]
+@UI.lineItem      : [{ position: 80, label: 'Low' }]
+  low_value  ;
+    
+}

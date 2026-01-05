@@ -1,0 +1,177 @@
+@Metadata.layer: #CORE
+
+@UI: {
+  headerInfo: { typeName: 'Operation Text',
+                typeNamePlural: 'Operation Text',
+                title: { type: #STANDARD, label: 'Operation Text',value: 'Operationtext' } }
+              }
+annotate entity ZQM_C_PDIR_OPERTION_LIST
+    with 
+{
+  @UI.facet: [ 
+     {  position : 10,
+      label    : 'PDIR',
+             id : 'DT',
+             purpose : #STANDARD,
+             type : #IDENTIFICATION_REFERENCE
+          },
+  
+          {
+        id            : 'SPC',
+        purpose       : #STANDARD,
+        type          : #LINEITEM_REFERENCE,
+        label         : 'Specifications',
+        position      : 30,
+        targetElement : '_SPC'
+          } ,
+      {
+            id             : 'Fieldgroup4ID',
+            type           : #IDENTIFICATION_REFERENCE,
+            label          : 'Inspection Accept/Reject',
+            targetQualifier: 'Fieldgroup4',
+            position       : 40
+      },
+          {
+            id             : 'Fieldgroup5ID',
+            type           : #IDENTIFICATION_REFERENCE,
+            label          : 'Remarks',
+            targetQualifier: 'Fieldgroup5',
+            position       : 50
+          },
+          {
+            id             : 'Fieldgroup6ID',
+            type           : #IDENTIFICATION_REFERENCE,
+            label          : 'QA Status',
+            targetQualifier: 'Fieldgroup6',
+            position       : 60
+          } ]
+
+  @EndUserText.label: 'Operationtext'
+  @UI.identification: [ { position: 20, label: 'Operationtext' } ]
+  @UI.lineItem:       [ { position: 20, label: 'Operationtext' } ]
+    Operationtext;
+      @UI.identification: [ { position: 30, label: 'Visually Checked For' } ]
+    
+    checked_visually;
+     @UI.identification: [{ position: 10, qualifier: 'Fieldgroup4', label: 'Result 1 Acc/Rej' }]
+  @Consumption.valueHelpDefinition: [{ entity:{ name: 'ZQM_BA_LINSP_ACCREJ_VH' , element: 'Text'} }]
+  result1;
+
+  @UI.identification: [{ position: 20, qualifier: 'Fieldgroup4', label: 'Result 2 Acc/Rej' }]
+  @Consumption.valueHelpDefinition: [{ entity:{ name: 'ZQM_BA_LINSP_ACCREJ_VH' , element: 'Text'} }]
+  result2;
+
+  @UI.identification: [{ position: 30, qualifier: 'Fieldgroup4', label: 'Result 3 Acc/Rej' }]
+  @Consumption.valueHelpDefinition: [{ entity:{ name: 'ZQM_BA_LINSP_ACCREJ_VH' , element: 'Text'} }]
+  result3;
+
+  @UI.identification: [{ position: 40, qualifier: 'Fieldgroup4', label: 'Result 4 Acc/Rej' }]
+  @Consumption.valueHelpDefinition: [{ entity:{ name: 'ZQM_BA_LINSP_ACCREJ_VH' , element: 'Text'} }]
+  result4;
+
+  @UI.identification: [{ position: 50, qualifier: 'Fieldgroup4', label: 'Result 5 Acc/Rej' }]
+  @Consumption.valueHelpDefinition: [{ entity:{ name: 'ZQM_BA_LINSP_ACCREJ_VH' , element: 'Text'} }]
+  result5;
+
+  @UI.identification: [{ position: 60, qualifier: 'Fieldgroup4', label: 'Result 6 Acc/Rej' }]
+  @Consumption.valueHelpDefinition: [{ entity:{ name: 'ZQM_BA_LINSP_ACCREJ_VH' , element: 'Text'} }]
+  result6;
+
+  @UI.identification: [{ position: 70, qualifier: 'Fieldgroup4', label: 'Result 7 Acc/Rej' }]
+  @Consumption.valueHelpDefinition: [{ entity:{ name: 'ZQM_BA_LINSP_ACCREJ_VH' , element: 'Text'} }]
+  result7;
+
+  @UI.identification: [{ position: 80, qualifier: 'Fieldgroup4', label: 'Result 8 Acc/Rej' }]
+  @Consumption.valueHelpDefinition: [{ entity:{ name: 'ZQM_BA_LINSP_ACCREJ_VH' , element: 'Text'} }]
+  result8;
+
+  @UI.identification: [{ position: 90, qualifier: 'Fieldgroup4', label: 'Result 9 Acc/Rej' }]
+  @Consumption.valueHelpDefinition: [{ entity:{ name: 'ZQM_BA_LINSP_ACCREJ_VH' , element: 'Text'} }]
+  result9;
+
+  @UI.identification: [{ position: 100, qualifier: 'Fieldgroup4', label: 'Result 10 Acc/Rej' }]
+  @Consumption.valueHelpDefinition: [{ entity:{ name: 'ZQM_BA_LINSP_ACCREJ_VH' , element: 'Text'} }]
+  result10;
+
+  @UI.identification: [{ position: 110, qualifier: 'Fieldgroup4', label: 'Result 11 Acc/Rej' }]
+  @Consumption.valueHelpDefinition: [{ entity:{ name: 'ZQM_BA_LINSP_ACCREJ_VH' , element: 'Text'} }]
+  result11;
+  
+   @UI.identification: [{ position: 120, qualifier: 'Fieldgroup4', label: 'Result 12 Acc/Rej' }]
+  @Consumption.valueHelpDefinition: [{ entity:{ name: 'ZQM_BA_LINSP_ACCREJ_VH' , element: 'Text'} }]
+  result12;
+  
+   @UI.identification: [{ position: 130, qualifier: 'Fieldgroup4', label: 'Result 13 Acc/Rej' }]
+  @Consumption.valueHelpDefinition: [{ entity:{ name: 'ZQM_BA_LINSP_ACCREJ_VH' , element: 'Text'} }]
+  result13;
+  
+   @UI.identification: [{ position: 140, qualifier: 'Fieldgroup4', label: 'Result 14 Acc/Rej' }]
+  @Consumption.valueHelpDefinition: [{ entity:{ name: 'ZQM_BA_LINSP_ACCREJ_VH' , element: 'Text'} }]
+  result14;
+  
+   @UI.identification: [{ position: 150, qualifier: 'Fieldgroup4', label: 'Result 15 Acc/Rej' }]
+  @Consumption.valueHelpDefinition: [{ entity:{ name: 'ZQM_BA_LINSP_ACCREJ_VH' , element: 'Text'} }]
+  result15;
+  
+   @UI.identification: [{ position: 160, qualifier: 'Fieldgroup4', label: 'Result 16 Acc/Rej' }]
+  @Consumption.valueHelpDefinition: [{ entity:{ name: 'ZQM_BA_LINSP_ACCREJ_VH' , element: 'Text'} }]
+  result16;
+  @UI.identification: [{ position: 10, qualifier: 'Fieldgroup6', label: 'QC Status' }]
+  @Consumption.valueHelpDefinition: [{ entity:{ name: 'ZQM_VH_ILOT_QC_STS' ,element: 'Text' } }]
+  qcstatus;
+  
+  
+    // === Remarks tab (Fieldgroup5) ===
+  @UI.identification: [{ position: 10, qualifier: 'Fieldgroup5', label: 'Snap Gauge Availability' }]
+  snapgauge;
+
+  @UI.identification: [{ position: 20, qualifier: 'Fieldgroup5', label: 'Poka Yoke Check' }]
+  pokayokecheck;
+
+  @UI.identification: [{ position: 30, qualifier: 'Fieldgroup5', label: 'Load Verification' }]
+  loadverification;
+
+  @UI.identification: [{ position: 40, qualifier: 'Fieldgroup5', label: 'Machine Cleaning Obs. by Superviser' }]
+  machinecleanins;
+
+//  @UI.identification: [{ position: 50, qualifier: 'Fieldgroup5', label: 'QA 5 Pcs Approval Status' }]
+//  qa5pcsstat;
+
+  @UI.identification: [{ position: 60, qualifier: 'Fieldgroup5', label: 'Chute Clean Obs. by Operator' }]
+  chutecleanop;
+
+  @UI.identification: [{ position: 70, qualifier: 'Fieldgroup5', label: 'No of Pieces in Chute' }]
+  chutpieces;
+
+  @UI.identification: [{ position: 80, qualifier: 'Fieldgroup5', label: 'Observations by Inspector' }]
+  @UI.multiLineText: true
+  inspobs;
+
+  @UI.identification: [{ position: 90, qualifier: 'Fieldgroup5', label: 'No of Pieces in and arround Machine' }]
+  machpcs;
+
+  @UI.identification: [{ position: 100, qualifier: 'Fieldgroup5', label: 'Raw Material' }]
+  rawmaterial;
+
+  //  @UI.identification: [{ position: 110, qualifier: 'Fieldgroup5', label: 'Submited to QA by Production Time' }]
+  //  Subqa2prd;
+  //
+  //  @UI.identification: [{ position: 120, qualifier: 'Fieldgroup5', label: 'Submited to Production by QA Time' }]
+  //  Subprd2qa;
+
+  //  @UI.identification: [{ position: 130, qualifier: 'Fieldgroup5', label: 'Last Piece Observation' }]
+  //  Obs5pcs1st;
+
+  @UI.identification: [{ position: 140, qualifier: 'Fieldgroup5', label: 'Final Observation' }]
+  @UI.multiLineText: true
+  obslast;
+
+//  @UI.identification: [{ position: 150, qualifier: 'Fieldgroup5', label: 'Rejection Quantity' }]
+//  obsfinal;
+
+  @UI.identification: [{ position: 160, qualifier: 'Fieldgroup5', label: 'Rejected Qty' }]
+  rejqty;
+  
+  
+      
+}

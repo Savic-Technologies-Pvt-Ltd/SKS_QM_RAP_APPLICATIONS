@@ -1,0 +1,27 @@
+projection;
+strict ( 2 );
+use draft;
+
+define behavior for ZC_BOOKING_F_HD //alias <alias_name>
+{
+  use create;
+  use update;
+  use delete;
+
+  use action Edit;
+  use action Activate;
+  use action Discard;
+  use action Resume;
+  use action Prepare;
+use action getItem;
+use action getpdf;
+  use association _Item { create; with draft; }
+}
+
+define behavior for ZC_BOOKING_F_IT //alias <alias_name>
+{
+  use update;
+  use delete;
+
+  use association _HDR { with draft; }
+}

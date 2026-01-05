@@ -1,0 +1,6 @@
+@EndUserText.label: 'Downtime Application'
+define service ZC_DOWNTIME_HD {
+  expose ZC_DOWNTIME_HD;
+  expose ZC_DOWNTIME_IT;
+  expose ZC_DOWNTIME_RE;
+}

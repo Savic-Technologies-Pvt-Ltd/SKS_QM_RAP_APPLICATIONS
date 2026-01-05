@@ -1,0 +1,7 @@
+projection;
+strict ( 2 );
+
+define behavior for ZC_PROD_LOG_HD //alias <alias_name>
+{
+use action postProductionOrder;
+}

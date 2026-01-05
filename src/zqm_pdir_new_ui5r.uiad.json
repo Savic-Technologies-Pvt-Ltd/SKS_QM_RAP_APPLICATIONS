@@ -1,0 +1,34 @@
+{
+  "formatVersion": "2",
+  "header": {
+    "description": "An SAP Fiori application.",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "generalInformation": {
+    "appType": "ui5",
+    "catalogId": "SAP_TC_UI5_REPO_UIAD",
+    "targetMappingTitle": "PDIR App"
+  },
+  "ui5AppDetails": {
+    "appId": "zqmpdirnew"
+  },
+  "navigation": {
+    "targetMappingId": "UI5R_76B3A48F347EB36708EAF8A08EB06F9AEC0DE20B_TM",
+    "semanticObject": "ZQM_PDIR_NEWAPP",
+    "action": "manage",
+    "desktop": true,
+    "tablet": true,
+    "phone": true
+  },
+  "tiles": [
+    {
+      "id": "UI5R_76B3A48F347EB36708EAF8A08EB06F9AEC0DE20B_AL",
+      "tileType": "static",
+      "isDefault": true,
+      "standard": {
+        "title": "PDIR App"
+      }
+    }
+  ]
+}

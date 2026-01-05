@@ -1,0 +1,90 @@
+managed implementation in class zbp_r_feasi_hd unique;
+strict ( 2 );
+with draft;
+
+define behavior for ZR_FEASI_HD //alias <alias_name>
+persistent table ZSD_FEASI_HD
+with additional save
+
+draft table ZSD_FEASI_HD_D
+etag master LocalLastChangedOn
+lock master total etag ChangedOn
+authorization master ( instance )
+//etag master <field_name>
+{
+  create ( authorization : none );
+  update;
+  delete;
+
+   draft action Edit;
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Resume;
+      draft determine action Prepare;
+
+    field ( numbering : managed, readonly ) Cuuid;
+    field ( readonly ) Feasibilityno;
+    determination createFeasibilityNo on save { create; }
+    action getpdf result [1] $self;
+field(mandatory:create) enquiry_no,enquiryitem;
+  field ( features : instance ) enquiry_no,enquiryitem,customer,part_description,part_no,grade;
+
+  determination updateHeaderDetails on modify{ field enquiry_no ; }
+side effects {
+
+ field enquiry_no affects field customer,
+                        field part_description,
+                        field part_no,
+
+                        field volume,
+                        field Grade;
+  }
+  association _Item { create; }
+    association _Opr { create; }
+    association _Risk { create; }
+
+}
+
+define behavior for ZR_FEASI_IT //alias <alias_name>
+persistent table zsd_feasi_it
+draft table ZSD_FEASI_IT_D
+lock dependent by _HDR
+authorization dependent by _HDR
+//etag master <field_name>
+{
+  update;
+  delete;
+  field ( readonly ) Cuuid, Itemno,Remarks;
+  association _HDR{  with draft; }
+}
+
+
+define behavior for ZR_FEASI_OP //alias <alias_name>
+persistent table ZSD_FEASI_OP
+draft table ZSD_FEASI_OP_D
+lock dependent by _HDR
+authorization dependent by _HDR
+//etag master <field_name>
+{
+  update;
+  delete;
+  field ( readonly ) Cuuid;
+      field ( numbering : managed, readonly ) cuuiditem;
+//field(mandatory : create)itemnumber;
+ // field(mandatory : create) Itemno,operation;
+ // field( readonly : update)Itemno;
+  association _HDR{  with draft; }
+}
+
+define behavior for ZR_FEASI_RS //alias <alias_name>
+persistent table ZSD_FEASI_RS
+draft table ZSD_FEASI_RS_D
+lock dependent by _HDR
+authorization dependent by _HDR
+//etag master <field_name>
+{
+  update;
+  delete;
+  field ( readonly ) Cuuid, Itemno,Area,High,Medium,Low;
+  association _HDR{  with draft; }
+}

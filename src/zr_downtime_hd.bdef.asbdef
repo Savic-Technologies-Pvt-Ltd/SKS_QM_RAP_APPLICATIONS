@@ -1,0 +1,128 @@
+managed implementation in class zbp_r_downtime_hd unique;
+strict ( 2 );
+with draft;
+
+
+define behavior for ZR_DOWNTIME_HD //alias <alias_name>
+persistent table zqm_downtime_hd
+draft table ZQM_DOWNTME_HD_D
+etag master LocalLastChangedOn
+lock master total etag ChangedOn
+
+authorization master ( instance )
+//etag master <field_name>
+{
+  create ( authorization : none );
+  update;
+  delete;
+   draft action Edit;
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Resume;
+      draft determine action Prepare;
+    determination createDowntime on save { create; }
+    action getpdf result [1] $self;
+field( mandatory : create )Plant;
+    field ( numbering : managed, readonly ) Cuuid;
+  association _Item { create;  with draft; }
+  association _GrandChild { with draft; }
+ field ( features : instance ) Downtimeno , Plant;
+field( readonly)CreatedOn,CreatedBy,ChangedOn,ChangedBy;
+
+    mapping for ZR_DOWNTIME_HD
+
+
+
+  {
+   Downtimeno = Downtimeno;
+   Plant = Plant;
+  attachments = attachments;
+  filename = filename;
+  mimetype = mimetype;
+  CreatedOn = CreatedOn;
+  CreatedBy = CreatedBy;
+  ChangedOn = ChangedOn;
+  ChangedBy = ChangedBy;
+  }
+}
+
+define behavior for ZR_DOWNTIME_IT //alias <alias_name>
+persistent table zqm_downtime_it
+draft table ZQM_DOWNTME_IT_D
+
+
+lock dependent by _HDR
+authorization dependent by _HDR
+//etag master <field_name>
+{
+  update;
+  delete;
+  field ( readonly ) Cuuid,Workcentername;
+  association _HDR{ with draft; }
+      association _remark { create;with draft; }
+  determination updateWorkcenterName on modify{ field Workcenter; }
+  determination updateshifttime on modify {field shift; }
+    field( readonly)shiftstarttime,shiftendtime,totalnonprodmin,totalprodmin;
+  side effects {
+    field Workcenter affects field Workcentername;
+    field shift affects field shiftstarttime,
+                        field totalprodmin,
+                         field shiftendtime;
+
+
+
+  }
+
+//  field( mandatory : )productionorder;
+ // field( readonly : update )productionorder;
+
+  validation  checkProductionOrder on save {create;update; }
+}
+
+
+
+define behavior for ZR_DOWNTIME_RE
+
+persistent table ZQM_DOWNTIME_RE
+
+draft table ZQM_DOWNTME_RE_D
+lock dependent by _HDR
+authorization dependent by _HDR
+{
+  update;
+  delete;
+
+
+  field ( readonly ) Cuuid, Workcenter,Remarksdesc,totaltime,grandcuuid,totalmin;
+
+  ancestor association _HDR { with draft; }
+  association _workcenter { with draft; }
+
+//field( mandatory : create )Remarks;
+// field ( features : instance ) Remarks ;
+field(numbering : managed)grandcuuid;
+   mapping for ZQM_DOWNTIME_RE
+ //  mapping for zta_qm_ins_lot_i
+    {
+      cuuid               = cuuid;
+      grandcuuid = grandcuuid;
+     Remarks = remarks;
+     remarksid = remarksid;
+     Remarksdesc = remarksdesc;
+     Workcenter = workcenter;
+
+     starttime = starttime;
+     endtime = endtime;
+
+    }
+
+    determination updateRemarks on modify{ field remarksid; }
+
+  side effects {
+    field remarksid affects field Remarksdesc;
+
+  }
+  validation  checkProductionTime on save {create;update; }
+
+
+}

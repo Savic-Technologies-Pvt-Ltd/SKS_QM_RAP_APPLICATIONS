@@ -1,0 +1,49 @@
+@Metadata.layer: #CORE
+
+@UI: {
+  headerInfo: {
+    typeName       : 'Downtime',
+    typeNamePlural : 'Downtime',
+    title          : { type: #STANDARD, label: 'Downtime', value: 'Downtimeno' },
+    description    : { type: #STANDARD, value: 'Downtimeno' }
+  }
+}
+annotate entity ZC_DOWNTIME_HD
+    with 
+{
+    
+     @UI.facet: [
+  {
+    id      : 'GeneralInfo',
+    label   : 'Header',
+    type    : #IDENTIFICATION_REFERENCE,
+    purpose : #STANDARD,
+    position: 10
+  }
+  ,
+    
+     { id           : 'LOT_I1',
+    purpose      : #STANDARD,
+    type         : #LINEITEM_REFERENCE,
+    label        : 'Machine',
+    position     :  20 ,
+    targetElement: '_Item'}
+    ]
+    
+               @UI.identification: [  { type: #FOR_ACTION, dataAction: 'GetPDF', label: 'Get PDF'  }]
+               
+               Cuuid;
+                @UI.identification: [{ position: 20, label: 'Down Time No' }]
+  @UI.lineItem      : [{ position: 20, label: 'Down Time No' }]
+               Downtimeno;
+                @UI.identification: [{ position: 30, label: 'Plant' }]
+  @UI.lineItem      : [{ position: 30, label: 'Plant' }]
+               Plant;
+                @UI.identification: [{ position: 20, label: 'Attachment' }]
+               Attachments;
+                               @UI.identification: [{ position: 30, label: 'Date' }]
+               
+               CreatedOn;
+               
+               }
+    

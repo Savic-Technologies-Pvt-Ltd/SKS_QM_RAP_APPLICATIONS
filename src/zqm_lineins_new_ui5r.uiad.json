@@ -1,0 +1,34 @@
+{
+  "formatVersion": "2",
+  "header": {
+    "description": "An SAP Fiori application.",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "generalInformation": {
+    "appType": "ui5",
+    "catalogId": "SAP_TC_UI5_REPO_UIAD",
+    "targetMappingTitle": "Line Inspection"
+  },
+  "ui5AppDetails": {
+    "appId": "zqmlineinspnew"
+  },
+  "navigation": {
+    "targetMappingId": "UI5R_AAE374D13A2380AC96DEEF41C806D0D5994E1D69_TM",
+    "semanticObject": "ZQM_LINEINSP",
+    "action": "manage",
+    "desktop": true,
+    "tablet": true,
+    "phone": true
+  },
+  "tiles": [
+    {
+      "id": "UI5R_AAE374D13A2380AC96DEEF41C806D0D5994E1D69_AL",
+      "tileType": "static",
+      "isDefault": true,
+      "standard": {
+        "title": "Line Inspection"
+      }
+    }
+  ]
+}

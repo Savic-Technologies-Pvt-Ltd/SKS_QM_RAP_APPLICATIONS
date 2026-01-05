@@ -1,0 +1,212 @@
+@Metadata.layer: #CORE
+@UI: {
+      headerInfo:
+      {
+         typeName: 'Line Inspection Lot',
+         typeNamePlural: 'Line Inspection Lot',
+         title:
+         {
+           type : #STANDARD,
+           label: 'Line Inspection Lot',
+           value: 'Operationdate'
+         }
+      }
+}
+
+
+annotate entity ZQM_CM_LINSP_DT with
+{
+
+  @UI.facet: [
+          {  position : 10,
+             id : 'DT',
+                         label          : 'General Data',
+             
+             purpose : #STANDARD,
+             type : #IDENTIFICATION_REFERENCE
+          },
+
+         {
+            id             : 'Fieldgroup2ID',
+            type           : #IDENTIFICATION_REFERENCE,
+            label          : 'Instrument Code',
+            targetQualifier: 'Fieldgroup2',
+            position       : 20
+          },
+          {
+        id            : 'SPC',
+        purpose       : #STANDARD,
+        type          : #LINEITEM_REFERENCE,
+        label         : 'Specifications',
+        position      : 30,
+        targetElement : '_SPC'
+          }
+            ,
+      {
+            id             : 'Fieldgroup4ID',
+            type           : #IDENTIFICATION_REFERENCE,
+            label          : 'Inspection Accept/Reject',
+            targetQualifier: 'Fieldgroup4',
+            position       : 40
+      },
+          {
+            id             : 'Fieldgroup5ID',
+            type           : #IDENTIFICATION_REFERENCE,
+            label          : 'Remarks',
+            targetQualifier: 'Fieldgroup5',
+            position       : 50
+          },
+          {
+            id             : 'Fieldgroup6ID',
+            type           : #IDENTIFICATION_REFERENCE,
+            label          : 'QA Status',
+            targetQualifier: 'Fieldgroup6',
+            position       : 60
+          }
+  ]
+
+  @UI.lineItem: [{ position : 10,label :'Operation Date' }]
+  @UI.identification: [{  position : 10, label : 'Operation Date'}]
+  @EndUserText.label: 'Operation Text'
+  Operationdate;
+
+  @UI.lineItem: [{ position : 20,label :'Shift' }]
+  @UI.identification: [{  position : 20, label : 'Shift'}]
+  @EndUserText.label: 'Shift'
+  @Consumption.valueHelpDefinition: [{ entity : { name: 'ZQM_BA_LINSP_SHIFT_VH' , element: 'Value' } }]
+  Shift;
+
+  @UI.identification: [{ position: 30, label: 'Previous Operation' }]
+  @Consumption.valueHelpDefinition: [{ entity:{ name: 'ZQM_BA_LINSP_MACHINE_VH',element: 'Opeartion' } }]
+  PreviousOperation;
+
+  @UI.identification: [{ position: 40, label: 'Next Operation' }]
+  @Consumption.valueHelpDefinition: [{ entity:{ name: 'ZQM_BA_LINSP_MACHINE_VH',element: 'Opeartion' } }]
+  NextOperation;
+
+  // === Instrument Code tab (Fieldgroup2) ===
+  @UI.identification: [{ position: 10, qualifier: 'Fieldgroup2', label: 'DMT' }]
+  Dmt;
+
+  @UI.identification: [{ position: 20, qualifier: 'Fieldgroup2', label: 'VCD' }]
+  Vcd;
+
+  @UI.identification: [{ position: 30, qualifier: 'Fieldgroup2', label: 'Dial' }]
+  Dial;
+
+  @UI.identification: [{ position: 40, qualifier: 'Fieldgroup2', label: 'DPMT' }]
+  Dpmt;
+
+  @UI.identification: [{ position: 50, qualifier: 'Fieldgroup2', label: 'PP' }]
+  Pp;
+
+  @UI.identification: [{ position: 60, qualifier: 'Fieldgroup2', label: 'Gauge No' }]
+  Gaugenumber;
+
+  @UI.identification: [{ position: 70, qualifier: 'Fieldgroup2', label: 'No Go' }]
+  Nogo;
+
+  @UI.identification: [{ position: 80, qualifier: 'Fieldgroup2', label: 'Other' }]
+  Other;
+
+  // === Remarks tab (Fieldgroup5) ===
+  @UI.identification: [{ position: 10, qualifier: 'Fieldgroup5', label: 'Snap Gauge Availability' }]
+  Snapgauge;
+
+  @UI.identification: [{ position: 20, qualifier: 'Fieldgroup5', label: 'Poka Yoke Check' }]
+  Pokayokecheck;
+
+  @UI.identification: [{ position: 30, qualifier: 'Fieldgroup5', label: 'Load Verification' }]
+  Loadverification;
+
+  @UI.identification: [{ position: 40, qualifier: 'Fieldgroup5', label: 'Machine Cleaning Obs. by Superviser' }]
+  Machinecleanins;
+
+  @UI.identification: [{ position: 50, qualifier: 'Fieldgroup5', label: 'QA 5 Pcs Approval Status' }]
+  Qa5pcsstat;
+
+  @UI.identification: [{ position: 60, qualifier: 'Fieldgroup5', label: 'Chute Clean Obs. by Operator' }]
+  Chutecleanop;
+
+  @UI.identification: [{ position: 70, qualifier: 'Fieldgroup5', label: 'No of Pieces in Chute' }]
+  Chutpieces;
+
+  @UI.identification: [{ position: 80, qualifier: 'Fieldgroup5', label: 'Observations by Inspector' }]
+  Inspobs;
+
+  @UI.identification: [{ position: 90, qualifier: 'Fieldgroup5', label: 'No of Pieces in and arround Machine' }]
+  Machpcs;
+
+  @UI.identification: [{ position: 100, qualifier: 'Fieldgroup5', label: 'Raw Material' }]
+  Rawmaterial;
+
+  //  @UI.identification: [{ position: 110, qualifier: 'Fieldgroup5', label: 'Submited to QA by Production Time' }]
+  //  Subqa2prd;
+  //
+  //  @UI.identification: [{ position: 120, qualifier: 'Fieldgroup5', label: 'Submited to Production by QA Time' }]
+  //  Subprd2qa;
+
+  //  @UI.identification: [{ position: 130, qualifier: 'Fieldgroup5', label: 'Last Piece Observation' }]
+  //  Obs5pcs1st;
+
+  @UI.identification: [{ position: 140, qualifier: 'Fieldgroup5', label: 'Final Observation' }]
+  Obslast;
+
+  @UI.identification: [{ position: 150, qualifier: 'Fieldgroup5', label: 'Rejection Quantity' }]
+  Obsfinal;
+
+  @UI.identification: [{ position: 160, qualifier: 'Fieldgroup5', label: 'Rejected Qty' }]
+  Rejqty;
+
+  // === Accept/Reject tab (Fieldgroup4) ===
+  @UI.identification: [{ position: 10, qualifier: 'Fieldgroup4', label: 'Result 1 Acc/Rej' }]
+  @Consumption.valueHelpDefinition: [{ entity:{ name: 'ZQM_BA_LINSP_ACCREJ_VH' , element: 'Text'} }]
+  Result1;
+
+  @UI.identification: [{ position: 20, qualifier: 'Fieldgroup4', label: 'Result 2 Acc/Rej' }]
+  @Consumption.valueHelpDefinition: [{ entity:{ name: 'ZQM_BA_LINSP_ACCREJ_VH' , element: 'Text'} }]
+  Result2;
+
+  @UI.identification: [{ position: 30, qualifier: 'Fieldgroup4', label: 'Result 3 Acc/Rej' }]
+  @Consumption.valueHelpDefinition: [{ entity:{ name: 'ZQM_BA_LINSP_ACCREJ_VH' , element: 'Text'} }]
+  Result3;
+
+  @UI.identification: [{ position: 40, qualifier: 'Fieldgroup4', label: 'Result 4 Acc/Rej' }]
+  @Consumption.valueHelpDefinition: [{ entity:{ name: 'ZQM_BA_LINSP_ACCREJ_VH' , element: 'Text'} }]
+  Result4;
+
+  @UI.identification: [{ position: 50, qualifier: 'Fieldgroup4', label: 'Result 5 Acc/Rej' }]
+  @Consumption.valueHelpDefinition: [{ entity:{ name: 'ZQM_BA_LINSP_ACCREJ_VH' , element: 'Text'} }]
+  Result5;
+
+  @UI.identification: [{ position: 60, qualifier: 'Fieldgroup4', label: 'Result 6 Acc/Rej' }]
+  @Consumption.valueHelpDefinition: [{ entity:{ name: 'ZQM_BA_LINSP_ACCREJ_VH' , element: 'Text'} }]
+  Result6;
+
+  @UI.identification: [{ position: 70, qualifier: 'Fieldgroup4', label: 'Result 7 Acc/Rej' }]
+  @Consumption.valueHelpDefinition: [{ entity:{ name: 'ZQM_BA_LINSP_ACCREJ_VH' , element: 'Text'} }]
+  Result7;
+
+  @UI.identification: [{ position: 80, qualifier: 'Fieldgroup4', label: 'Result 8 Acc/Rej' }]
+  @Consumption.valueHelpDefinition: [{ entity:{ name: 'ZQM_BA_LINSP_ACCREJ_VH' , element: 'Text'} }]
+  Result8;
+
+  @UI.identification: [{ position: 90, qualifier: 'Fieldgroup4', label: 'Result 9 Acc/Rej' }]
+  @Consumption.valueHelpDefinition: [{ entity:{ name: 'ZQM_BA_LINSP_ACCREJ_VH' , element: 'Text'} }]
+  Result9;
+
+  @UI.identification: [{ position: 100, qualifier: 'Fieldgroup4', label: 'Result 10 Acc/Rej' }]
+  @Consumption.valueHelpDefinition: [{ entity:{ name: 'ZQM_BA_LINSP_ACCREJ_VH' , element: 'Text'} }]
+  Result10;
+
+  @UI.identification: [{ position: 110, qualifier: 'Fieldgroup4', label: 'Result 11 Acc/Rej' }]
+  @Consumption.valueHelpDefinition: [{ entity:{ name: 'ZQM_BA_LINSP_ACCREJ_VH' , element: 'Text'} }]
+  Result11;
+
+  // === QA Status tab (Fieldgroup6) ===
+  @UI.identification: [{ position: 10, qualifier: 'Fieldgroup6', label: 'QC Status' }]
+  @Consumption.valueHelpDefinition: [{ entity:{ name: 'ZQM_VH_ILOT_QC_STS' ,element: 'Text' } }]
+  Qcstatus;
+
+
+}

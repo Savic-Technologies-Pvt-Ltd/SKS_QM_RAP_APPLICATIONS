@@ -1,0 +1,113 @@
+
+@Metadata.layer: #CORE
+@UI: {
+  headerInfo: { typeName: 'Operation Text',
+                typeNamePlural: 'Operation Text',
+                title: { type: #STANDARD, label: 'Operation Text',value: 'Specification' } }
+              }
+@UI.createHidden: true
+@UI.deleteHidden: true
+annotate entity ZQM_PR_InprocessInspection_4 with
+{
+
+//  @UI.facet: [ { id:              'LOT_IP4',
+//                 purpose:         #STANDARD,
+//                 type:            #IDENTIFICATION_REFERENCE,
+//                 label:           'Line Inspection Calculation',
+//                 position:        10,
+//                   targetQualifier: 'Group 2'
+//  }
+//                   ]
+  @UI: {  lineItem:       [ { position: 10,qualifier: 'Calculation' } ],
+          identification: [ { position: 10 ,qualifier: 'Group 2' } ]
+  }
+  @EndUserText.label: 'Result 1'
+  ReadRes1;
+
+  @UI: {  lineItem:       [ { position: 15,qualifier: 'Calculation'  } ],
+      identification: [ { position: 15  } ] }
+  @EndUserText.label: 'Result 2'
+  ReadRes2;
+  @UI: {  lineItem:       [ { position: 20,qualifier: 'Calculation'  } ],
+      identification: [ { position: 20  } ] }
+  @EndUserText.label: 'Result 3'
+  ReadRes3;
+//  @UI: {  lineItem:       [ { position: 25,qualifier: 'Calculation'  } ],
+//      identification: [ { position: 25  } ] }
+//  @EndUserText.label: 'Result 4'
+//  ReadRes4;
+//  @UI: {  lineItem:       [ { position: 30,qualifier: 'Calculation' } ],
+//      identification: [ { position: 30  } ] }
+//  @EndUserText.label: 'Result 5'
+//  ReadRes5;
+//  @UI: {  lineItem:       [ { position: 35,qualifier: 'Calculation'  } ],
+//      identification: [ { position: 35  } ] }
+//  @EndUserText.label: 'Result 6'
+//  ReadRes6;
+//  @UI: {  lineItem:       [ { position: 40,qualifier: 'Calculation'  } ],
+//      identification: [ { position: 40  } ] }
+//  @EndUserText.label: 'Result 7'
+//  ReadRes7;
+//  @UI: {  lineItem:       [ { position: 45,qualifier: 'Calculation'  } ],
+//      identification: [ { position: 45  } ] }
+//  @EndUserText.label: 'Result 8'
+//  ReadRes8;
+//  @UI: {  lineItem:       [ { position: 50,qualifier: 'Calculation'  } ],
+//      identification: [ { position: 50  } ] }
+//  @EndUserText.label: 'Result 9'
+//  ReadRes9;
+//  @UI: {  lineItem:       [ { position: 55,qualifier: 'Calculation'  } ],
+//      identification: [ { position: 55  } ] }
+//  @EndUserText.label: 'Result 10'
+//  ReadRes10;
+//  @UI: {  lineItem:       [ { position: 60,qualifier: 'Calculation'  } ],
+//      identification: [ { position: 60  } ] }
+//  @EndUserText.label: 'Result 11'
+//  ReadRes11;
+
+
+//  @UI: {  identification:       [ { position: 10,qualifier: 'Calculation_Fields'  } ]}
+//  @EndUserText.label: 'Grand Bar X'
+//  GrandbarX;
+//  @UI: {  identification:       [ { position: 15,qualifier: 'Calculation_Fields'  } ]}
+//  @EndUserText.label: 'Ucl X'
+//  UclX;
+//  @UI: {  identification:       [ { position: 20,qualifier: 'Calculation_Fields'  } ]}
+//  @EndUserText.label: 'Ucl R'
+//  UclR;
+//  @UI: {  identification:       [ { position: 25,qualifier: 'Calculation_Fields'  } ]}
+//  @EndUserText.label: 'Sigma'
+//  Sigma;
+//  @UI: {  identification:       [ { position: 30,qualifier: 'Calculation_Fields'  } ]}
+//  @EndUserText.label: 'Rbar'
+//  Rbar;
+//  @UI: {  identification:       [ { position: 35,qualifier: 'Calculation_Fields'  } ]}
+//  @EndUserText.label: 'Lcl X'
+//  LclX;
+//  @UI: {  identification:       [ { position: 40,qualifier: 'Calculation_Fields'  } ]}
+//  @EndUserText.label: 'Lcl R'
+//  LclR;
+//  @UI: {  identification:       [ { position: 45,qualifier: 'Calculation_Fields'  } ]}
+//  @EndUserText.label: 'Cpk'
+//  Cpk;
+//  @UI: {  identification:       [ { position: 50,qualifier: 'Calculation_Fields'  } ]}
+//  @EndUserText.label: 'A2'
+//  A2;
+//  @UI: {  identification:       [ { position: 55,qualifier: 'Calculation_Fields'  } ]}
+//  @EndUserText.label: 'D4'
+//  D4;
+//  @UI: {  identification:       [ { position: 60,qualifier: 'Calculation_Fields'  } ]}
+//  @EndUserText.label: 'D3'
+//  D3;
+//  @UI: {  identification:       [ { position: 65,qualifier: 'Calculation_Fields'  } ]}
+//  @EndUserText.label: 'Tol'
+//  Tol;
+//  @UI: {  identification:       [ { position: 70,qualifier: 'Calculation_Fields'  } ]}
+//  @EndUserText.label: 'Cp'
+//  Cp;
+//  @UI: {  identification:       [ { position: 75,qualifier: 'Calculation_Fields'  } ]}
+//  @EndUserText.label: 'Cpk2'
+//  Cpk2;
+
+
+}

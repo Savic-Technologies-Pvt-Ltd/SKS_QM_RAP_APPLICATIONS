@@ -1,0 +1,199 @@
+managed implementation in class zbp_qm_ba_inprocessinspection_ unique;
+strict ( 2 );
+with draft;
+
+define behavior for ZQM_BA_InprocessInspection_1 alias Header
+persistent table zqm_t_inpr_ins_1
+draft table zqm_t_inpr_ins1d
+lock master total etag inspectionlot
+authorization master ( instance )
+//etag master <field_name>
+{
+  create;
+  update;
+  delete;
+  field ( features : instance ) inspectionlot, Material, plant, manufacturingorder, Batch, Qcstatus;
+  field ( numbering : managed, readonly ) cuuid;
+  field ( mandatory : create ) Material, Plant, ManufacturingOrder, Batch;
+  field ( readonly ) Baseunit, Customer, EndOfInsp, InspLotOrig, Inspection, LotQty, Lotcreate,
+  Manufacturer, SalesOrder, StartOfInsp, Supplier, InspectionOperation,
+  InspectionLotObjectText, DRGno, Grade, RM_Specification, PartNo, Attachments;
+  determination createinsplot on save { create; }
+  draft action Edit;
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Resume;
+  draft determine action Prepare;
+  association _item_operation { create; with draft; }
+  //  association _item { with draft; }
+  //  association _item_calculation { with draft; }
+
+  action getpdf result [1] $self;
+  determination updateHeaderDetails on modify{ field manufacturingorder ; }
+
+  mapping for zqm_t_inprs_ins
+    {
+      cuuid                       = cuuid;
+      InspectionLot               = inspectionlot;
+      Lotcreate                   = lotcreate;
+      Material                    = material;
+      InspectionLotObjectText     = inspectionlotobjecttext;
+      Batch                       = batch;
+      Plant                       = plant;
+      InspLotOrig                 = insplotorig;
+      ManufacturingOrder          = manufacturingorder;
+      InspectionLotText           = inspectionlottext;
+      InspectionLotType           = inspectionlottype;
+      LotQty                      = lotqty;
+//      InspectionLotActualQuantity = inspectionlotactualquantity;
+      Baseunit                    = baseunit;
+      Equipment                   = equipment;
+      StatusProfile               = statusprofile;
+      StartOfInsp                 = startofinsp;
+      EndOfInsp                   = endofinsp;
+      Customer                    = customer;
+      Supplier                    = supplier;
+      Manufacturer                = manufacturer;
+      PurchasingDocument          = purchasingdocument;
+      PurchasingDocumentItem      = purchasingdocumentitem;
+      ScheduleLine                = scheduleline;
+      SalesOrder                  = ord;
+      SalesOrderItem              = salesorderitem;
+      Language                    = language;
+      CompanyCode                 = companycode;
+      InspectionOperation         = inspectionoperation;
+      OperationText               = operationtext;
+      WorkCenterText              = workcentertext;
+      OperationConfirmation       = operationconfirmation;
+      DRGno                       = drgno;
+      Grade                       = grade;
+      RM_Specification            = rm_specification;
+      PartNo                      = partno;
+      Shift                       = shift;
+      WasherLotNo                 = washerlotno;
+      OperatorName                = operatorname;
+      Inspection                  = inspector;
+      checkbox                    = checkbox;
+      checkbox2                   = checkbox2;
+      approved                    = approved;
+      snapgaugeavl                = snapgaugeavl;
+      notapproved                 = notapproved;
+      pokayokechecked             = pokayokechecked;
+      obseropera                  = obseropera;
+      cleaned                     = cleaned;
+      loadverf                    = loadverf;
+      nopiecchute                 = nopiecchute;
+      obseinspector               = obseinspector;
+      nopiecesaroundmachine       = nopiecesaroundmachine;
+      dmt                         = dmt;
+      vcd                         = vcd;
+      dial                        = dial;
+      dpmt                        = dpmt;
+      pp                          = pp;
+      gaugenogo                   = gaugenogo;
+      nogo                        = nogo;
+      ar1                         = ar1;
+      ar2                         = ar2;
+      ar3                         = ar3;
+      ar4                         = ar4;
+      ar5                         = ar5;
+      ar6                         = ar6;
+      ar7                         = ar7;
+      ar8                         = ar8;
+      ar9                         = ar9;
+      ar10                        = ar10;
+      ar11                        = ar11;
+      prodtime                    = prodtime;
+      qatime                      = qatime;
+      previousopt                 = previousopt;
+      nextopt                     = nextopt;
+      rawmaterial                 = rawmaterial;
+      Attachments                 = attachments;
+      Filename                    = filename;
+      Mimetype                    = mimetype;
+    }
+
+}
+
+define behavior for ZQM_BA_InprocessInspection_2 alias Item_Operation
+//persistent table <???>
+with unmanaged save
+draft table zqm_t_inp_ins2d1
+lock dependent by _Header
+authorization dependent by _Header
+//etag master <field_name>
+{
+  update;
+  delete;
+  field ( readonly ) Cuuid, Inspectionlot, InspectionPlanGroup, BOOOperationInternalID, OperationText;
+  association _Header { with draft; }
+  association _item { create; with draft; }
+
+  mapping for zqm_t_inpr_ins_1
+  {
+  OperationText = operationtext;
+  }
+  //  association _itemcalculation { with draft; }
+}
+
+define behavior for ZQM_BA_InprocessInspection_3 alias Item
+with unmanaged save
+//persistent table zta_qm_line_02
+draft table zqm_t_inpr_ins2d
+lock dependent by _Header
+authorization dependent by _Header
+//etag master <field_name>
+{
+  update;
+  delete;
+  field ( readonly ) Cuuid, Inspectionlot, InspectionPlanGroup, BOOOperationInternalID, InspLotItem, BOOCharacteristicVersion,
+  Specification, InspSpecLowerLimit, InspSpecUpperLimit, InspectionSpecification;
+  ancestor association _Header { with draft; }
+  association _item_operation { with draft; }
+  //association _item_calculation { create; with draft; }
+  mapping for zqm_t_inpr_ins_2
+    {
+      Cuuid            = cuuid;
+      Inspectionlot    = inspectionlot;
+      InspLotItem      = insp_lot_item;
+      Shift            = shift;
+      Shift_Date       = shif_date;
+      Recording_Time1  = rec_time1;
+      Recording_Time2  = rec_time2;
+      Recording_Time3  = rec_time3;
+      Recording_Time4  = rec_time4;
+      Recording_Time5  = rec_time5;
+      Recording_Time6  = rec_time6;
+      Recording_Time7  = rec_time7;
+      Recording_Time8  = rec_time8;
+      Recording_Time9  = rec_time9;
+      Recording_Time10 = rec_time10;
+      Recording_Time11 = rec_time11;
+    }
+}
+
+////////define behavior for ZQM_BA_InprocessInspection_4 alias Item_Calculation
+//////////persistent table zqm_t_inpr_ins_3
+////////with unmanaged save
+////////draft table zqm_t_inpr_ins3d
+////////lock dependent by _header
+////////authorization dependent by _header
+//////////etag master <field_name>
+////////{
+////////  update;
+////////  delete;
+////////  field ( readonly ) Cuuid, Inspectionlot, InspectionPlanGroup, BOOOperationInternalID, InspLotItem, BOOCharacteristicVersion, Cuuid_cal;
+////////  association _header { with draft; }
+////////  association _item { with draft; }
+////////  //  association _item_operation { with draft; }
+////////  mapping for zta_qm_line_03
+////////    {
+////////      Cuuid         = cuuid;
+////////      Inspectionlot = inspectionlot;
+////////      InspLotItem   = insp_lot_item;
+////////      ReadRes1 = read_res1;
+////////      ReadRes2 = read_res2;
+////////      ReadRes3 = read_res3;
+////////    }
+////////
+////////}

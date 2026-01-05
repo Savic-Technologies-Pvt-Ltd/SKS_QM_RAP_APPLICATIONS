@@ -1,0 +1,90 @@
+@Metadata.layer: #CORE
+@UI: {
+  headerInfo: { typeName: 'Operation Text',
+                typeNamePlural: 'Operation Text',
+                title: { type: #STANDARD, label: 'Operation Text',value: 'OperationText' } }
+              }
+@UI.createHidden: true
+@UI.deleteHidden: true
+annotate entity ZQM_PR_InprocessInspection_2 with
+{
+  @UI.facet: [
+  //   { id:              'LOT_HP2',
+  //                  purpose:         #STANDARD,
+  //                  type:            #IDENTIFICATION_REFERENCE,
+  //                  label:           'Operation',
+  //                  position:        10 } ,
+
+            {
+              label: 'Result Recoding',
+              id: 'GeneralInfo',
+              type: #COLLECTION,
+              position: 20 },
+                                  {parentId: 'GeneralInfo',
+                                   id:              'LOT_IP2_1',
+                  purpose:         #STANDARD,
+                  type:           #IDENTIFICATION_REFERENCE,
+                    label:           'Inprocess Inspection ',
+                  position:        15 ,
+                  targetQualifier: 'Shift_Time'
+  //                  targetElement: '_item'
+                  },
+                {parentId: 'GeneralInfo',
+                id:              'LOT_IP2',
+                  purpose:         #STANDARD,
+                  type:           #LINEITEM_REFERENCE,
+                    label:           'Inprocess Inspection Item',
+                  position:        20 ,
+                  targetElement: '_item'}
+                      ]
+
+
+  @UI: {  lineItem:       [ { position: 10 , label: 'Operation Text'} ],
+            identification: [ { position: 10 , label: 'Operation Text', qualifier: 'Shift_Time' } ] }
+  OperationText;
+
+
+  //Date & Time Recoding
+  @UI: { // lineItem:       [ { position: 10  } ],
+  identification: [ { position: 10 , label: 'Operation Text', qualifier: 'Shift_Time' } ] }
+  @EndUserText.label: 'Shift'
+  Shift;
+//  @UI: {  identification:       [ { position: 15 , qualifier: 'Shift_Time'} ]}
+//  @EndUserText.label: 'Shift Date'
+//  Shift_Date;
+//  @UI: {  identification:       [ { position: 20 , qualifier: 'Shift_Time'} ]}
+//  @EndUserText.label: 'Recoding Time 1'
+//  Recoding_Result1;
+//  @UI: {  identification:       [ { position: 25 , qualifier: 'Shift_Time'} ]}
+//  @EndUserText.label: 'Recoding Time 2'
+//  Recoding_Result2;
+//  @UI: {  identification:       [ { position: 30 , qualifier: 'Shift_Time'} ]}
+//  @EndUserText.label: 'Recoding Time 3'
+//  Recoding_Result3;
+//  @UI: {  identification:       [ { position: 35 , qualifier: 'Shift_Time'} ]}
+//  @EndUserText.label: 'Recoding Time 4'
+//  Recoding_Result4;
+//  @UI: {  identification:       [ { position: 40 , qualifier: 'Shift_Time'} ]}
+//  @EndUserText.label: 'Recoding Time 5'
+//  Recoding_Result5;
+//  @UI: {  identification:       [ { position: 45 , qualifier: 'Shift_Time'} ]}
+//  @EndUserText.label: 'Recoding Time 6'
+//  Recoding_Result6;
+//  @UI: {  identification:       [ { position: 50 , qualifier: 'Shift_Time'} ]}
+//  @EndUserText.label: 'Recoding Time 7'
+//  Recoding_Result7;
+//  @UI: {  identification:       [ { position: 55 , qualifier: 'Shift_Time'} ]}
+//  @EndUserText.label: 'Recoding Time 8'
+//  Recoding_Result8;
+//  @UI: {  identification:       [ { position: 60 , qualifier: 'Shift_Time'} ]}
+//  @EndUserText.label: 'Recoding Time 9'
+//  Recoding_Result9;
+//  @UI: {  identification:       [ { position: 65 , qualifier: 'Shift_Time'} ]}
+//  @EndUserText.label: 'Recoding Time 10'
+//  Recoding_Result10;
+//  @UI: {  identification:       [ { position: 70 , qualifier: 'Shift_Time'} ]}
+//  @EndUserText.label: 'Recoding Time 11'
+//  Recoding_Result11;
+
+
+}

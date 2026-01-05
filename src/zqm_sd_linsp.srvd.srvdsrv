@@ -1,0 +1,10 @@
+@EndUserText.label: 'Line Inspection'
+define service ZQM_SD_LINSP {
+  expose ZQM_CM_LINSP_HDR;
+  expose ZQM_CM_LINSP_OPR;
+  expose ZQM_CM_LINSP_DT;
+  expose ZQM_CM_LINSP_SPC;
+  expose ZQM_CM_LINSP_RES;
+  expose ZQM_BA_LINSP_SHIFT_VH;
+  expose ZQM_BA_LINSP_MACHINE_VH;
+}

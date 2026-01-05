@@ -1,0 +1,22 @@
+CLASS zcl_wrap_goods_movement DEFINITION
+  PUBLIC
+  FINAL
+  CREATE PUBLIC .
+
+  PUBLIC SECTION.
+  INTERFACES zif_wrap_bapi_goods_mvt.
+  PROTECTED SECTION.
+  PRIVATE SECTION.
+ENDCLASS.
+
+
+
+CLASS ZCL_WRAP_GOODS_MOVEMENT IMPLEMENTATION.
+
+
+METHOD zif_wrap_bapi_goods_mvt~post_document .
+
+
+
+ENDMETHOD.
+ENDCLASS.

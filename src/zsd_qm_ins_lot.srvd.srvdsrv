@@ -1,0 +1,5 @@
+@EndUserText.label: 'Service Definition For Inspection Lot'
+define service ZSD_QM_INS_LOT {
+  expose ZCDS_QM_INS_LOT_P01 as Header;
+  expose ZCDS_QM_INS_LOT_P02 as Item;
+}
